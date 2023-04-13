@@ -1,0 +1,22 @@
+{
+  "name": "front-end-fisheye",
+  "version": "1.0.0",
+  "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass --watch sass/main.scss css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nima-OCR/Front-End-Fisheye.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nima-OCR/Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/Nima-OCR/Front-End-Fisheye#readme",
+  "dependencies": {
+    "node-sass": "^8.0.0"
+  }
+}
