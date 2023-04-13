@@ -1,9 +1,33 @@
 @charset "UTF-8";
+/*
+######################################################
+  Ce dossier contient les fichiers Sass utilitaires,
+  tels que les mixins, les fonctions, les variables
+######################################################
+ */
+/*
+###################################################################
+  Ce dossier contient les styles de base pour les éléments HTML de
+  base tels que les titres, les paragraphes...
+###################################################################
+ */
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
 }
 
+/*
+###################################################################
+  Ce dossier contient les styles de base pour les éléments HTML de
+  base tels que les titres, les paragraphes...
+###################################################################
+ */
+/*
+ ############################################################################
+   Ce dossier contient tous les styles pour les composants réutilisables
+   du site, tels que les boutons, les formulaires, les modales,
+ ############################################################################
+  */
 form {
   display: flex;
   width: 100%;
@@ -28,6 +52,12 @@ form div input {
   border-radius: 5px;
 }
 
+/*
+############################################################################
+  Ce dossier contient tous les styles pour les composants réutilisables
+  du site, tels que les boutons, les formulaires, les modales,
+############################################################################
+ */
 header {
   display: flex;
   flex-direction: row;
@@ -52,6 +82,12 @@ h1 {
   margin-left: 100px;
 }
 
+/*
+ ############################################################################
+   Ce dossier contient tous les styles pour les composants réutilisables
+   du site, tels que les boutons, les formulaires, les modales,
+ ############################################################################
+  */
 #contact_modal {
   display: none;
 }
@@ -120,6 +156,8 @@ h1 {
 .photographer_section article img {
   height: 200px;
   width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=main.css.map */
