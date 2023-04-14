@@ -13,10 +13,22 @@ function photographerFactory(data) {
         //Ajoute le nom du photographe dans la balise h2
         h2.textContent = name;
 
-        //Ajoute l'élément img à l'intérieur de l'élément article
+      const location = document.createElement('p'); // Ajoute la ville et le pays du photographe
+      location.textContent = `${city}, ${country}`;
+
+        const span = document.createElement('span'); // Ajoute le tagline du photographe
+        span.textContent = tagline;
+
+      const priceEl = document.createElement('p'); // Ajoute le prix du photographe
+      priceEl.textContent = `${price}€ / jour`;
+
+        // Ajouter les éléments dans la structure HTML
         article.appendChild(img);
-        //Ajoute l'élément h2 à l'intérieur de l'élément article
         article.appendChild(h2);
+        article.appendChild(location);
+        article.appendChild(span);
+        article.appendChild(priceEl);
+
         return (article);// Renvoi l'élément article complet
     }
 
