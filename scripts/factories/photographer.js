@@ -1,44 +1,57 @@
-//génère les éléments HTML nécessaires pour afficher un photographe
-function photographerFactory(data) {
-  const { name, id, city, country, tagline, price, portrait} = data;// Extraire le nom et le chemin d'accès à l'image du photographe depuis l'objet `data`
-  const picture = `assets/photographers/${portrait}`;//chemin d'accès à l'image du photographe.
+// Fonction qui génère un objet avec ses informations et un élément DOM pour l'afficher
+  export function photographerFactory(data) {
 
-  //La fonction crée un élément article, une image et un titre.
+    const { name, id, city, country, tagline, price, portrait } = data;
+    const picture = `assets/photographers/${portrait}`;
+
+    // Fonction qui crée et renvoie les éléments du DOM pour afficher le photographe
     function getUserCardDOM() {
-        const article = document.createElement( 'article' );// Créer un élément HTML "article" pour contenir les éléments du photographe
-        const img = document.createElement( 'img' );// Créer un élément HTML "img" pour afficher l'image du photographe
-        img.setAttribute("src", picture)// Ajouter l'attribut "src" à l'élément "img" pour afficher l'image
-        const h2 = document.createElement( 'h2' );// Créer un élément HTML "h2" pour afficher le nom du photographe
+      const article = document.createElement('article');
+      article.setAttribute('class', 'photographer-card');
 
-        //Ajoute le nom du photographe dans la balise h2
-        h2.textContent = name;
+      // Création d'un élément 'a' (lien)
+      const link = document.createElement('a');
+      link.setAttribute('href', `photographer.html?id=${id}`);
+      link.setAttribute('aria-label', `Voir le profil de ${name}`);
+      link.setAttribute('tabindex', '0'); // Rendre le lien focusable avec la touche Tab
 
-      const location = document.createElement('p'); // Ajoute la ville et le pays du photographe
+      // Création d'un élément 'img'
+      const portrait = document.createElement('img');
+      portrait.setAttribute('src', picture);
+      portrait.setAttribute('alt', ''); //todo s'occuper de value
+      link.appendChild(portrait);
+
+      // Création d'un élément 'h2' pour le nom du photographe
+      const fullName = document.createElement('h2');
+      fullName.textContent = name;
+      link.appendChild(fullName);
+
+      article.appendChild(link);
+
+      // Création d'un élément 'p' pour la localisation du photographe
+      const location = document.createElement('p');
       location.textContent = `${city}, ${country}`;
+      article.appendChild(location);
 
-        const span = document.createElement('span'); // Ajoute le tagline du photographe
-        span.textContent = tagline;
+      // Création d'un élément 'span' pour la description du photographe
+      const description = document.createElement('span');
+      description.textContent = tagline;
+      article.appendChild(description);
 
-      const priceEl = document.createElement('p'); // Ajoute le prix du photographe
-      priceEl.textContent = `${price}€ / jour`;
+      // Création d'un élément 'p' pour le prix du photographe
+      const priceElement = document.createElement('p');
+      priceElement.textContent = `${price}€ / jour`;
+      article.appendChild(priceElement);
 
-        // Ajouter les éléments dans la structure HTML
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(location);
-        article.appendChild(span);
-        article.appendChild(priceEl);
-
-        return (article);// Renvoi l'élément article complet
+      // Renvoyer l'élément 'article' complet
+      return article;
     }
 
-  //   TEST CONSOLE
-  // Stocker le nom et le chemin d'accès à l'image dans un objet de test pour l'afficher dans la console
-  const userCard = {
-      name, picture
-    };
-  console.log(userCard);
+    // Afficher l'objet de test dans la console
+    console.log(data);
 
-    return { name, id, city, country, tagline, price, portrait, getUserCardDOM }// Renvoi les informations du photographe et la fonction `getUserCardDOM`
-
+    // Renvoyer les objets et la fonction `getUserCardDOM`
+    return { name, id, city, country, tagline, price, portrait, getUserCardDOM };
 }
+
+

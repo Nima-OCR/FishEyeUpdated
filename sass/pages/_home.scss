@@ -19,6 +19,12 @@
     align-items: center;
     flex-direction: column;
 
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+    }
+
     h2 {
       color: $color-tertiary;
       font-weight: 400;
