@@ -17,15 +17,32 @@ async function fetchData() {
 }
 
 
-fetchData()
-  .then((selectedPhotographer) => {
-    if (selectedPhotographer) {
-      console.log("Photographe sélectionné :", selectedPhotographer);
-      console.log("Les données ont été récupérées avec succès.");
-    } else {
-      console.error("Aucun photographe ne correspond à l'ID :", photographerId);
-    }
-  })
+fetchData().then((selectedPhotographer) => {
+  if (selectedPhotographer) {
+    console.log("Photographe sélectionné :", selectedPhotographer);
+    console.log("Les données ont été récupérées avec succès.");
+
+    // Afficher le nom du photographe
+    const nameElement = document.querySelector('#photographerName');
+    nameElement.innerHTML = selectedPhotographer.name;
+
+    // Afficher la localisation du photographe
+    const locationElement = document.querySelector('#photographerLocation');
+    locationElement.innerHTML = `${selectedPhotographer.city}, ${selectedPhotographer.country}`;
+
+    // Afficher la description du photographe
+    const taglineElement = document.querySelector('#photographerTagline');
+    taglineElement.innerHTML = selectedPhotographer.tagline;
+
+    // Afficher l'image du photographe
+    const imageElement = document.querySelector('#photographerImage');
+    imageElement.src = `./assets/photographers/${selectedPhotographer.portrait}`;
+    imageElement.alt = selectedPhotographer.name;
+  } else {
+    console.error("Aucun photographe ne correspond à l'ID :", photographerId);
+  }
+})
   .catch((error) => {
     console.error("Une erreur est survenue lors de la récupération des données :", error);
   });
+
