@@ -132,9 +132,7 @@ h1 {
 
 /*
 ###################################################################
-|  Ce dossier contient les styles spécifiques à chaque page du    |
-|  site, tels que les styles pour la page d'accueil, la page de   |
-|  contact.                                                       |
+|  Ce dossier contient les styles spécifiques à la page d'accueil |
 ###################################################################
  */
 .photographer_section {
@@ -189,11 +187,9 @@ h1 {
 }
 
 /*
-###################################################################
-|  Ce dossier contient les styles spécifiques à chaque page du    |
-|  site, tels que les styles pour la page d'accueil, la page de   |
-|  contact.                                                       |
-###################################################################
+########################################################################
+|  Ce dossier contient les styles spécifiques à la page du photographe |
+########################################################################
  */
 .photographer-header {
   display: flex;

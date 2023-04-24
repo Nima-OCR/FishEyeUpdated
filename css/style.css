@@ -116,12 +116,10 @@ h1 {
       text-align: center; }
 
 /*
-                        ###################################################################
-                        |  Ce dossier contient les styles spécifiques à chaque page du    |
-                        |  site, tels que les styles pour la page d'accueil, la page de   |
-                        |  contact.                                                       |
-                        ###################################################################
-                         */
+    ###################################################################
+    |  Ce dossier contient les styles spécifiques à la page d'accueil |
+    ###################################################################
+     */
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -166,12 +164,10 @@ h1 {
       line-height: 13px; }
 
 /*
-                        ###################################################################
-                        |  Ce dossier contient les styles spécifiques à chaque page du    |
-                        |  site, tels que les styles pour la page d'accueil, la page de   |
-                        |  contact.                                                       |
-                        ###################################################################
-                         */
+    ########################################################################
+    |  Ce dossier contient les styles spécifiques à la page du photographe |
+    ########################################################################
+     */
 .photographer-header {
   display: flex;
   flex-direction: row;
