@@ -5,13 +5,23 @@
                        ######################################################
                         */
 
-$color-primary: #901C1C;
-$color-secondary: #DB8876;
-$color-tertiary: #D3573C;
-$color-subtitle: #525252;
-$color-price: #757575;
-$color-background: #FAFAFA;
-$color-label: #312E2E;
+                        // Variable COULEURS
+                        $color-primary: #901C1C;
+                        $color-secondary: #DB8876;
+                        $color-tertiary: #D3573C;
+                        $color-subtitle: #525252;
+                        $color-price: #757575;
+                        $color-background: #FAFAFA;
+                        $color-label: #312E2E;
+
+
+                        /* Définit la couleur d'arrière-plan  */
+                        $background-color: #911C1C;
+
+
+                        // Variable $font-sans avec la police DM Sans et la police générique sans-serif
+                        $font-sans: 'DM Sans', sans-serif;
+
 
 
 

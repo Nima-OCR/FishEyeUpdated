@@ -38,6 +38,13 @@ fetchData().then((selectedPhotographer) => {
     const imageElement = document.querySelector('#photographerImage');
     imageElement.src = `./assets/photographers/${selectedPhotographer.portrait}`;
     imageElement.alt = selectedPhotographer.name;
+
+    // Récupération du bouton de contact
+    const contactButton = document.querySelector('#contactButton');
+
+// Ajout du texte dans le bouton
+    contactButton.innerHTML = 'Contactez-moi';
+
   } else {
     console.error("Aucun photographe ne correspond à l'ID :", photographerId);
   }

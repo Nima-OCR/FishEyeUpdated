@@ -1,0 +1,84 @@
+                        /*
+                        ###################################################################
+                        |  Ce dossier contient les styles spécifiques à chaque page du    |
+                        |  site, tels que les styles pour la page d'accueil, la page de   |
+                        |  contact.                                                       |
+                        ###################################################################
+                         */
+
+                        .photographer-header {
+                          display: flex;
+                          flex-direction: row;
+                          justify-content: space-between;
+                          align-items: center;
+                          padding: 57px 50px;
+                          background-color: $color-background;
+                          border-radius: 5px;
+                          text-align: center;
+                          margin: 40px 100px 0;
+
+                          .photographer-details {
+                            margin-right: 20px;
+                            margin-left: 0;
+
+                            .photographer-name {
+                              font-family: $font-sans;
+                              font-style: normal;
+                              font-weight: 400;
+                              font-size: 64px;
+                              line-height: 83px;
+                              color: $color-tertiary;
+                              margin: 0;
+                            }
+
+                            .photographer-location,
+                            .photographer-tagline {
+                              font-family: $font-sans;
+                              font-style: normal;
+                              font-weight: 400;
+                              margin: 0 0 19px 0;
+                              text-align: left;
+                            }
+
+                            .photographer-location {
+                              font-size: 24px;
+                              line-height: 31px;
+                              color: $color-primary;
+                            }
+
+                            .photographer-tagline {
+                              font-size: 18px;
+                              line-height: 23px;
+                            }
+                          }
+
+                          .contact-button {
+                            background-color: $background-color;
+                            color: #ffffff;
+                            border: none;
+                            border-radius: 5px;
+                            padding: 10px 20px;
+                            font-family: $font-sans;
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 20px;
+                            line-height: 26px;
+                            display: flex;
+                            align-items: center;
+                            text-align: center;
+                            height: 69px;
+                            cursor: pointer;
+
+                            &:hover {
+                              background-color: #666666;
+                            }
+                          }
+
+                          .photographer-image {
+                            width: 200px;
+                            height: 200px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                          }
+                        }
+

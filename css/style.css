@@ -5,6 +5,7 @@
                          tels que les mixins, les fonctions, les variables
                        ######################################################
                         */
+/* Définit la couleur d'arrière-plan  */
 /*
                        ###################################################################
                          Ce dossier contient les styles de base pour les éléments HTML de
@@ -163,3 +164,69 @@ h1 {
       font-weight: 400;
       font-size: 10px;
       line-height: 13px; }
+
+/*
+                        ###################################################################
+                        |  Ce dossier contient les styles spécifiques à chaque page du    |
+                        |  site, tels que les styles pour la page d'accueil, la page de   |
+                        |  contact.                                                       |
+                        ###################################################################
+                         */
+.photographer-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 57px 50px;
+  background-color: #FAFAFA;
+  border-radius: 5px;
+  text-align: center;
+  margin: 40px 100px 0; }
+  .photographer-header .photographer-details {
+    margin-right: 20px;
+    margin-left: 0; }
+    .photographer-header .photographer-details .photographer-name {
+      font-family: "DM Sans", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 83px;
+      color: #D3573C;
+      margin: 0; }
+    .photographer-header .photographer-details .photographer-location,
+    .photographer-header .photographer-details .photographer-tagline {
+      font-family: "DM Sans", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      margin: 0 0 19px 0;
+      text-align: left; }
+    .photographer-header .photographer-details .photographer-location {
+      font-size: 24px;
+      line-height: 31px;
+      color: #901C1C; }
+    .photographer-header .photographer-details .photographer-tagline {
+      font-size: 18px;
+      line-height: 23px; }
+  .photographer-header .contact-button {
+    background-color: #911C1C;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: "DM Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 69px;
+    cursor: pointer; }
+    .photographer-header .contact-button:hover {
+      background-color: #666666; }
+  .photographer-header .photographer-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%; }
