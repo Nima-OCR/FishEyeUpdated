@@ -1,10 +1,17 @@
-// Fonction qui génère un objet avec ses informations et un élément DOM pour l'afficher
+/**
+ Fonction qui génère un objet avec ses informations et un élément DOM pour l'afficher
+ @param {Object} data - Un objet contenant les informations du photographe (name, id, city, country, tagline, price, portrait)
+ @returns {Object} Un objet contenant les informations du photographe et une fonction pour créer et renvoyer les éléments DOM pour afficher le photographe
+ */
   export function photographerFactory(data) {
 
     const { name, id, city, country, tagline, price, portrait } = data;
     const picture = `assets/photographers/${portrait}`;
 
-    // Fonction qui crée et renvoie les éléments du DOM pour afficher le photographe
+    /**
+     Fonction qui crée et renvoie les éléments du DOM pour afficher le photographe
+     @returns {Element} Un élément HTML 'article' avec la classe 'photographer-card' contenant les éléments DOM du photographe
+     */
     function getUserCardDOM() {
       const article = document.createElement('article');
       article.setAttribute('class', 'photographer-card');
@@ -53,5 +60,3 @@
     // Renvoyer les objets et la fonction `getUserCardDOM`
     return { name, id, city, country, tagline, price, portrait, getUserCardDOM };
 }
-
-

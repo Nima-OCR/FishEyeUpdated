@@ -13,7 +13,7 @@
       background-color: $color-background;
       border-radius: 5px;
       text-align: center;
-      margin: 40px 100px 0;
+      //margin: 40px 100px 0;
 
       .photographer-details {
         margin-right: 20px;
@@ -68,7 +68,8 @@
         cursor: pointer;
 
         &:hover {
-          background-color: #666666;
+          background-color: $color-tertiary;
+          color: black;
         }
       }
 
@@ -81,3 +82,84 @@
     }
 
 
+
+    /***********************
+      Photographer section
+     ***********************/
+    .media-section {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 30px 0;
+      gap: 20px;
+      align-items: center;
+
+      article {
+      }
+
+
+
+      figcaption {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      h3 {
+        width: 250px;
+        margin: 0;
+        font-family: $font-sans;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 31px;
+        color: $color-deep-red;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+
+      a {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover,
+        &:focus,
+        &:active {
+          outline: none;
+          text-decoration: none;
+          color: inherit;
+        }
+      }
+
+      span {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+      }
+
+      figure {
+        width: 350px;
+        height: 351px;
+      }
+
+      img, video {
+        width: 350px;
+        height: 300px;
+        border-radius: 5px;
+        object-fit: cover;
+      }
+
+      // Ajout des propriétés CSS pour la balise <p>
+      p {
+        font-family: $font-sans;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 31px;
+        color: $color-deep-red;
+      }
+    }

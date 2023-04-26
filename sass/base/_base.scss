@@ -1,12 +1,27 @@
-                        /*
+/*
                        ###################################################################
                          Ce dossier contient les styles de base pour les éléments HTML de
                          base tels que les titres, les paragraphes...
                        ###################################################################
                         */
 
-body {
-  font-family: "DM Sans", sans-serif;
-  margin: 0;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      width: 85%;
+      margin: 0 auto;
+    }
+
+
+
+
+
+
+
+
 

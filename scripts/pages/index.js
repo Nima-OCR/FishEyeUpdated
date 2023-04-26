@@ -1,12 +1,12 @@
-  import { photographerFactory } from '../factories/photographer.js';
-  import { getPhotographers } from '../utils/photographerAPI.js';
+    import { photographerFactory } from '../factories/photographer.js';
+    import { getPhotographers } from '../utils/photographerAPI.js';
 
-
-
-
-
-
-
+  /**
+   Affiche les données des photographes sur la page.
+   @async
+   @param {Object[]} photographers - Une liste d'objets contenant les informations des photographes à afficher.
+   @returns {void}
+   */
     async function displayData(photographers) {
       const photographersSection = document.querySelector(".photographer_section");// L'élément HTML qui va contenir les photographes
 
@@ -20,12 +20,16 @@
       console.log('Affichage des photographes terminé');
     }
 
-
+    /**
+     Fonction d'initialisation qui récupère et affiche les données des photographes.
+     @async
+     @returns {void}
+     */
     async function init() {
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
 
-      // Affiche les données des photographes, prend en entrée le tableau de photographes récupérés
+      // Affiche les données des photographes, prend en entrée la liste d'objet de photographes récupérés
         displayData(photographers);
     }
 

@@ -1,4 +1,4 @@
-                        /*
+/*
                        ############################################################################
                          Ce dossier contient tous les styles pour les composants réutilisables
                          du site, tels que les boutons, les formulaires, les modales,
@@ -6,27 +6,28 @@
                         */
 
 header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
 }
 
+
+
 .photograph-header {
-  background-color: $color-background;
-  height: 300px;
-  margin: 0 100px;
+    background-color: $color-background;
+    height: 300px;
 }
 
 h1 {
-  color: $color-primary;
-  margin-right: 100px;
+    color: $color-primary;
+    margin-right: 0;
 }
 
 .logo {
-  height: 50px;
-  margin-left: 100px;
+    height: 50px;
+    cursor: pointer;
 }
 
 

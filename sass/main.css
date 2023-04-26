@@ -7,14 +7,21 @@
  */
 /* Définit la couleur d'arrière-plan  */
 /*
-###################################################################
-  Ce dossier contient les styles de base pour les éléments HTML de
-  base tels que les titres, les paragraphes...
-###################################################################
- */
+                       ###################################################################
+                         Ce dossier contient les styles de base pour les éléments HTML de
+                         base tels que les titres, les paragraphes...
+                       ###################################################################
+                        */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
-  margin: 0;
+  width: 85%;
+  margin: 0 auto;
 }
 
 /*
@@ -51,36 +58,6 @@ form div input {
   height: 68px;
   border: none;
   border-radius: 5px;
-}
-
-/*
-############################################################################
-  Ce dossier contient tous les styles pour les composants réutilisables
-  du site, tels que les boutons, les formulaires, les modales,
-############################################################################
- */
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 90px;
-}
-
-.photograph-header {
-  background-color: #FAFAFA;
-  height: 300px;
-  margin: 0 100px;
-}
-
-h1 {
-  color: #901C1C;
-  margin-right: 100px;
-}
-
-.logo {
-  height: 50px;
-  margin-left: 100px;
 }
 
 /*
@@ -128,6 +105,35 @@ h1 {
   font-size: 64px;
   font-weight: normal;
   text-align: center;
+}
+
+/*
+                       ############################################################################
+                         Ce dossier contient tous les styles pour les composants réutilisables
+                         du site, tels que les boutons, les formulaires, les modales,
+                       ############################################################################
+                        */
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+
+.photograph-header {
+  background-color: #FAFAFA;
+  height: 300px;
+}
+
+h1 {
+  color: #901C1C;
+  margin-right: 0;
+}
+
+.logo {
+  height: 50px;
+  cursor: pointer;
 }
 
 /*
@@ -200,7 +206,6 @@ h1 {
   background-color: #FAFAFA;
   border-radius: 5px;
   text-align: center;
-  margin: 40px 100px 0;
 }
 .photographer-header .photographer-details {
   margin-right: 20px;
@@ -250,13 +255,78 @@ h1 {
   cursor: pointer;
 }
 .photographer-header .contact-button:hover {
-  background-color: #666666;
+  background-color: #D3573C;
+  color: black;
 }
 .photographer-header .photographer-image {
   width: 200px;
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+/***********************
+  Photographer section
+ ***********************/
+.media-section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px 0;
+  gap: 20px;
+  align-items: center;
+}
+.media-section figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.media-section h3 {
+  width: 250px;
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 31px;
+  color: #911C1C;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.media-section a {
+  text-decoration: none;
+  color: inherit;
+}
+.media-section a:hover, .media-section a:focus, .media-section a:active {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+}
+.media-section span {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.media-section figure {
+  width: 350px;
+  height: 351px;
+}
+.media-section img, .media-section video {
+  width: 350px;
+  height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.media-section p {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  color: #911C1C;
 }
 
 /*# sourceMappingURL=main.css.map */
