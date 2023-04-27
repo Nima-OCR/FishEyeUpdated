@@ -8,6 +8,7 @@
 
 export async function getPhotographers() {
   try {
+    console.log("Tentative de récupération des photographes...");
     const response = await fetch('data/photographers.json');
     return response.json();
   } catch (error) {

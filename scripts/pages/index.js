@@ -1,6 +1,8 @@
     import { photographerFactory } from '../factories/photographer.js';
     import { getPhotographers } from '../utils/photographerAPI.js';
 
+
+
   /**
    Affiche les données des photographes sur la page.
    @async

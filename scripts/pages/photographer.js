@@ -1,6 +1,8 @@
     import { getPhotographers } from '../utils/photographerAPI.js';
     import { photographerMedias } from '../utils/photographerMedias.js';
     import { mediaFactory } from '../factories/mediaFactory.js';
+    import { displayModal, closeModal } from "../utils/contactForm.js";
+
 
     // Récupération des paramètres de l'URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -69,10 +71,23 @@
           imageElement.alt = selectedPhotographer.name;
 
           // Récupération du bouton de contact
-          const contactButton = document.querySelector('#contactButton');
+          const contactButton = document.getElementById('contactButton');
 
           // Ajout du texte dans le bouton
           contactButton.innerHTML = 'Contactez-moi';
+
+          // Ajout de l'événement clic pour lancer displayModal
+          contactButton.addEventListener("click", () => {
+            displayModal("contact_modal");
+          });
+
+          const closeModalButton = document.getElementById("closeModalButton");
+
+          closeModalButton.addEventListener("click", () => {
+            closeModal();
+          });
+
+
 
           // lien vers Accueil
           const logo = document.querySelector('.logo');
@@ -161,4 +176,48 @@
       console.log("La promesse a été résolue avec succès !");
     }).catch(error => {
       console.error("Une erreur s'est produite :", error);
+    });
+
+
+    /**
+     * Encart qui affiche le tarif journalier et le nombre de likes du photographe sélectionné.
+     *
+     * @param {Object} selectedPhotographer - L'objet représentant le photographe sélectionné.
+     */
+    function displayRateAndLikes(selectedPhotographer) {
+      // Création de l'élément aside
+      const asideElement = document.createElement("aside");
+
+      // Création de l'élément pour afficher le tarif journalier
+      const rateElement = document.createElement("div");
+      rateElement.className = "rate";
+      rateElement.innerHTML = `${selectedPhotographer.price}€ / jour`;
+
+      // Création de l'élément pour afficher le nombre de likes
+      const likeElement = document.createElement("div");
+      likeElement.className = "likes";
+      likeElement.innerHTML = `<i class="fa fa-heart"></i> ${selectedPhotographer.likes}`;
+
+      // Ajout des éléments tarif et likes à l'aside
+      asideElement.append(rateElement);
+      asideElement.append(likeElement);
+
+      // Ajout de l'aside à la page
+      document.querySelector("main").append(asideElement);
+    }
+    let selectedPhotographer = null;
+
+    async function fetchSelectedPhotographerData() {
+      try {
+        selectedPhotographer = await fetchData();
+
+        // ...
+      } catch (error) {
+        console.error("Une erreur s'est produite lors de la récupération des données :", error);
+      }
+    }
+
+    fetchSelectedPhotographerData().then(() => {
+      console.log("La promesse a été résolue avec succès !");
+      displayRateAndLikes(selectedPhotographer);
     });

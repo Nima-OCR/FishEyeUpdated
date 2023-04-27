@@ -1,4 +1,4 @@
-                      /*
+/*
                        ############################################################################
                          Ce dossier contient tous les styles pour les composants réutilisables
                          du site, tels que les boutons, les formulaires, les modales,
@@ -7,6 +7,14 @@
 
 #contact_modal {
   display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(196, 196, 196, 0.4);
 }
 
 .contact_button {
@@ -43,9 +51,12 @@
     }
 
     h2 {
+      font-family: $font-sans;
+      font-style: normal;
+      font-weight: 400;
       font-size: 64px;
-      font-weight: normal;
-      text-align: center;
+      line-height: 83px;
+      color: #000000;
     }
   }
 }

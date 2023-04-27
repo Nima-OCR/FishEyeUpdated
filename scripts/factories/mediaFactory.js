@@ -11,8 +11,15 @@ export function mediaFactory(data) {
   const videoPath = `/assets/images/${photographerId}/${video}`;
 
   console.log("Le chemin d'accès à l'image est : " + imagePath);
+  console.log("Le chemin d'accès à la vidéo est : " + videoPath);
 
-  // Fonction qui crée et renvoie les éléments du DOM pour afficher les médias
+
+  /**
+   Fonction qui crée et renvoie les éléments du DOM pour afficher les médias
+   @function getMediCardDOM
+   @returns {HTMLElement} Un élément DOM 'article' contenant les informations et les médias.
+   */
+
   function getMediCardDOM() {
 
     const article = document.createElement('article');

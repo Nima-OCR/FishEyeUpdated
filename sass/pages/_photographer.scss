@@ -69,7 +69,7 @@
 
         &:hover {
           background-color: $color-tertiary;
-          color: black;
+          color: $color-black;
         }
       }
 
@@ -162,4 +162,47 @@
         line-height: 31px;
         color: $color-deep-red;
       }
+
+      .portfolio {
+        //background-color: palegreen;
+      }
     }
+
+    main {
+      aside {
+        border-radius: 5px;
+        margin-right: 36px;
+
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        background-color: $color-secondary;
+        flex-direction: row-reverse;
+
+        .rate, .likes {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+
+          font-family: $font-sans;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 31px;
+          text-align: center;
+        }
+
+        .likes {
+          margin-right: 10px;
+        }
+
+        .fa-heart {
+          color: $color-black;
+        }
+      }
+    }
+
+
+
