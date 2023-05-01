@@ -70,7 +70,12 @@
           imageElement.src = `./assets/photographers/${selectedPhotographer.portrait}`;
           imageElement.alt = selectedPhotographer.name;
 
-          // Récupération du bouton de contact
+
+          /*****************************************************
+           * Cette partie du code gère l'affichage de la modale
+           ****************************************************/
+
+            // Récupération du bouton de contact
           const contactButton = document.getElementById('contactButton');
 
           // Ajout du texte dans le bouton
@@ -86,6 +91,64 @@
           closeModalButton.addEventListener("click", () => {
             closeModal();
           });
+
+
+          /****************************************************************
+           Cette partie du code gère la validation du formulaire.
+           Le formulaire doit être rempli correctement avant d'être soumis
+           ****************************************************************/
+          const form = document.querySelector('form');
+
+          form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const firstNameInput = document.querySelector('#first-name');
+            const lastNameInput = document.querySelector('#last-name');
+            const emailInput = document.querySelector('#email');
+            const messageInput = document.querySelector('#message');
+
+            // Regex pour valider le prénom et le nom
+            const regexName = /^[a-zA-Zéèêëîïôöûüçàáâäåæìíîïðñòóôõöøùúûüýÿ\-']+$/;
+
+            // Regex pour valider l'email
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            let isFormValid = true;
+
+            if (!regexName.test(firstNameInput.value)) {
+              console.log('Le prénom n\'est pas valide');
+              isFormValid = false;
+            }
+            if (!regexName.test(lastNameInput.value)) {
+              console.log('Le nom n\'est pas valide');
+              isFormValid = false;
+            }
+            if (!regexEmail.test(emailInput.value)) {
+              console.log('L\'email n\'est pas valide');
+              isFormValid = false;
+            }
+            if (messageInput.value.trim() === '') {
+              console.log('Le message ne peut pas être vide');
+              isFormValid = false;
+            }
+
+            if (isFormValid) {
+              // Soumettre le formulaire si tous les champs sont remplis correctement
+              console.log('Le formulaire a bien été soumis');
+              form.submit();
+
+              // Fermer la modale après la soumission du formulaire
+              closeModal();
+            } else {
+              // Afficher un message d'erreur dans la console si le formulaire est invalide
+              console.log('Le formulaire est invalide');
+            }
+          });
+
+
+
+
+
 
 
 
@@ -167,10 +230,12 @@
       try {
         await displayMediaElements(photographerMediaItems);
         console.log('Les médias du photographe ont été affichés avec succès.');
+        showLightBox(); // Ajoutez cet appel de fonction ici
       } catch (error) {
         console.error("Une erreur s'est produite lors de l'affichage des médias :", error);
       }
     }
+
 
     displayPhotographerMedia().then(() => {
       console.log("La promesse a été résolue avec succès !");
@@ -221,3 +286,103 @@
       console.log("La promesse a été résolue avec succès !");
       displayRateAndLikes(selectedPhotographer);
     });
+
+
+    /***************************************************
+     Lightbox
+     ***************************************************/
+
+    import {closeLightBoxModal, displayLightBoxModal} from "../utils/lightBoxModal.js";
+
+
+    /**
+     * La fonction affiche une lightbox lorsque l'utilisateur clique
+     * sur l'élément avec la classe CSS "showLightBox".
+     *
+     * @function
+     * @returns {void}
+     */
+
+    function showLightBox() {
+      // Sélectionne tous les éléments avec la classe "showLightBox"
+      const cardImgElements = document.querySelectorAll(".showLightBox");
+      // Affiche le nombre d'éléments sélectionnés dans la console
+      console.log("Nombre de .showLightBox elements:", cardImgElements.length);
+
+      // Pour chaque élément sélectionné, ajoute un écouteur d'événement "click"
+      cardImgElements.forEach((card) => {
+        card.addEventListener("click", () => {
+          // Récupère l'ID de l'élément parent de l'image
+          const mediaId = card.parentElement.id;
+
+          // Appelle une autre fonction pour afficher la lightbox en utilisant l'ID de l'image
+          displayLightBoxModal("showLightBox");
+        });
+      });
+    }
+
+
+    /**
+     * Fonction asynchrone pour afficher le média dans une lightbox.
+     * @async
+     * @function
+     * @param {number} mediaId - Identifiant unique du média.
+     */
+    async function renderLightBoxMedia(mediaId) {
+      const mediaObject = await photographerMedia.find(
+        (media) => media.id === mediaId
+      );
+      let currentLightboxMediaId = 0;
+      currentLightboxMediaId = mediaId;
+      const { title, photographerId, image, video } = mediaObject;
+
+      // Récupère l'élément lightboxMedia
+      const lightboxMedia = document.getElementById("lightboxMedia");
+
+      // Si le média est une image, ajoute le code HTML à l'élément lightboxMedia
+      if (image) {
+        lightboxMedia.innerHTML = `
+      <img class="lightbox-img" src="assets/images/${photographerId}/${image}" alt="${title}">
+      <figcaption class="lightbox-caption">${title}</figcaption>
+  `;
+      }
+
+      // Si le média est une vidéo, ajoute le code HTML à l'élément lightboxMedia
+      if (video) {
+        lightboxMedia.innerHTML = `
+      <video class="lightbox-video" title="${title}" controls>
+        <source src="assets/images/${photographerId}/${video}" type="video/mp4">
+      </video>
+      <figcaption class="lightbox-caption">${title}</figcaption>
+  `;
+      }
+    }
+
+
+
+
+    /**
+     * Ferme la fenêtre modale lorsqu'un clic ou l'appui sur la touche "Tab" est détecté
+     * @param {Event} event - L'événement déclencheur
+     */
+
+    const closeButton = document.querySelector(".show-lightbox__close-btn");
+    const navChevronLeft = document.querySelector(".show-lightbox__nav-chevron.fa-solid.fa-chevron-left");
+    const navChevronRight = document.querySelector(".show-lightbox__nav-chevron.fa-solid.fa-chevron-right");
+
+    // Ajoute un attribut tabindex à l'élément closeButton pour qu'il puisse être ciblé avec la touche Tab
+    closeButton.setAttribute("tabindex", "0");
+    navChevronLeft.setAttribute("tabindex", "0");
+    navChevronRight.setAttribute("tabindex", "0");
+
+    function closeLightBoxEvent(event) {
+      // Vérifie si l'événement est un clic ou si la touche "Entrée" est enfoncée et closeButton est sélectionné
+      if (event.type === "click" || (event.type === "keydown" && event.key === "Enter" && document.activeElement === closeButton)) {
+        closeLightBoxModal();
+        event.preventDefault(); // Empêche l'action par défaut avec la touche Entrée
+      }
+    }
+
+    // Ajoute les écouteurs d'événements pour le clic et l'appui sur une touche
+    closeButton.addEventListener("click", closeLightBoxEvent);
+    closeButton.addEventListener("keydown", closeLightBoxEvent);

@@ -10,7 +10,6 @@ export function displayModal(modalId) {
   modal.focus();
 }
 
-
 // Fonction pour fermer la fenêtre modale de contact
 export function closeModal() {
   console.log("Fermeture de la fenêtre modale de contact");

@@ -34,6 +34,7 @@ export function mediaFactory(data) {
 
     if (image) {
       const img = document.createElement('img');
+      img.classList.add('showLightBox');
       img.setAttribute('src', imagePath);
       img.setAttribute('alt', `Portrait de ${title}`);
       figure.appendChild(img);
