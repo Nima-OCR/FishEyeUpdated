@@ -21,7 +21,6 @@ export function mediaFactory(data) {
    */
 
   function getMediCardDOM() {
-
     const article = document.createElement('article');
     article.setAttribute('class', 'portfolio');
 
@@ -40,8 +39,10 @@ export function mediaFactory(data) {
       figure.appendChild(img);
     } else if (video) {
       const videoElement = document.createElement('video');
+      videoElement.classList.add('showLightBox');
       videoElement.setAttribute('src', videoPath);
       videoElement.setAttribute('alt', `Vidéo de ${title}`);
+      videoElement.setAttribute('controls', true);
       figure.appendChild(videoElement);
     }
 
@@ -58,6 +59,7 @@ export function mediaFactory(data) {
 
     return article;
   }
+
   return { id, photographerId, title, image, video, likes, getMediCardDOM };
 
 }

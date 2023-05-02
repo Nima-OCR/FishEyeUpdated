@@ -165,13 +165,22 @@ form label {
 .show-lightbox__header .show-lightbox__close-btn {
   cursor: pointer;
 }
-.show-lightbox__image h2 {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 83px;
-  color: #000000;
+.show-lightbox__image {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.show-lightbox__image .show-lightbox__img,
+.show-lightbox__image video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.show-lightbox__image video {
+  display: none;
 }
 .show-lightbox__nav {
   display: flex;
@@ -214,6 +223,11 @@ form label {
   max-height: 100%;
 }
 .show-lightbox__nav .show-lightbox__nav-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.show-lightbox__nav .show-lightbox__nav-image video {
   width: 100%;
   height: auto;
 }

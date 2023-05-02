@@ -146,12 +146,6 @@
           });
 
 
-
-
-
-
-
-
           // lien vers Accueil
           const logo = document.querySelector('.logo');
 
@@ -292,7 +286,7 @@
      Lightbox
      ***************************************************/
 
-    import {closeLightBoxModal, displayLightBoxModal} from "../utils/lightBoxModal.js";
+    import {closeLightbox, openLightbox} from "../utils/lightBoxModal.js";
 
 
     /**
@@ -303,7 +297,12 @@
      * @returns {void}
      */
 
+
+
     function showLightBox() {
+      // Appelle la fonction pour afficher les médias du photographe
+      displayPhotographerMedias();
+
       // Sélectionne tous les éléments avec la classe "showLightBox"
       const cardImgElements = document.querySelectorAll(".showLightBox");
       // Affiche le nombre d'éléments sélectionnés dans la console
@@ -314,54 +313,102 @@
         card.addEventListener("click", () => {
           // Récupère l'ID de l'élément parent de l'image
           const mediaId = card.parentElement.id;
-
           // Appelle une autre fonction pour afficher la lightbox en utilisant l'ID de l'image
-          displayLightBoxModal("showLightBox");
+          openLightbox("showLightBox");
         });
       });
     }
 
 
     /**
-     * Fonction asynchrone pour afficher le média dans une lightbox.
+     * Affiche les médias (images et vidéos) du photographe dans une lightbox.
      * @async
-     * @function
-     * @param {number} mediaId - Identifiant unique du média.
      */
-    async function renderLightBoxMedia(mediaId) {
-      const mediaObject = await photographerMedia.find(
-        (media) => media.id === mediaId
-      );
-      let currentLightboxMediaId = 0;
-      currentLightboxMediaId = mediaId;
-      const { title, photographerId, image, video } = mediaObject;
+    async function displayPhotographerMedias() {
+      // Récupère les médias du photographe
+      const media = await photographerMedias();
+      // Sélectionne le conteneur d'images de la lightbox
+      const imagesContainer = document.querySelector('.show-lightbox__nav-image img');
+      // Crée un élément vidéo pour la lightbox
+      const videoContainer = document.createElement('video');
+      videoContainer.controls = true;
+      videoContainer.style.display = 'none';
+      // Ajoute le conteneur vidéo à la lightbox
+      document.querySelector('.show-lightbox__nav-image').appendChild(videoContainer);
 
-      // Récupère l'élément lightboxMedia
-      const lightboxMedia = document.getElementById("lightboxMedia");
+      let currentIndex = 0;
 
-      // Si le média est une image, ajoute le code HTML à l'élément lightboxMedia
-      if (image) {
-        lightboxMedia.innerHTML = `
-      <img class="lightbox-img" src="assets/images/${photographerId}/${image}" alt="${title}">
-      <figcaption class="lightbox-caption">${title}</figcaption>
-  `;
-      }
+      // Parcourir tous les médias
+      media.forEach((mediaItem, index) => {
+        if (mediaItem.image) {
+          const { getMediCardDOM } = mediaFactory(mediaItem);
+          const mediaCard = getMediCardDOM();
+          const img = mediaCard.querySelector('img');
+          img.classList.remove('showLightBox');
+          img.classList.add('lightbox-media');
+          imagesContainer.setAttribute('src', img.getAttribute('src'));
 
-      // Si le média est une vidéo, ajoute le code HTML à l'élément lightboxMedia
-      if (video) {
-        lightboxMedia.innerHTML = `
-      <video class="lightbox-video" title="${title}" controls>
-        <source src="assets/images/${photographerId}/${video}" type="video/mp4">
-      </video>
-      <figcaption class="lightbox-caption">${title}</figcaption>
-  `;
-      }
+          if (mediaItem.id === parseInt(new URLSearchParams(window.location.search).get("mediaId"))) {
+            currentIndex = index;
+          }
+        } else if (mediaItem.video) {
+          const { getMediCardDOM } = mediaFactory(mediaItem);
+          const mediaCard = getMediCardDOM();
+          const video = mediaCard.querySelector('video');
+          video.classList.remove('showLightBox');
+          video.classList.add('lightbox-media');
+          videoContainer.setAttribute('src', video.getAttribute('src'));
+
+          if (mediaItem.id === parseInt(new URLSearchParams(window.location.search).get("mediaId"))) {
+            currentIndex = index;
+          }
+        }
+      });
+
+      /**
+       * Met à jour le média affiché dans la lightbox en fonction de l'index.
+       * @param {number} currentIndex - L'index du média à afficher.
+       */
+      const updateLightboxMedia = (currentIndex) => {
+        const mediaItem = media[currentIndex];
+        if (mediaItem.image) {
+          const { getMediCardDOM } = mediaFactory(mediaItem);
+          const mediaCard = getMediCardDOM();
+          const img = mediaCard.querySelector('img');
+          img.classList.remove('showLightBox');
+          img.classList.add('lightbox-media');
+          imagesContainer.setAttribute('src', img.getAttribute('src'));
+          videoContainer.style.display = 'none';
+          imagesContainer.style.display = 'block';
+        } else if (mediaItem.video) {
+          const { getMediCardDOM } = mediaFactory(mediaItem);
+          const mediaCard = getMediCardDOM();
+          const video = mediaCard.querySelector('video');
+          video.classList.remove('showLightBox');
+          video.classList.add('lightbox-media');
+          videoContainer.setAttribute('src', video.getAttribute('src'));
+          imagesContainer.style.display = 'none';
+          videoContainer.style.display = 'block';
+        }
+      };
+
+      // Écouteur d'événement pour naviguer vers le média suivant
+      navChevronRight.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % media.length;
+        updateLightboxMedia(currentIndex);
+      });
+
+      // Écouteur d'événement pour naviguer vers le média précédent
+      navChevronLeft.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + media.length) % media.length;
+        updateLightboxMedia(currentIndex);
+      });
     }
 
 
 
 
-    /**
+     /**
      * Ferme la fenêtre modale lorsqu'un clic ou l'appui sur la touche "Tab" est détecté
      * @param {Event} event - L'événement déclencheur
      */
@@ -378,7 +425,9 @@
     function closeLightBoxEvent(event) {
       // Vérifie si l'événement est un clic ou si la touche "Entrée" est enfoncée et closeButton est sélectionné
       if (event.type === "click" || (event.type === "keydown" && event.key === "Enter" && document.activeElement === closeButton)) {
-        closeLightBoxModal();
+        closeLightbox();
+        // displayMedias();
+
         event.preventDefault(); // Empêche l'action par défaut avec la touche Entrée
       }
     }
