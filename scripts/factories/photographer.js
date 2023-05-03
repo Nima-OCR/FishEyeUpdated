@@ -20,7 +20,7 @@
       const link = document.createElement('a');
       link.setAttribute('href', `photographer.html?id=${id}`);
       link.setAttribute('aria-label', `Voir le profil de ${name}`);
-      link.setAttribute('tabindex', '0'); // Rendre le lien focusable avec la touche Tab
+      link.setAttribute('tabindex', '0');
 
       // Création d'un élément 'img'
       const portrait = document.createElement('img');
@@ -41,7 +41,7 @@
       article.appendChild(location);
 
       // Création d'un élément 'span' pour la description du photographe
-      const description = document.createElement('span');
+      const description = document.createElement('p');
       description.textContent = tagline;
       article.appendChild(description);
 

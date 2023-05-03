@@ -2,6 +2,10 @@
     import { photographerMedias } from '../utils/photographerMedias.js';
     import { mediaFactory } from '../factories/mediaFactory.js';
     import { displayModal, closeModal } from "../utils/contactForm.js";
+    import { getNavChevrons} from "../utils/lightBoxModal.js";
+    import { openLightbox} from "../utils/lightBoxModal.js";
+
+
 
 
     // Récupération des paramètres de l'URL
@@ -286,7 +290,6 @@
      Lightbox
      ***************************************************/
 
-    import {closeLightbox, openLightbox} from "../utils/lightBoxModal.js";
 
 
     /**
@@ -392,6 +395,9 @@
         }
       };
 
+      // Utiliser la fonction pour obtenir les éléments navChevronLeft et navChevronRight
+      const { navChevronLeft, navChevronRight } = getNavChevrons();
+
       // Écouteur d'événement pour naviguer vers le média suivant
       navChevronRight.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % media.length;
@@ -408,30 +414,10 @@
 
 
 
-     /**
-     * Ferme la fenêtre modale lorsqu'un clic ou l'appui sur la touche "Tab" est détecté
-     * @param {Event} event - L'événement déclencheur
-     */
 
-    const closeButton = document.querySelector(".show-lightbox__close-btn");
-    const navChevronLeft = document.querySelector(".show-lightbox__nav-chevron.fa-solid.fa-chevron-left");
-    const navChevronRight = document.querySelector(".show-lightbox__nav-chevron.fa-solid.fa-chevron-right");
-
-    // Ajoute un attribut tabindex à l'élément closeButton pour qu'il puisse être ciblé avec la touche Tab
-    closeButton.setAttribute("tabindex", "0");
-    navChevronLeft.setAttribute("tabindex", "0");
-    navChevronRight.setAttribute("tabindex", "0");
-
-    function closeLightBoxEvent(event) {
-      // Vérifie si l'événement est un clic ou si la touche "Entrée" est enfoncée et closeButton est sélectionné
-      if (event.type === "click" || (event.type === "keydown" && event.key === "Enter" && document.activeElement === closeButton)) {
-        closeLightbox();
-        // displayMedias();
-
-        event.preventDefault(); // Empêche l'action par défaut avec la touche Entrée
-      }
-    }
-
-    // Ajoute les écouteurs d'événements pour le clic et l'appui sur une touche
-    closeButton.addEventListener("click", closeLightBoxEvent);
-    closeButton.addEventListener("keydown", closeLightBoxEvent);
+    // const navChevronLeft = document.querySelector(".show-lightbox__nav-chevron.fa-solid.fa-chevron-left");
+    // const navChevronRight = document.querySelector(".show-lightbox__nav-chevron.fa-solid.fa-chevron-right");
+    //
+    // // Ajoute un attribut tabindex à l'élément closeButton pour qu'il puisse être ciblé avec la touche Tab
+    // navChevronLeft.setAttribute("tabindex", "0");
+    // navChevronRight.setAttribute("tabindex", "0");
