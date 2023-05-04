@@ -48,7 +48,6 @@ let lastActiveElement;
       // Vérifie si l'événement est un clic ou si la touche "Entrée" est enfoncée et closeButton est sélectionné
       if (event.type === "click" || (event.type === "keydown" && event.key === "Enter" && document.activeElement === closeButton)) {
         closeLightbox();
-        // displayMedias();
 
         event.preventDefault(); // Empêche l'action par défaut avec la touche Entrée
       }

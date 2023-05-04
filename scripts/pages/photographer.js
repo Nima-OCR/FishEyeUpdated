@@ -6,8 +6,6 @@
     import { openLightbox} from "../utils/lightBoxModal.js";
 
 
-
-
     // Récupération des paramètres de l'URL
     const urlParams = new URLSearchParams(window.location.search);
 
@@ -20,9 +18,6 @@
     //Appel à la fonction photographerMedia() pour récupérer les médias du photographe
     const photographerMediaItems = await photographerMedias();
 
-
-    // Affiche les données des médias du photographe dans la console
-    console.log("Données des médias du photographe :", photographerMediaItems);
 
     /**
      * Recherche un photographe par son ID.
@@ -55,7 +50,6 @@
 
         if (selectedPhotographer) {
           console.log("Photographe sélectionné :", selectedPhotographer);
-          console.log("Les données ont été récupérées avec succès.");
 
           // Affiche le nom du photographe
           const nameElement = document.querySelector('#photographerName');
@@ -182,7 +176,7 @@
     // Utilisation de la fonction displaySelectedPhotographer avec une promesse
     displaySelectedPhotographer()
       .then(selectedPhotographer => {
-        console.log("La promesse a été résolue avec succès ! La valeur de résolution est :", selectedPhotographer);
+        console.log("La promesse a été résolue avec succès !");
     }).catch(error => {
         console.error("Une erreur s'est produite :", error);
     });
@@ -206,7 +200,6 @@
       mainElement.append(section);
 
       photographies.forEach((photographie, index) => {
-        console.log(`Affichage de la photographie ${index + 1} :`, photographie);
 
         const cardModel = mediaFactory(photographie);
         const cardElement = cardModel.getMediCardDOM();
@@ -227,13 +220,11 @@
     async function displayPhotographerMedia() {
       try {
         await displayMediaElements(photographerMediaItems);
-        console.log('Les médias du photographe ont été affichés avec succès.');
-        showLightBox(); // Ajoutez cet appel de fonction ici
+        showLightBox();
       } catch (error) {
         console.error("Une erreur s'est produite lors de l'affichage des médias :", error);
       }
     }
-
 
     displayPhotographerMedia().then(() => {
       console.log("La promesse a été résolue avec succès !");
@@ -308,15 +299,12 @@
 
       // Sélectionne tous les éléments avec la classe "showLightBox"
       const cardImgElements = document.querySelectorAll(".showLightBox");
-      // Affiche le nombre d'éléments sélectionnés dans la console
-      console.log("Nombre de .showLightBox elements:", cardImgElements.length);
 
       // Pour chaque élément sélectionné, ajoute un écouteur d'événement "click"
       cardImgElements.forEach((card) => {
         card.addEventListener("click", () => {
-          // Récupère l'ID de l'élément parent de l'image
-          const mediaId = card.parentElement.id;
-          // Appelle une autre fonction pour afficher la lightbox en utilisant l'ID de l'image
+
+          // Appelle la fonction openLightbox() en passant l'argument "showLightBox".
           openLightbox("showLightBox");
         });
       });
@@ -351,9 +339,6 @@
           img.classList.add('lightbox-media');
           imagesContainer.setAttribute('src', img.getAttribute('src'));
 
-          if (mediaItem.id === parseInt(new URLSearchParams(window.location.search).get("mediaId"))) {
-            currentIndex = index;
-          }
         } else if (mediaItem.video) {
           const { getMediCardDOM } = mediaFactory(mediaItem);
           const mediaCard = getMediCardDOM();
@@ -361,12 +346,9 @@
           video.classList.remove('showLightBox');
           video.classList.add('lightbox-media');
           videoContainer.setAttribute('src', video.getAttribute('src'));
-
-          if (mediaItem.id === parseInt(new URLSearchParams(window.location.search).get("mediaId"))) {
-            currentIndex = index;
-          }
         }
       });
+
 
       /**
        * Met à jour le média affiché dans la lightbox en fonction de l'index.
@@ -410,14 +392,3 @@
         updateLightboxMedia(currentIndex);
       });
     }
-
-
-
-
-
-    // const navChevronLeft = document.querySelector(".show-lightbox__nav-chevron.fa-solid.fa-chevron-left");
-    // const navChevronRight = document.querySelector(".show-lightbox__nav-chevron.fa-solid.fa-chevron-right");
-    //
-    // // Ajoute un attribut tabindex à l'élément closeButton pour qu'il puisse être ciblé avec la touche Tab
-    // navChevronLeft.setAttribute("tabindex", "0");
-    // navChevronRight.setAttribute("tabindex", "0");

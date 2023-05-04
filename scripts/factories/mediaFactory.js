@@ -10,8 +10,8 @@ export function mediaFactory(data) {
   const imagePath = `/assets/images/${photographerId}/${image}`;
   const videoPath = `/assets/images/${photographerId}/${video}`;
 
-  console.log("Le chemin d'accès à l'image est : " + imagePath);
-  console.log("Le chemin d'accès à la vidéo est : " + videoPath);
+  // console.log("Le chemin d'accès à l'image est : " + imagePath);
+  // console.log("Le chemin d'accès à la vidéo est : " + videoPath);
 
 
   /**

@@ -10,14 +10,14 @@
    @returns {void}
    */
     async function displayData(photographers) {
-      const photographersSection = document.querySelector(".photographer_section");// L'élément HTML qui va contenir les photographes
+      const photographersSection = document.querySelector(".photographer_section");
 
       console.log('Section pour les photographes récupérée :', photographersSection);
 
-      photographers.forEach((photographer) => {// Pour chaque photographe dans le tableau
-        const photographerModel = photographerFactory(photographer);// Utiliser la fonction photographerFactory pour générer les éléments HTML
-        const userCardDOM = photographerModel.getUserCardDOM();// Récupérer les éléments HTML générés pour le photographe
-        photographersSection.appendChild(userCardDOM);// Ajouter les éléments HTML au conteneur pour les photographes dans la page
+      photographers.forEach((photographer) => {
+        const photographerModel = photographerFactory(photographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        photographersSection.appendChild(userCardDOM);
       });
       console.log('Affichage des photographes terminé');
     }
@@ -25,15 +25,14 @@
     /**
      Fonction d'initialisation qui récupère et affiche les données des photographes.
      @async
-     @returns {void}
      */
     async function init() {
-        // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
-
-      // Affiche les données des photographes, prend en entrée la liste d'objet de photographes récupérés
         displayData(photographers);
     }
+    init().then(() => {
+      console.log("Initialisation terminée avec succès !");
+    }).catch((error) => {
+      console.error("Une erreur s'est produite lors de l'initialisation : ", error);
+    });
 
-    // Appelle la fonction `init` au chargement de la page pour récupérer et afficher les données des photographes
-    init();

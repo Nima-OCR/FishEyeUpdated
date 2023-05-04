@@ -224,7 +224,7 @@ form label {
 }
 .show-lightbox__nav .show-lightbox__nav-image img {
   width: 100%;
-  height: auto;
+  height: 900px;
   object-fit: contain;
 }
 .show-lightbox__nav .show-lightbox__nav-image video {
