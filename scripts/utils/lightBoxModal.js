@@ -1,3 +1,4 @@
+// import {resetModal} from "../pages/photographer";
 
 let lastActiveElement;
 
@@ -33,10 +34,12 @@ let lastActiveElement;
       if (lastActiveElement) {
         lastActiveElement.focus();
       }
+
     }
 
 
-    /**
+
+/**
      * Ferme la fenêtre modale lorsqu'un clic ou l'appui sur la touche "Tab" est détecté
      * @param {Event} event - L'événement déclencheur
      */

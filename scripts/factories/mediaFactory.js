@@ -31,11 +31,13 @@ export function mediaFactory(data) {
     const figure = document.createElement('figure');
     link.appendChild(figure);
 
+    // Pour l'image
     if (image) {
       const img = document.createElement('img');
       img.classList.add('showLightBox');
       img.setAttribute('src', imagePath);
       img.setAttribute('alt', `Portrait de ${title}`);
+      img.setAttribute('data-id', id); // Ajoutez cette ligne
       figure.appendChild(img);
     } else if (video) {
       const videoElement = document.createElement('video');
@@ -43,8 +45,10 @@ export function mediaFactory(data) {
       videoElement.setAttribute('src', videoPath);
       videoElement.setAttribute('alt', `Vidéo de ${title}`);
       videoElement.setAttribute('controls', true);
+      videoElement.setAttribute('data-id', id); // Ajoutez cette ligne
       figure.appendChild(videoElement);
     }
+
 
     const figcaption = document.createElement('figcaption');
     figure.appendChild(figcaption);

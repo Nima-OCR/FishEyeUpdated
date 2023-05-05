@@ -281,21 +281,22 @@
      Lightbox
      ***************************************************/
 
+    const imageElement = document.querySelector('.showLightBox');
+    const imageId = imageElement.getAttribute('data-id');
+    console.log('ID de l\'image:', imageId);
+
+
 
 
     /**
      * La fonction affiche une lightbox lorsque l'utilisateur clique
      * sur l'élément avec la classe CSS "showLightBox".
-     *
      * @function
      * @returns {void}
      */
 
-
-
     function showLightBox() {
       // Appelle la fonction pour afficher les médias du photographe
-      displayPhotographerMedias();
 
       // Sélectionne tous les éléments avec la classe "showLightBox"
       const cardImgElements = document.querySelectorAll(".showLightBox");
@@ -303,6 +304,8 @@
       // Pour chaque élément sélectionné, ajoute un écouteur d'événement "click"
       cardImgElements.forEach((card) => {
         card.addEventListener("click", () => {
+          const imageId = card.getAttribute('data-id');
+          displayPhotographerMedias(imageId);
 
           // Appelle la fonction openLightbox() en passant l'argument "showLightBox".
           openLightbox("showLightBox");
@@ -315,80 +318,87 @@
      * Affiche les médias (images et vidéos) du photographe dans une lightbox.
      * @async
      */
-    async function displayPhotographerMedias() {
-      // Récupère les médias du photographe
-      const media = await photographerMedias();
-      // Sélectionne le conteneur d'images de la lightbox
-      const imagesContainer = document.querySelector('.show-lightbox__nav-image img');
-      // Crée un élément vidéo pour la lightbox
+    async function getPhotographerMedias() {
+      return await photographerMedias();
+    }
+
+
+    function createVideoContainer() {
+      const videoContainers = document.querySelectorAll('.show-lightbox__nav-image video');
+      videoContainers.forEach(container => container.remove());
+
       const videoContainer = document.createElement('video');
       videoContainer.controls = true;
       videoContainer.style.display = 'none';
-      // Ajoute le conteneur vidéo à la lightbox
       document.querySelector('.show-lightbox__nav-image').appendChild(videoContainer);
+      return videoContainer;
+    }
 
-      let currentIndex = 0;
 
-      // Parcourir tous les médias
+
+
+    function setMediaAttributes(mediaItem, mediaCard, container) {
+      if (mediaItem.image) {
+        const img = mediaCard.querySelector('img');
+        img.classList.remove('showLightBox');
+        img.classList.add('lightbox-media');
+        container.setAttribute('src', img.getAttribute('src'));
+      } else if (mediaItem.video) {
+        const video = mediaCard.querySelector('video');
+        video.classList.remove('showLightBox');
+        video.classList.add('lightbox-media');
+        container.setAttribute('src', video.getAttribute('src'));
+      }
+    }
+
+    async function displayPhotographerMedias(clickedImageId) {
+      const media = await getPhotographerMedias();
+      const imagesContainer = document.querySelector('.show-lightbox__nav-image img');
+      const videoContainer = createVideoContainer();
+
+      let initialImageIndex = 0;
       media.forEach((mediaItem, index) => {
-        if (mediaItem.image) {
-          const { getMediCardDOM } = mediaFactory(mediaItem);
-          const mediaCard = getMediCardDOM();
-          const img = mediaCard.querySelector('img');
-          img.classList.remove('showLightBox');
-          img.classList.add('lightbox-media');
-          imagesContainer.setAttribute('src', img.getAttribute('src'));
-
-        } else if (mediaItem.video) {
-          const { getMediCardDOM } = mediaFactory(mediaItem);
-          const mediaCard = getMediCardDOM();
-          const video = mediaCard.querySelector('video');
-          video.classList.remove('showLightBox');
-          video.classList.add('lightbox-media');
-          videoContainer.setAttribute('src', video.getAttribute('src'));
+        if (mediaItem.id === parseInt(clickedImageId)) {
+          initialImageIndex = index;
         }
       });
 
 
-      /**
-       * Met à jour le média affiché dans la lightbox en fonction de l'index.
-       * @param {number} currentIndex - L'index du média à afficher.
-       */
+      let currentIndex = initialImageIndex;
+
+      media.forEach((mediaItem) => {
+        const { getMediCardDOM } = mediaFactory(mediaItem);
+        const mediaCard = getMediCardDOM();
+        setMediaAttributes(mediaItem, mediaCard, mediaItem.image ? imagesContainer : videoContainer);
+      });
+
       const updateLightboxMedia = (currentIndex) => {
         const mediaItem = media[currentIndex];
+        const { getMediCardDOM } = mediaFactory(mediaItem);
+        const mediaCard = getMediCardDOM();
+        setMediaAttributes(mediaItem, mediaCard, mediaItem.image ? imagesContainer : videoContainer);
+
         if (mediaItem.image) {
-          const { getMediCardDOM } = mediaFactory(mediaItem);
-          const mediaCard = getMediCardDOM();
-          const img = mediaCard.querySelector('img');
-          img.classList.remove('showLightBox');
-          img.classList.add('lightbox-media');
-          imagesContainer.setAttribute('src', img.getAttribute('src'));
           videoContainer.style.display = 'none';
           imagesContainer.style.display = 'block';
         } else if (mediaItem.video) {
-          const { getMediCardDOM } = mediaFactory(mediaItem);
-          const mediaCard = getMediCardDOM();
-          const video = mediaCard.querySelector('video');
-          video.classList.remove('showLightBox');
-          video.classList.add('lightbox-media');
-          videoContainer.setAttribute('src', video.getAttribute('src'));
           imagesContainer.style.display = 'none';
           videoContainer.style.display = 'block';
         }
       };
 
-      // Utiliser la fonction pour obtenir les éléments navChevronLeft et navChevronRight
       const { navChevronLeft, navChevronRight } = getNavChevrons();
 
-      // Écouteur d'événement pour naviguer vers le média suivant
       navChevronRight.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % media.length;
         updateLightboxMedia(currentIndex);
       });
 
-      // Écouteur d'événement pour naviguer vers le média précédent
       navChevronLeft.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + media.length) % media.length;
         updateLightboxMedia(currentIndex);
       });
+
+      // Affiche le média initial en premier
+      updateLightboxMedia(currentIndex);
     }
