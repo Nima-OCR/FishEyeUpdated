@@ -1,4 +1,3 @@
-// import {resetModal} from "../pages/photographer";
 
 let lastActiveElement;
 

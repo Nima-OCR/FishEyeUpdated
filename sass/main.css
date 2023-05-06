@@ -432,15 +432,6 @@ h1 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.media-section a {
-  text-decoration: none;
-  color: inherit;
-}
-.media-section a:hover, .media-section a:focus, .media-section a:active {
-  outline: none;
-  text-decoration: none;
-  color: inherit;
-}
 .media-section span {
   font-size: 16px;
   display: flex;
@@ -455,6 +446,7 @@ h1 {
   height: 300px;
   border-radius: 5px;
   object-fit: cover;
+  cursor: pointer;
 }
 .media-section p {
   font-family: "DM Sans", sans-serif;
@@ -464,6 +456,32 @@ h1 {
   line-height: 31px;
   color: #911C1C;
 }
+.media-section .heart-container {
+  position: relative;
+  display: inline-block;
+}
+.media-section .fa-heart {
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.media-section .fas.fa-heart {
+  position: absolute;
+  z-index: 0;
+  animation: fill 500ms;
+  display: none;
+}
+@keyframes fill {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 main aside {
   border-radius: 5px;
   margin-right: 36px;

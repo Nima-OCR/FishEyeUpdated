@@ -286,8 +286,6 @@
     console.log('ID de l\'image:', imageId);
 
 
-
-
     /**
      * La fonction affiche une lightbox lorsque l'utilisateur clique
      * sur l'élément avec la classe CSS "showLightBox".
@@ -296,18 +294,14 @@
      */
 
     function showLightBox() {
-      // Appelle la fonction pour afficher les médias du photographe
 
-      // Sélectionne tous les éléments avec la classe "showLightBox"
       const cardImgElements = document.querySelectorAll(".showLightBox");
 
-      // Pour chaque élément sélectionné, ajoute un écouteur d'événement "click"
       cardImgElements.forEach((card) => {
         card.addEventListener("click", () => {
           const imageId = card.getAttribute('data-id');
           displayPhotographerMedias(imageId);
 
-          // Appelle la fonction openLightbox() en passant l'argument "showLightBox".
           openLightbox("showLightBox");
         });
       });
@@ -333,8 +327,6 @@
       document.querySelector('.show-lightbox__nav-image').appendChild(videoContainer);
       return videoContainer;
     }
-
-
 
 
     function setMediaAttributes(mediaItem, mediaCard, container) {
@@ -387,18 +379,27 @@
         }
       };
 
+
+      function handleNavChevron(event) {
+        if (event.type === "click" || (event.key === "Enter" && (document.activeElement === navChevronLeft || document.activeElement === navChevronRight))) {
+          if (document.activeElement === navChevronLeft) {
+            currentIndex = (currentIndex - 1 + media.length) % media.length;
+          } else if (document.activeElement === navChevronRight) {
+            currentIndex = (currentIndex + 1) % media.length;
+          }
+          updateLightboxMedia(currentIndex);
+
+          event.preventDefault();
+        }
+      }
+
       const { navChevronLeft, navChevronRight } = getNavChevrons();
 
-      navChevronRight.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % media.length;
-        updateLightboxMedia(currentIndex);
-      });
+      navChevronRight.addEventListener('click', handleNavChevron);
+      navChevronLeft.addEventListener('click', handleNavChevron);
+      navChevronLeft.addEventListener('keydown', handleNavChevron);
+      navChevronRight.addEventListener('keydown', handleNavChevron);
 
-      navChevronLeft.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + media.length) % media.length;
-        updateLightboxMedia(currentIndex);
-      });
 
-      // Affiche le média initial en premier
       updateLightboxMedia(currentIndex);
     }
