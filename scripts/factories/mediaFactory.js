@@ -90,7 +90,21 @@ export function mediaFactory(data) {
 
       likesElement.textContent = `${updatedLikeCount} `;
       likesElement.appendChild(heartContainer);
+
+      // Récupérez l'élément affichant le total des likes
+      const totalLikesElement = document.querySelector('.total-likes');
+      let currentTotalLikes = parseInt(totalLikesElement.textContent);
+
+      // Incrémente ou décrémente le total des likes
+      if (solidHeartIcon.style.display === 'inline') {
+        currentTotalLikes += 1;
+      } else {
+        currentTotalLikes -= 1;
+      }
+
+      totalLikesElement.textContent = currentTotalLikes.toString();
     }
+
 
     heartIcon.addEventListener('click', handleHeartClick);
 

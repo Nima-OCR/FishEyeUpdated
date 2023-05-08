@@ -122,23 +122,37 @@
       }
 
 
-      //a {
-      //  text-decoration: none;
-      //  color: inherit;
-      //
-      //  &:hover,
-      //  &:focus,
-      //  &:active {
-      //    outline: none;
-      //    text-decoration: none;
-      //    color: inherit;
-      //  }
-      //}
 
-      span {
+      p {
+        font-family: $font-sans;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        padding-right: 24px;
+        line-height: 31px;
+        color: $color-deep-red;
+        display: inline-block;
+        margin: 0;
+        vertical-align: middle;
+      }
+
+      .heart-container {
         font-size: 16px;
-        display: flex;
+        display: inline-block;
         align-items: center;
+        vertical-align: middle;
+      }
+
+      .fa-heart {
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .fas.fa-heart {
+        position: absolute;
+        z-index: 0;
+        animation: fill 500ms;
+        display: none;
       }
 
       figure {
@@ -152,19 +166,7 @@
         border-radius: 5px;
         object-fit: cover;
         cursor: pointer;
-
       }
-
-      // Ajout des propriétés CSS pour la balise <p>
-      p {
-        font-family: $font-sans;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 31px;
-        color: $color-deep-red;
-      }
-
 
       .heart-container {
         position: relative;
@@ -175,7 +177,7 @@
         font-size: 24px;
         cursor: pointer;
         position: absolute;
-        top: 0;
+        top: -14px;
         left: 0;
       }
 
@@ -236,6 +238,16 @@
 
         .likes {
           margin-right: 10px;
+        }
+
+        .total-likes {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 31px;
+          padding: 10px;
         }
 
         .fa-heart {

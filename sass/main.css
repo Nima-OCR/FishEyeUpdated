@@ -432,10 +432,33 @@ h1 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.media-section span {
+.media-section p {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  padding-right: 24px;
+  line-height: 31px;
+  color: #911C1C;
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+}
+.media-section .heart-container {
   font-size: 16px;
-  display: flex;
+  display: inline-block;
   align-items: center;
+  vertical-align: middle;
+}
+.media-section .fa-heart {
+  font-size: 24px;
+  cursor: pointer;
+}
+.media-section .fas.fa-heart {
+  position: absolute;
+  z-index: 0;
+  animation: fill 500ms;
+  display: none;
 }
 .media-section figure {
   width: 350px;
@@ -448,14 +471,6 @@ h1 {
   object-fit: cover;
   cursor: pointer;
 }
-.media-section p {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 31px;
-  color: #911C1C;
-}
 .media-section .heart-container {
   position: relative;
   display: inline-block;
@@ -464,7 +479,7 @@ h1 {
   font-size: 24px;
   cursor: pointer;
   position: absolute;
-  top: 0;
+  top: -14px;
   left: 0;
 }
 .media-section .fas.fa-heart {
@@ -506,6 +521,15 @@ main aside .rate, main aside .likes {
 }
 main aside .likes {
   margin-right: 10px;
+}
+main aside .total-likes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  padding: 10px;
 }
 main aside .fa-heart {
   color: #000000;

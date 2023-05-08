@@ -250,15 +250,26 @@
       // Création de l'élément pour afficher le nombre de likes
       const likeElement = document.createElement("div");
       likeElement.className = "likes";
-      likeElement.innerHTML = `<i class="fa fa-heart"></i> ${selectedPhotographer.likes}`;
+      likeElement.innerHTML = `<i class="fa fa-heart"></i> `;
+
+      // Calculez le nombre total de likes
+      const totalOfLikes = photographerMediaItems.reduce((sum, item) => sum + item.likes, 0);
+      console.log(totalOfLikes);
+
+      const totalLikes = document.createElement("p");
+      totalLikes.className = "total-likes";
+      totalLikes.textContent = `${totalOfLikes}`;
 
       // Ajout des éléments tarif et likes à l'aside
       asideElement.append(rateElement);
       asideElement.append(likeElement);
+      asideElement.append(totalLikes);
 
       // Ajout de l'aside à la page
       document.querySelector("main").append(asideElement);
     }
+
+
     let selectedPhotographer = null;
 
     async function fetchSelectedPhotographerData() {
