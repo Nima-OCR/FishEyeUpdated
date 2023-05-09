@@ -4,6 +4,7 @@
     import { displayModal, closeModal } from "../utils/contactForm.js";
     import { getNavChevrons} from "../utils/lightBoxModal.js";
     import { openLightbox} from "../utils/lightBoxModal.js";
+    import {createDropdownMenu} from "../utils/dropdown-sort.js";
 
 
     // Récupération des paramètres de l'URL
@@ -17,6 +18,16 @@
 
     //Appel à la fonction photographerMedia() pour récupérer les médias du photographe
     const photographerMediaItems = await photographerMedias();
+
+    /**
+     * TRi
+     */
+
+    const selectElement = document.querySelector('select');
+    createDropdownMenu(selectElement);
+
+
+
 
 
     /**
@@ -414,3 +425,5 @@
 
       updateLightboxMedia(currentIndex);
     }
+
+

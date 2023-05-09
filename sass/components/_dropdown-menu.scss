@@ -1,0 +1,47 @@
+    .dropdown {
+      position: relative;
+      background-color: $color-primary;
+      color: $color-white;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 23px;
+      margin-top: 9px;
+      border-radius: 5px;
+      border: 20px solid $color-primary;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+      &__options {
+        -webkit-appearance: none;
+        color: $color-white;
+        padding: 10px;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &--selected {
+          color: $color-white;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 23px;
+        }
+      }
+    }
+
+
+
+label {
+          color: $color-black;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 23px;
+          margin-right: 25px;
+
+        }
+
+
+
+
