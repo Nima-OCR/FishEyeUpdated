@@ -5,6 +5,7 @@
     import { getNavChevrons} from "../utils/lightBoxModal.js";
     import { openLightbox} from "../utils/lightBoxModal.js";
     import {createDropdownMenu} from "../utils/dropdown-sort.js";
+    import  { sortData} from "../utils/sortData.js";
 
 
     // Récupération des paramètres de l'URL
@@ -20,11 +21,47 @@
     const photographerMediaItems = await photographerMedias();
 
     /**
-     * TRi
+     * Menu TRi
      */
 
     const selectElement = document.querySelector('select');
     createDropdownMenu(selectElement);
+
+
+    /**
+     * Gère l'intégration de la fonctionnalité de tri des médias en fonction de la valeur sélectionnée
+     * dans le menu déroulant.
+     */
+    document.querySelector("#dropdownMenu").addEventListener("change", (event) => {
+      // Récupère la valeur sélectionnée dans le menu déroulant
+      const sortBy = event.target.value;
+
+      // Trie les données en fonction de la valeur sélectionnée
+      const sortedData = sortData(photographerMediaItems, sortBy);
+
+      // Affiche les données triées dans la console en fonction de la valeur sélectionnée
+      if (sortBy === "Date") {
+        console.log("Dates triées:", sortedData.map(item => item.date));
+      } else if (sortBy === "Titre") {
+        console.log("Titres triés:", sortedData.map(item => item.title));
+      } else if (sortBy === "Popularité") {
+        console.log("Popularités triées:", sortedData.map(item => item.likes));
+      }
+
+      // Supprime les éléments médias existants du conteneur
+      const mediaContainer = document.querySelector(".media-section");
+      while (mediaContainer.firstChild) {
+        mediaContainer.removeChild(mediaContainer.firstChild);
+      }
+
+      // Recrée et ajoute les éléments médias à partir des données triées
+      sortedData.forEach(mediaData => {
+        const mediaItem = mediaFactory(mediaData);
+        mediaContainer.appendChild(mediaItem.getMediCardDOM());
+      });
+    });
+
+
 
 
 

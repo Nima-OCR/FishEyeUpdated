@@ -6,7 +6,7 @@
 // Fonction qui génère un objet avec ses informations et un élément DOM pour l'afficher
 export function mediaFactory(data) {
 
-  const { id, photographerId, title, image, video, likes } = data;
+  const { id, photographerId, title, image, video, likes, date } = data;
   const imagePath = `/assets/images/${photographerId}/${image}`;
   const videoPath = `/assets/images/${photographerId}/${video}`;
 
@@ -122,6 +122,6 @@ export function mediaFactory(data) {
     return article;
   }
 
-  return { id, photographerId, title, image, video, likes, getMediCardDOM };
+  return { id, photographerId, title, image, video, likes, date, getMediCardDOM };
 
 }
