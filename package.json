@@ -4,7 +4,12 @@
   "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --max-warnings=0 .",
     "sass": "node-sass --watch sass/main.scss css/style.css"
+  },
+
+  "gitHooks": {
+    "pre-push": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -18,5 +23,9 @@
   "homepage": "https://github.com/Nima-OCR/Front-End-Fisheye#readme",
   "dependencies": {
     "node-sass": "^8.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "yorkie": "^2.0.0"
   }
 }

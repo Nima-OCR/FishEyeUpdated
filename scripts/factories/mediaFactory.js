@@ -73,7 +73,7 @@ export function mediaFactory(data) {
 
     function handleHeartClick(event) {
       const heartContainer = event.target.parentNode;
-      const heartIcon = heartContainer.querySelector('.fa-regular.fa-heart');
+      // const heartIcon = heartContainer.querySelector('.fa-regular.fa-heart');
       const solidHeartIcon = heartContainer.querySelector('.fas.fa-heart');
       const likesElement = heartContainer.parentNode;
       const likeCount = parseInt(likesElement.textContent);

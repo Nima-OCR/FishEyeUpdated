@@ -6,6 +6,7 @@
     import { openLightbox} from "../utils/lightBoxModal.js";
     import {createDropdownMenu} from "../utils/dropdown-sort.js";
     import  { sortData} from "../utils/sortData.js";
+    import {validateForm} from "../utils/form-validation.js";
 
 
     // Récupération des paramètres de l'URL
@@ -17,8 +18,11 @@
     // Affichage des paramètres récupérés dans la console
     console.log("ID du photographe sélectionné :", photographerId);
 
-    //Appel à la fonction photographerMedia() pour récupérer les médias du photographe
-    const photographerMediaItems = await photographerMedias();
+
+        //Récupère les médias d'un photographe et les affiche.
+
+        const photographerMediaItems = await photographerMedias();
+
 
     /**
      * Menu TRi
@@ -59,12 +63,22 @@
         const mediaItem = mediaFactory(mediaData);
         mediaContainer.appendChild(mediaItem.getMediCardDOM());
       });
+
+      showLightBox();
     });
 
 
+    /****************************************************************
+     Cette partie du code gère la validation du formulaire.
+     ****************************************************************/
 
+    function submitForm() {
+      const form = document.querySelector('form');
 
+      form.addEventListener('submit', validateForm);
+    }
 
+    submitForm();
 
 
     /**
@@ -117,9 +131,9 @@
           imageElement.alt = selectedPhotographer.name;
 
 
-          /*****************************************************
-           * Cette partie du code gère l'affichage de la modale
-           ****************************************************/
+          /*****************************************************************
+           * Cette partie du code gère l'affichage de la modale Contact
+           ****************************************************************/
 
             // Récupération du bouton de contact
           const contactButton = document.getElementById('contactButton');
@@ -139,57 +153,10 @@
           });
 
 
-          /****************************************************************
-           Cette partie du code gère la validation du formulaire.
-           Le formulaire doit être rempli correctement avant d'être soumis
-           ****************************************************************/
-          const form = document.querySelector('form');
 
-          form.addEventListener('submit', (event) => {
-            event.preventDefault();
 
-            const firstNameInput = document.querySelector('#first-name');
-            const lastNameInput = document.querySelector('#last-name');
-            const emailInput = document.querySelector('#email');
-            const messageInput = document.querySelector('#message');
 
-            // Regex pour valider le prénom et le nom
-            const regexName = /^[a-zA-Zéèêëîïôöûüçàáâäåæìíîïðñòóôõöøùúûüýÿ\-']+$/;
 
-            // Regex pour valider l'email
-            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            let isFormValid = true;
-
-            if (!regexName.test(firstNameInput.value)) {
-              console.log('Le prénom n\'est pas valide');
-              isFormValid = false;
-            }
-            if (!regexName.test(lastNameInput.value)) {
-              console.log('Le nom n\'est pas valide');
-              isFormValid = false;
-            }
-            if (!regexEmail.test(emailInput.value)) {
-              console.log('L\'email n\'est pas valide');
-              isFormValid = false;
-            }
-            if (messageInput.value.trim() === '') {
-              console.log('Le message ne peut pas être vide');
-              isFormValid = false;
-            }
-
-            if (isFormValid) {
-              // Soumettre le formulaire si tous les champs sont remplis correctement
-              console.log('Le formulaire a bien été soumis');
-              form.submit();
-
-              // Fermer la modale après la soumission du formulaire
-              closeModal();
-            } else {
-              // Afficher un message d'erreur dans la console si le formulaire est invalide
-              console.log('Le formulaire est invalide');
-            }
-          });
 
 
           // lien vers Accueil
@@ -254,7 +221,6 @@
         section.append(cardElement);
       });
 
-      console.log('Éléments multimédias affichés avec succès.');
     }
 
     /**
@@ -267,12 +233,13 @@
      */
     async function displayPhotographerMedia() {
       try {
-        await displayMediaElements(photographerMediaItems);
+        await displayMediaElements(Object.values(photographerMediaItems));
         showLightBox();
       } catch (error) {
         console.error("Une erreur s'est produite lors de l'affichage des médias :", error);
       }
     }
+
 
     displayPhotographerMedia().then(() => {
       console.log("La promesse a été résolue avec succès !");
@@ -294,6 +261,8 @@
       const rateElement = document.createElement("div");
       rateElement.className = "rate";
       rateElement.innerHTML = `${selectedPhotographer.price}€ / jour`;
+      console.log(`Tarif journalier : ${selectedPhotographer.price}€`);
+
 
       // Création de l'élément pour afficher le nombre de likes
       const likeElement = document.createElement("div");
@@ -302,7 +271,8 @@
 
       // Calculez le nombre total de likes
       const totalOfLikes = photographerMediaItems.reduce((sum, item) => sum + item.likes, 0);
-      console.log(totalOfLikes);
+      console.log(`Total likes : ${totalOfLikes}`);
+
 
       const totalLikes = document.createElement("p");
       totalLikes.className = "total-likes";

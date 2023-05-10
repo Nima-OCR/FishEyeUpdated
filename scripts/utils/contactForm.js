@@ -1,7 +1,7 @@
 const contactButton = document.getElementById("contactButton");
 
 // Fonction pour afficher la fenêtre modale de contact
-export function displayModal(modalId) {
+export function displayModal() {
   console.log("Affichage de la fenêtre modale de contact");
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
