@@ -5,9 +5,10 @@
     import { getNavChevrons} from "../utils/lightBoxModal.js";
     import { openLightbox} from "../utils/lightBoxModal.js";
     import {createDropdownMenu} from "../utils/dropdown-sort.js";
-    import  { sortData} from "../utils/sortData.js";
     import {validateForm} from "../utils/form-validation.js";
-
+    import { handleSortAndDisplay} from "../utils/sortData.js";
+    import { updateUI } from "../utils/sortData.js";
+    import {  createRateElement, createLikeElement, createTotalLikesElement } from "../utils/likeAndRate.js";
 
     // Récupération des paramètres de l'URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -15,63 +16,42 @@
     // Récupération du paramètre "id" depuis l'URL
     const photographerId = urlParams.get("id");
 
-    // Affichage des paramètres récupérés dans la console
-    console.log("ID du photographe sélectionné :", photographerId);
-
-
-        //Récupère les médias d'un photographe et les affiche.
-
-        const photographerMediaItems = await photographerMedias();
+    // On attend que la fonction photographerMedias soit terminée et on assigne son résultat à la constante photographerMediaItems.
+    const photographerMediaItems = await photographerMedias();
 
 
     /**
-     * Menu TRi
+     * On recherche le premier élément 'select' dans le document et on le stocke dans la constante 'selectElement'.
+     * Ensuite, on appelle la fonction 'createDropdownMenu' en lui passant 'selectElement' comme argument.
+     *
+     * @type {HTMLSelectElement} selectElement - L'élément 'select' dans le document.
      */
-
     const selectElement = document.querySelector('select');
     createDropdownMenu(selectElement);
 
 
+
     /**
-     * Gère l'intégration de la fonctionnalité de tri des médias en fonction de la valeur sélectionnée
-     * dans le menu déroulant.
+     * Cette fonction est un écouteur d'événement pour un menu déroulant. Lorsque la valeur sélectionnée dans le menu change,
+     * la fonction handleSortAndDisplay est appelée pour trier les données de 'photographerMediaItems' en fonction de la valeur sélectionnée.
+     * Ensuite, la fonction updateUI est appelée pour mettre à jour l'interface utilisateur avec les données triées.
+     * Enfin, la fonction showLightBox est appelée pour afficher la lightbox.
+     *
+     * @listens #dropdownMenu:change - L'événement qui déclenche l'exécution de cette fonction.
+     * @param {Event} event - L'objet Event représentant l'événement qui a déclenché l'écouteur.
      */
     document.querySelector("#dropdownMenu").addEventListener("change", (event) => {
-      // Récupère la valeur sélectionnée dans le menu déroulant
-      const sortBy = event.target.value;
-
-      // Trie les données en fonction de la valeur sélectionnée
-      const sortedData = sortData(photographerMediaItems, sortBy);
-
-      // Affiche les données triées dans la console en fonction de la valeur sélectionnée
-      if (sortBy === "Date") {
-        console.log("Dates triées:", sortedData.map(item => item.date));
-      } else if (sortBy === "Titre") {
-        console.log("Titres triés:", sortedData.map(item => item.title));
-      } else if (sortBy === "Popularité") {
-        console.log("Popularités triées:", sortedData.map(item => item.likes));
-      }
-
-      // Supprime les éléments médias existants du conteneur
-      const mediaContainer = document.querySelector(".media-section");
-      while (mediaContainer.firstChild) {
-        mediaContainer.removeChild(mediaContainer.firstChild);
-      }
-
-      // Recrée et ajoute les éléments médias à partir des données triées
-      sortedData.forEach(mediaData => {
-        const mediaItem = mediaFactory(mediaData);
-        mediaContainer.appendChild(mediaItem.getMediCardDOM());
-      });
-
-      showLightBox();
+      const sortedData = handleSortAndDisplay(event, photographerMediaItems);
+      updateUI(sortedData, mediaFactory, showLightBox);
     });
 
 
-    /****************************************************************
-     Cette partie du code gère la validation du formulaire.
-     ****************************************************************/
 
+    /**
+     * Cette fonction ajoute un écouteur d'événements à un formulaire pour valider les données soumises.
+     *
+     * @listens form:submit - L'événement qui déclenche l'exécution de la fonction 'validateForm'.
+     */
     function submitForm() {
       const form = document.querySelector('form');
 
@@ -79,6 +59,7 @@
     }
 
     submitForm();
+
 
 
     /**
@@ -98,86 +79,28 @@
       return dataFrom.photographers.find(photographer => photographer.id === parseInt(photographerId));
     }
 
+
     /**
-    * Récupère et affiche les données du photographe sélectionné.
-    *
-    * @async
-    * @function
-    * @returns {Promise<void>} - Une promesse qui est résolue lorsque les données sont affichées avec succès.
-    * @throws {Error} - Si une erreur se produit lors de la récupération ou de l'affichage des données.
-    */
+     * Affiche les informations du photographe sélectionné
+     * @async
+     * @function displaySelectedPhotographer
+     */
     async function displaySelectedPhotographer() {
       try {
+        // Récupère les données du photographe
         const selectedPhotographer = await fetchData();
 
         if (selectedPhotographer) {
           console.log("Photographe sélectionné :", selectedPhotographer);
 
-          // Affiche le nom du photographe
-          const nameElement = document.querySelector('#photographerName');
-          nameElement.innerHTML = selectedPhotographer.name;
+          // Affiche les informations du photographe
+          displayPhotographerInfo(selectedPhotographer);
 
-          // Affiche la localisation du photographe
-          const locationElement = document.querySelector('#photographerLocation');
-          locationElement.innerHTML = `${selectedPhotographer.city}, ${selectedPhotographer.country}`;
+          // Gère l'affichage de la modale Contact
+          manageContactModal();
 
-          // Affiche la description du photographe
-          const taglineElement = document.querySelector('#photographerTagline');
-          taglineElement.innerHTML = selectedPhotographer.tagline;
-
-          // Affiche l'image du photographe
-          const imageElement = document.querySelector('#photographerImage');
-          imageElement.src = `./assets/photographers/${selectedPhotographer.portrait}`;
-          imageElement.alt = selectedPhotographer.name;
-
-
-          /*****************************************************************
-           * Cette partie du code gère l'affichage de la modale Contact
-           ****************************************************************/
-
-            // Récupération du bouton de contact
-          const contactButton = document.getElementById('contactButton');
-
-          // Ajout du texte dans le bouton
-          contactButton.innerHTML = 'Contactez-moi';
-
-          // Ajout de l'événement clic pour lancer displayModal
-          contactButton.addEventListener("click", () => {
-            displayModal("contact_modal");
-          });
-
-          const closeModalButton = document.getElementById("closeModalButton");
-
-          closeModalButton.addEventListener("click", () => {
-            closeModal();
-          });
-
-
-
-
-
-
-
-
-          // lien vers Accueil
-          const logo = document.querySelector('.logo');
-
-          const redirectToHome = () => {
-            window.location.href = 'index.html';
-          };
-
-          logo.addEventListener('click', redirectToHome);
-
-          logo.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-              redirectToHome();
-            }
-          });
-
-          logo.setAttribute('aria-label', 'Lien vers la page d\'accueil');
-
-          logo.setAttribute('tabindex', '0');
-
+          // Gère le lien vers la page d'accueil
+          manageHomeLink();
 
         } else {
           console.error("Aucun photographe ne correspond à l'ID :", photographerId);
@@ -187,6 +110,90 @@
         console.error("Une erreur s'est produite lors de la récupération des données :", error);
       }
     }
+
+
+    /**
+     * Affiche les informations du photographe sélectionné.
+     *
+     * @param {Object} selectedPhotographer - L'objet photographe à afficher.
+     * @param {string} selectedPhotographer.name - Le nom du photographe.
+     * @param {string} selectedPhotographer.city - La ville du photographe.
+     * @param {string} selectedPhotographer.country - Le pays du photographe.
+     * @param {string} selectedPhotographer.tagline - La description du photographe.
+     * @param {string} selectedPhotographer.portrait - Le nom du fichier image du photographe.
+     */
+    function displayPhotographerInfo(selectedPhotographer) {
+      // Affiche le nom du photographe
+      const nameElement = document.querySelector('#photographerName');
+      nameElement.innerHTML = selectedPhotographer.name;
+
+      // Affiche la localisation du photographe
+      const locationElement = document.querySelector('#photographerLocation');
+      locationElement.innerHTML = `${selectedPhotographer.city}, ${selectedPhotographer.country}`;
+
+      // Affiche la description du photographe
+      const taglineElement = document.querySelector('#photographerTagline');
+      taglineElement.innerHTML = selectedPhotographer.tagline;
+
+      // Affiche l'image du photographe
+      const imageElement = document.querySelector('#photographerImage');
+      imageElement.src = `./assets/photographers/${selectedPhotographer.portrait}`;
+      imageElement.alt = selectedPhotographer.name;
+    }
+
+    /**
+     * Gère l'affichage de la modale de contact du photographe sélectionné.
+     * Ajoute du texte et des événements aux boutons du modal.
+     */
+    function manageContactModal() {
+      // Récupération du bouton de contact
+      const contactButton = document.getElementById('contactButton');
+
+      // Ajout du texte dans le bouton
+      contactButton.innerHTML = 'Contactez-moi';
+
+      // Ajout de l'événement clic pour lancer displayModal
+      contactButton.addEventListener("click", () => {
+        displayModal("contact_modal");
+      });
+
+      // Récupération du bouton de fermeture du modal
+      const closeModalButton = document.getElementById("closeModalButton");
+
+      // Ajout de l'événement clic pour fermer le modal
+      closeModalButton.addEventListener("click", () => {
+        closeModal();
+      });
+    }
+
+    /**
+     * Gère le lien vers la page d'accueil
+     * Ajoute un événement clic au logo pour rediriger vers la page d'accueil
+     * et ajoute un attribut aria-label pour faciliter l'accessibilité.
+     * @returns {void}
+     */
+    function manageHomeLink() {
+      // lien vers Accueil
+      const logo = document.querySelector('.logo');
+
+      const redirectToHome = () => {
+        window.location.href = 'index.html';
+      };
+
+      logo.addEventListener('click', redirectToHome);
+
+      logo.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          redirectToHome();
+        }
+      });
+
+      logo.setAttribute('aria-label', 'Lien vers la page d\'accueil');
+
+      logo.setAttribute('tabindex', '0');
+    }
+
+
 
     // Utilisation de la fonction displaySelectedPhotographer avec une promesse
     displaySelectedPhotographer()
@@ -251,59 +258,37 @@
     /**
      * Encart qui affiche le tarif journalier et le nombre de likes du photographe sélectionné.
      *
-     * @param {Object} selectedPhotographer - L'objet représentant le photographe sélectionné.
      */
-    function displayRateAndLikes(selectedPhotographer) {
-      // Création de l'élément aside
+
+    function displayRateAndLikes(selectedPhotographer, photographerMediaItems) {
       const asideElement = document.createElement("aside");
+      const rateElement = createRateElement(selectedPhotographer);
+      const likeElement = createLikeElement();
+      const totalLikesElement = createTotalLikesElement(photographerMediaItems);
 
-      // Création de l'élément pour afficher le tarif journalier
-      const rateElement = document.createElement("div");
-      rateElement.className = "rate";
-      rateElement.innerHTML = `${selectedPhotographer.price}€ / jour`;
-      console.log(`Tarif journalier : ${selectedPhotographer.price}€`);
-
-
-      // Création de l'élément pour afficher le nombre de likes
-      const likeElement = document.createElement("div");
-      likeElement.className = "likes";
-      likeElement.innerHTML = `<i class="fa fa-heart"></i> `;
-
-      // Calculez le nombre total de likes
-      const totalOfLikes = photographerMediaItems.reduce((sum, item) => sum + item.likes, 0);
-      console.log(`Total likes : ${totalOfLikes}`);
-
-
-      const totalLikes = document.createElement("p");
-      totalLikes.className = "total-likes";
-      totalLikes.textContent = `${totalOfLikes}`;
-
-      // Ajout des éléments tarif et likes à l'aside
-      asideElement.append(rateElement);
-      asideElement.append(likeElement);
-      asideElement.append(totalLikes);
-
-      // Ajout de l'aside à la page
+      asideElement.append(rateElement, likeElement, totalLikesElement);
       document.querySelector("main").append(asideElement);
     }
 
-
-    let selectedPhotographer = null;
-
     async function fetchSelectedPhotographerData() {
       try {
-        selectedPhotographer = await fetchData();
-
-        // ...
+        return await fetchData();
       } catch (error) {
         console.error("Une erreur s'est produite lors de la récupération des données :", error);
+        throw error;
       }
     }
 
-    fetchSelectedPhotographerData().then(() => {
-      console.log("La promesse a été résolue avec succès !");
-      displayRateAndLikes(selectedPhotographer);
-    });
+    fetchSelectedPhotographerData()
+      .then(selectedPhotographer => {
+        console.log("La promesse a été résolue avec succès !");
+        displayRateAndLikes(selectedPhotographer, photographerMediaItems);
+      })
+      .catch(error => {
+        console.error("Une erreur s'est produite lors de l'affichage des données :", error);
+      });
+
+
 
 
     /***************************************************
@@ -432,5 +417,3 @@
 
       updateLightboxMedia(currentIndex);
     }
-
-

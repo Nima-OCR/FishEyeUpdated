@@ -54,22 +54,19 @@ export function mediaFactory(data) {
     likesElement.innerHTML = `${likes} `;
     figcaption.appendChild(likesElement);
 
-    const heartIcon = document.createElement('i');
-    heartIcon.className = 'fa-regular fa-heart';
-    const solidHeartIcon = document.createElement('i');
-    solidHeartIcon.className = 'fas fa-heart';
-    solidHeartIcon.style.display = 'none';
+    function createHeartIcon(className) {
+      const heartIcon = document.createElement('i');
+      heartIcon.className = className;
+      return heartIcon;
+    }
 
-    const heartContainer = document.createElement('span');
-    heartContainer.className = 'heart-container';
-    heartContainer.appendChild(solidHeartIcon);
-    heartContainer.appendChild(heartIcon);
-    likesElement.appendChild(heartContainer);
-
-// Ajoutez cet écouteur d'événements
-    heartIcon.addEventListener('click', () => {
-      handleHeartClick(likesElement);
-    });
+    function createHeartContainer(heartIcon, solidHeartIcon) {
+      const heartContainer = document.createElement('span');
+      heartContainer.className = 'heart-container';
+      heartContainer.appendChild(solidHeartIcon);
+      heartContainer.appendChild(heartIcon);
+      return heartContainer;
+    }
 
     function handleHeartClick(event) {
       const heartContainer = event.target.parentNode;
@@ -105,16 +102,32 @@ export function mediaFactory(data) {
       totalLikesElement.textContent = currentTotalLikes.toString();
     }
 
+    function attachHeartIconEvent(heartIcon) {
+      heartIcon.addEventListener('click', handleHeartClick);
+    }
 
-    heartIcon.addEventListener('click', handleHeartClick);
+    function toggleHeartFillOnEvent(heartIcons) {
+      heartIcons.forEach((heart) => {
+        heart.addEventListener('click', () => {
+          heart.classList.toggle('filled');
+        });
+      });
+    }
+
+// Code principal
+    const heartIcon = createHeartIcon('fa-regular fa-heart');
+    const solidHeartIcon = createHeartIcon('fas fa-heart');
+    solidHeartIcon.style.display = 'none';
+
+    const heartContainer = createHeartContainer(heartIcon, solidHeartIcon);
+
+    likesElement.appendChild(heartContainer);
+
+    attachHeartIconEvent(heartIcon);
 
     const heartIcons = document.querySelectorAll('.heart-icon');
 
-    heartIcons.forEach((heart) => {
-      heart.addEventListener('click', () => {
-        heart.classList.toggle('filled');
-      });
-    });
+    toggleHeartFillOnEvent(heartIcons);
 
 
 

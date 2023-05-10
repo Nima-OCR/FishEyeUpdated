@@ -1,5 +1,10 @@
 
 
+/**
+ * Cette fonction crée un menu déroulant pour trier les données. Elle ajoute également une étiquette de texte et des options au menu déroulant.
+ *
+ * @param {HTMLSelectElement} selectElement - L'élément 'select' dans lequel les options seront ajoutées.
+ */
 export function createDropdownMenu(selectElement) {
   // Créer le label et l'ajouter au DOM avant la balise select
   const labelElement = document.createElement('label');
@@ -27,3 +32,4 @@ export function createDropdownMenu(selectElement) {
     selectElement.appendChild(option);
   });
 }
+
