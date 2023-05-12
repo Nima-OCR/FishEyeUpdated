@@ -9,6 +9,8 @@
     import { updateUI } from "../utils/sortData.js";
     import { createElementWithClass, createRateAndLikesElement, calculateTotalLikes } from '../utils/likeAndRate.js';
     import { displayPhotographerMedias } from "../utils/lightBoxModal.js";
+    import { manageHomeLink } from "../utils/homeLink.js";
+    import { displayPhotographerInfo } from "../utils/photographerInfos.js";
 
     // Récupération des paramètres de l'URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -84,6 +86,9 @@
       return dataFrom.photographers.find(photographer => photographer.id === parseInt(photographerId));
     }
 
+    /***************************************************
+                  Display Photographer Info
+     ***************************************************/
 
     /**
      * Affiche les informations du photographe sélectionné
@@ -116,35 +121,17 @@
       }
     }
 
+    // Utilisation de la fonction displaySelectedPhotographer avec une promesse
+    displaySelectedPhotographer().then(() => {
+      console.log("L'affichage du photographe sélectionné a été effectué avec succès.");
+    }).catch((error) => {
+      console.error("Une erreur s'est produite lors de l'affichage du photographe sélectionné :", error);
+    });
 
-    /**
-     * Affiche les informations du photographe sélectionné.
-     *
-     * @param {Object} selectedPhotographer - L'objet photographe à afficher.
-     * @param {string} selectedPhotographer.name - Le nom du photographe.
-     * @param {string} selectedPhotographer.city - La ville du photographe.
-     * @param {string} selectedPhotographer.country - Le pays du photographe.
-     * @param {string} selectedPhotographer.tagline - La description du photographe.
-     * @param {string} selectedPhotographer.portrait - Le nom du fichier image du photographe.
-     */
-    function displayPhotographerInfo(selectedPhotographer) {
-      // Affiche le nom du photographe
-      const nameElement = document.querySelector('#photographerName');
-      nameElement.innerHTML = selectedPhotographer.name;
 
-      // Affiche la localisation du photographe
-      const locationElement = document.querySelector('#photographerLocation');
-      locationElement.innerHTML = `${selectedPhotographer.city}, ${selectedPhotographer.country}`;
-
-      // Affiche la description du photographe
-      const taglineElement = document.querySelector('#photographerTagline');
-      taglineElement.innerHTML = selectedPhotographer.tagline;
-
-      // Affiche l'image du photographe
-      const imageElement = document.querySelector('#photographerImage');
-      imageElement.src = `./assets/photographers/${selectedPhotographer.portrait}`;
-      imageElement.alt = selectedPhotographer.name;
-    }
+    /***************************************************
+                  Display Photographe Medias
+     ***************************************************/
 
     /**
      * Gère l'affichage de la modale de contact du photographe sélectionné.
@@ -170,40 +157,6 @@
         closeModal();
       });
     }
-
-    /**
-     * Gère le lien vers la page d'accueil
-     * Ajoute un événement clic au logo pour rediriger vers la page d'accueil
-     * et ajoute un attribut aria-label pour faciliter l'accessibilité.
-     * @returns {void}
-     */
-    function manageHomeLink() {
-      // lien vers Accueil
-      const logo = document.querySelector('.logo');
-
-      const redirectToHome = () => {
-        window.location.href = 'index.html';
-      };
-
-      logo.addEventListener('click', redirectToHome);
-
-      logo.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-          redirectToHome();
-        }
-      });
-
-      logo.setAttribute('aria-label', 'Lien vers la page d\'accueil');
-
-      logo.setAttribute('tabindex', '0');
-    }
-
-
-
-    // Utilisation de la fonction displaySelectedPhotographer avec une promesse
-    displaySelectedPhotographer();
-
-
 
 
     /***************************************************

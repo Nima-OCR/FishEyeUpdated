@@ -1,5 +1,6 @@
     import { photographerFactory } from '../factories/photographer.js';
     import { getPhotographers } from '../utils/photographerAPI.js';
+    import {manageHomeLink} from "../utils/homeLink.js";
 
 
 
@@ -35,4 +36,7 @@
     }).catch((error) => {
       console.error("Une erreur s'est produite lors de l'initialisation : ", error);
     });
+
+    // Gère le lien vers la page d'accueil
+    manageHomeLink();
 
