@@ -2,13 +2,13 @@
     import { photographerMedias } from '../utils/photographerMedias.js';
     import { mediaFactory } from '../factories/mediaFactory.js';
     import { displayModal, closeModal } from "../utils/contactForm.js";
-    import { getNavChevrons} from "../utils/lightBoxModal.js";
     import { openLightbox} from "../utils/lightBoxModal.js";
     import {createDropdownMenu} from "../utils/dropdown-sort.js";
     import {validateForm} from "../utils/form-validation.js";
-    import { handleSortAndDisplay} from "../utils/sortData.js";
+    import { sortAndDisplay } from "../utils/sortData.js";
     import { updateUI } from "../utils/sortData.js";
     import {  createRateElement, createLikeElement, createTotalLikesElement } from "../utils/likeAndRate.js";
+    import { displayPhotographerMedias } from "../utils/lightBoxModal.js";
 
     // Récupération des paramètres de l'URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -16,15 +16,13 @@
     // Récupération du paramètre "id" depuis l'URL
     const photographerId = urlParams.get("id");
 
-    // On attend que la fonction photographerMedias soit terminée et on assigne son résultat à la constante photographerMediaItems.
-    const photographerMediaItems = await photographerMedias();
 
 
     /**
-     * On recherche le premier élément 'select' dans le document et on le stocke dans la constante 'selectElement'.
-     * Ensuite, on appelle la fonction 'createDropdownMenu' en lui passant 'selectElement' comme argument.
+     * On recherche l'élément 'select' qu'on stocke dans la constante 'selectElement'.
+     * Ensuite, on appelle la fonction 'createDropdownMenu' en lui passant 'selectElement' en argument.
      *
-     * @type {HTMLSelectElement} selectElement - L'élément 'select' dans le document.
+     * @type {HTMLSelectElement} selectElement - L'élément 'select' dans le DOM.
      */
     const selectElement = document.querySelector('select');
     createDropdownMenu(selectElement);
@@ -32,18 +30,24 @@
 
 
     /**
-     * Cette fonction est un écouteur d'événement pour un menu déroulant. Lorsque la valeur sélectionnée dans le menu change,
-     * la fonction handleSortAndDisplay est appelée pour trier les données de 'photographerMediaItems' en fonction de la valeur sélectionnée.
-     * Ensuite, la fonction updateUI est appelée pour mettre à jour l'interface utilisateur avec les données triées.
-     * Enfin, la fonction showLightBox est appelée pour afficher la lightbox.
+     * Cette fonction est un écouteur d'événement pour un menu déroulant.
+     * Lorsque la valeur sélectionnée dans le menu change,la fonction sortAndDisplay est appelée
+     * La fonction updateUI est appelée pour mettre à jour l'interface utilisateur.
+     * La fonction showLightBox est appelée pour afficher la lightbox.
      *
      * @listens #dropdownMenu:change - L'événement qui déclenche l'exécution de cette fonction.
-     * @param {Event} event - L'objet Event représentant l'événement qui a déclenché l'écouteur.
+     * @param {Event} event - L'objet Event qui représente l'événement qui a déclenché l'écouteur.
      */
-    document.querySelector("#dropdownMenu").addEventListener("change", (event) => {
-      const sortedData = handleSortAndDisplay(event, photographerMediaItems);
-      updateUI(sortedData, mediaFactory, showLightBox);
+    document.querySelector("#dropdownMenu").addEventListener("change", async (event) => {
+      try {
+        const mediaList = await photographerMedias();
+        const sortedData = sortAndDisplay(event, mediaList);
+        updateUI(sortedData, mediaFactory, showLightBox);
+      } catch (error) {
+        console.error("Une erreur s'est produite lors du chargement des données :", error);
+      }
     });
+
 
 
 
@@ -59,6 +63,8 @@
     }
 
     submitForm();
+    console.log("Le formulaire a été soumis !");
+
 
 
 
@@ -67,15 +73,14 @@
      *
      * @async
      * @function
-     * @param {number} photographerId - L'ID du photographe à rechercher.
      * @returns {Promise<Object>} - Une promesse résolue avec un objet représentant le photographe trouvé.
      * @throws {Error} - Si aucun photographe n'a été trouvé avec l'ID spécifié.
      */
-    const dataFrom = await getPhotographers();
 
     async function fetchData() {
+      const dataFrom = await getPhotographers();
 
-      // Trouver le photographe avec l'ID spécifié et le retourner directement
+      // Trouve le photographe avec l'ID spécifié
       return dataFrom.photographers.find(photographer => photographer.id === parseInt(photographerId));
     }
 
@@ -196,19 +201,15 @@
 
 
     // Utilisation de la fonction displaySelectedPhotographer avec une promesse
-    displaySelectedPhotographer()
-      .then(selectedPhotographer => {
-        console.log("La promesse a été résolue avec succès !");
-    }).catch(error => {
-        console.error("Une erreur s'est produite :", error);
-    });
+    displaySelectedPhotographer();
+
 
 
     /**
 
      Affiche les éléments multimédias dans la page à partir d'une liste d'objet de photographies.
      @function
-     @param {Array} photographies - La liste d'objet des photographies à afficher.
+     @param {Object} photographies - La liste d'objet des photographies à afficher.
      @throws {Error} - Si la liste d'objet de photographies est vide.
      */
     // affiche les médias à partir d'une liste d'objets
@@ -217,18 +218,19 @@
 
       const section = document.createElement("div");
       section.className = "media-section";
+      section.setAttribute("role", "region");
 
       const mainElement = document.querySelector("main");
       mainElement.append(section);
 
-      photographies.forEach((photographie, index) => {
-
+      photographies.forEach((photographie) => {
         const cardModel = mediaFactory(photographie);
         const cardElement = cardModel.getMediCardDOM();
+        cardElement.setAttribute("tabindex", "0");
         section.append(cardElement);
       });
-
     }
+
 
     /**
      * Affiche les médias du photographe.
@@ -239,8 +241,10 @@
      * @throws {Error} - Si une erreur se produit lors de l'affichage des médias.
      */
     async function displayPhotographerMedia() {
+      const photographerMediaList = await photographerMedias();
+
       try {
-        await displayMediaElements(Object.values(photographerMediaItems));
+        await displayMediaElements(Object.values(photographerMediaList));
         showLightBox();
       } catch (error) {
         console.error("Une erreur s'est produite lors de l'affichage des médias :", error);
@@ -280,13 +284,30 @@
     }
 
     fetchSelectedPhotographerData()
-      .then(selectedPhotographer => {
+
+
+    /**
+     *
+     * @async
+     * @function Initiale les données du photographe et les médias.
+     */
+    async function init() {
+      try {
+        const photographerMediaData = await photographerMedias();
+
+        const selectedPhotographer = await fetchSelectedPhotographerData();
+
         console.log("La promesse a été résolue avec succès !");
-        displayRateAndLikes(selectedPhotographer, photographerMediaItems);
-      })
-      .catch(error => {
+        displayRateAndLikes(selectedPhotographer, photographerMediaData);
+
+      } catch (error) {
         console.error("Une erreur s'est produite lors de l'affichage des données :", error);
-      });
+      }
+    }
+
+    init();
+
+
 
 
 
@@ -294,11 +315,6 @@
     /***************************************************
      Lightbox
      ***************************************************/
-
-    const imageElement = document.querySelector('.showLightBox');
-    const imageId = imageElement.getAttribute('data-id');
-    console.log('ID de l\'image:', imageId);
-
 
     /**
      * La fonction affiche une lightbox lorsque l'utilisateur clique
@@ -308,112 +324,15 @@
      */
 
     function showLightBox() {
-
       const cardImgElements = document.querySelectorAll(".showLightBox");
 
       cardImgElements.forEach((card) => {
         card.addEventListener("click", () => {
           const imageId = card.getAttribute('data-id');
-          displayPhotographerMedias(imageId);
-
-          openLightbox("showLightBox");
+          displayPhotographerMedias(imageId)
+            .then(() => {
+              openLightbox("showLightBox");
+            });
         });
       });
-    }
-
-
-    /**
-     * Affiche les médias (images et vidéos) du photographe dans une lightbox.
-     * @async
-     */
-    async function getPhotographerMedias() {
-      return await photographerMedias();
-    }
-
-
-    function createVideoContainer() {
-      const videoContainers = document.querySelectorAll('.show-lightbox__nav-image video');
-      videoContainers.forEach(container => container.remove());
-
-      const videoContainer = document.createElement('video');
-      videoContainer.controls = true;
-      videoContainer.style.display = 'none';
-      document.querySelector('.show-lightbox__nav-image').appendChild(videoContainer);
-      return videoContainer;
-    }
-
-
-    function setMediaAttributes(mediaItem, mediaCard, container) {
-      if (mediaItem.image) {
-        const img = mediaCard.querySelector('img');
-        img.classList.remove('showLightBox');
-        img.classList.add('lightbox-media');
-        container.setAttribute('src', img.getAttribute('src'));
-      } else if (mediaItem.video) {
-        const video = mediaCard.querySelector('video');
-        video.classList.remove('showLightBox');
-        video.classList.add('lightbox-media');
-        container.setAttribute('src', video.getAttribute('src'));
-      }
-    }
-
-    async function displayPhotographerMedias(clickedImageId) {
-      const media = await getPhotographerMedias();
-      const imagesContainer = document.querySelector('.show-lightbox__nav-image img');
-      const videoContainer = createVideoContainer();
-
-      let initialImageIndex = 0;
-      media.forEach((mediaItem, index) => {
-        if (mediaItem.id === parseInt(clickedImageId)) {
-          initialImageIndex = index;
-        }
-      });
-
-
-      let currentIndex = initialImageIndex;
-
-      media.forEach((mediaItem) => {
-        const { getMediCardDOM } = mediaFactory(mediaItem);
-        const mediaCard = getMediCardDOM();
-        setMediaAttributes(mediaItem, mediaCard, mediaItem.image ? imagesContainer : videoContainer);
-      });
-
-      const updateLightboxMedia = (currentIndex) => {
-        const mediaItem = media[currentIndex];
-        const { getMediCardDOM } = mediaFactory(mediaItem);
-        const mediaCard = getMediCardDOM();
-        setMediaAttributes(mediaItem, mediaCard, mediaItem.image ? imagesContainer : videoContainer);
-
-        if (mediaItem.image) {
-          videoContainer.style.display = 'none';
-          imagesContainer.style.display = 'block';
-        } else if (mediaItem.video) {
-          imagesContainer.style.display = 'none';
-          videoContainer.style.display = 'block';
-        }
-      };
-
-
-      function handleNavChevron(event) {
-        if (event.type === "click" || (event.key === "Enter" && (document.activeElement === navChevronLeft || document.activeElement === navChevronRight))) {
-          if (document.activeElement === navChevronLeft) {
-            currentIndex = (currentIndex - 1 + media.length) % media.length;
-          } else if (document.activeElement === navChevronRight) {
-            currentIndex = (currentIndex + 1) % media.length;
-          }
-          updateLightboxMedia(currentIndex);
-
-          event.preventDefault();
-        }
-      }
-
-      const { navChevronLeft, navChevronRight } = getNavChevrons();
-
-      navChevronRight.addEventListener('click', handleNavChevron);
-      navChevronLeft.addEventListener('click', handleNavChevron);
-      navChevronLeft.addEventListener('keydown', handleNavChevron);
-      navChevronRight.addEventListener('keydown', handleNavChevron);
-
-
-      updateLightboxMedia(currentIndex);
     }

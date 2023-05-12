@@ -20,13 +20,22 @@
             // Trie par titre "title"
             return mediaA.title.localeCompare(mediaB.title);
           default:
-            // Ne pas trier si le critère de tri n'est pas valide
+            // Critère de tri non valide
+            console.log("Critère de tri non valide : " + sortBy);
             return 0;
         }
       });
     }
 
-    //met à jour l'interface utilisateur avec les données triées.
+    /**
+     * Met à jour l'interface utilisateur en supprimant les éléments médias existants du conteneur.
+     * Recréer et en ajoute les éléments médias à partir des données triées.
+     *
+     * @export
+     * @param {Object} sortedData - Les données triées à utiliser pour créer les nouveaux éléments médias.
+     * @param {Function} mediaFactory - Prend en entrée un objet de données média et qui retourne un élément média.
+     * @param {Function} showLightBox - Permet d'afficher la lightbox.
+     */
     export function updateUI(sortedData, mediaFactory, showLightBox) {
       // Supprime les éléments médias existants du conteneur
       const mediaContainer = document.querySelector(".media-section");
@@ -43,8 +52,16 @@
       showLightBox();
     }
 
-    //traite l'événement de changement, trie les données et affiche les données triées.
-    export function handleSortAndDisplay(event, photographerMediaItems) {
+
+    /**
+     * Trie et affiche des éléments média du photographe en fonction du tri.
+     *
+     * @param {Event} event - L'événement de sélection d'une option dans le menu déroulant.
+     * @param {Object} photographerMediaItems - Un tableau d'objets représentant les éléments média du photographe.
+     *
+     * @returns {Object[]} - Un tableau d'objets média trié selon le critère spécifié.
+     */
+    export function sortAndDisplay(event, photographerMediaItems) {
       // Récupère la valeur sélectionnée dans le menu déroulant
       const sortBy = event.target.value;
 
@@ -62,3 +79,4 @@
 
       return sortedData;
     }
+

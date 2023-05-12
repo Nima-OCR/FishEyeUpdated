@@ -6,7 +6,7 @@
  * @param {HTMLSelectElement} selectElement - L'élément 'select' dans lequel les options seront ajoutées.
  */
 export function createDropdownMenu(selectElement) {
-  // Créer le label et l'ajouter au DOM avant la balise select
+  // Créer le label et l'ajoute au DOM avant la balise select
   const labelElement = document.createElement('label');
   labelElement.setAttribute('for', 'dropdownMenu');
   labelElement.textContent = 'Trier par ';
