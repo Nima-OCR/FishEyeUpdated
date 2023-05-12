@@ -1,5 +1,5 @@
     import { getPhotographers } from '../utils/photographerAPI.js';
-    import { photographerMedias } from '../utils/photographerMedias.js';
+    import { photographerMedias, displayMediaElements } from '../utils/photographerMedias.js';
     import { mediaFactory } from '../factories/mediaFactory.js';
     import { displayModal, closeModal } from "../utils/contactForm.js";
     import { openLightbox} from "../utils/lightBoxModal.js";
@@ -205,32 +205,10 @@
 
 
 
-    /**
 
-     Affiche les éléments multimédias dans la page à partir d'une liste d'objet de photographies.
-     @function
-     @param {Object} photographies - La liste d'objet des photographies à afficher.
-     @throws {Error} - Si la liste d'objet de photographies est vide.
-     */
-    // affiche les médias à partir d'une liste d'objets
-    function displayMediaElements(photographies) {
-      console.log('Éléments à afficher :', photographies);
-
-      const section = document.createElement("div");
-      section.className = "media-section";
-      section.setAttribute("role", "region");
-
-      const mainElement = document.querySelector("main");
-      mainElement.append(section);
-
-      photographies.forEach((photographie) => {
-        const cardModel = mediaFactory(photographie);
-        const cardElement = cardModel.getMediCardDOM();
-        cardElement.setAttribute("tabindex", "0");
-        section.append(cardElement);
-      });
-    }
-
+    /***************************************************
+                  Display Photographe Medias
+     ***************************************************/
 
     /**
      * Affiche les médias du photographe.
@@ -251,16 +229,15 @@
       }
     }
 
-
     displayPhotographerMedia().then(() => {
-      console.log("La promesse a été résolue avec succès !");
+      console.log("Affichage des Médias avec succès !");
     }).catch(error => {
-      console.error("Une erreur s'est produite :", error);
+      console.error("Une erreur s'est produite lors de l'affichage des Médias :", error);
     });
 
 
     /***************************************************
-                  display Rate And Likes
+                  Display Rate And Likes
      ***************************************************/
 
     /**
@@ -296,18 +273,18 @@
 
         displayRateAndLikes(selectedPhotographer, photographerMediaData);
       } catch (error) {
-        console.error("Une erreur s'est produite lors de l'affichage de l\'encart qui représente les likes d'un photographe", error);
+        console.error("Une erreur s'est produite lors de l'affichage de l'encart qui représente les likes d'un photographe", error);
       }
     }
 
     init().then(() => {
-      console.log("L'initialisation de  l\'encart qui représente les likes d'un photographe a été terminée avec succès.");
+      console.log("L'initialisation de  l'encart qui représente les likes d'un photographe a été terminée avec succès.");
     });
 
 
 
     /***************************************************
-     Lightbox
+                        Display Lightbox
      ***************************************************/
 
     /**
