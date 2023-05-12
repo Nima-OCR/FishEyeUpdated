@@ -7,7 +7,7 @@
     import {validateForm} from "../utils/form-validation.js";
     import { sortAndDisplay } from "../utils/sortData.js";
     import { updateUI } from "../utils/sortData.js";
-    import {  createRateElement, createLikeElement, createTotalLikesElement } from "../utils/likeAndRate.js";
+    import { createElementWithClass, createRateAndLikesElement, calculateTotalLikes } from '../utils/likeAndRate.js';
     import { displayPhotographerMedias } from "../utils/lightBoxModal.js";
 
     // Récupération des paramètres de l'URL
@@ -77,7 +77,7 @@
      * @throws {Error} - Si aucun photographe n'a été trouvé avec l'ID spécifié.
      */
 
-    async function fetchData() {
+    export async function fetchData() {
       const dataFrom = await getPhotographers();
 
       // Trouve le photographe avec l'ID spécifié
@@ -259,56 +259,50 @@
     });
 
 
+    /***************************************************
+                  display Rate And Likes
+     ***************************************************/
+
     /**
-     * Encart qui affiche le tarif journalier et le nombre de likes du photographe sélectionné.
+     * Crée et affiche le tarif journalier et le nombre total de likes du photographe sélectionné.
      *
+     * @param {Object} selectedPhotographer - L'objet du photographe sélectionné.
+     * @param {Object} photographerMediaItems - Une liste d'objets représentant les médias du photographe.
      */
 
     function displayRateAndLikes(selectedPhotographer, photographerMediaItems) {
-      const asideElement = document.createElement("aside");
-      const rateElement = createRateElement(selectedPhotographer);
-      const likeElement = createLikeElement();
-      const totalLikesElement = createTotalLikesElement(photographerMediaItems);
+      const asideElement = createElementWithClass("aside", "");
+      const rateElement = createRateAndLikesElement("div", "rate", `${selectedPhotographer.price}€ / jour`);
+      const likeElement = createRateAndLikesElement("div", "likes", `<i class="fa fa-heart"></i> `);
+      const totalLikesElement = createRateAndLikesElement("p", "total-likes", `${calculateTotalLikes(photographerMediaItems)}`);
 
       asideElement.append(rateElement, likeElement, totalLikesElement);
       document.querySelector("main").append(asideElement);
     }
 
-    async function fetchSelectedPhotographerData() {
-      try {
-        return await fetchData();
-      } catch (error) {
-        console.error("Une erreur s'est produite lors de la récupération des données :", error);
-        throw error;
-      }
-    }
-
-    fetchSelectedPhotographerData()
-
-
     /**
+     * Initialise l'application en récupérant les données des médias du photographe et du photographe sélectionné,
+     * puis affiche le tarif et le nombre de likes du photographe sélectionné.
+     * En cas d'erreur lors de la récupération des données, l'erreur est enregistrée dans la console.
      *
      * @async
-     * @function Initiale les données du photographe et les médias.
+     * @function
+     * @throws Crée une erreur s'il y a un problème lors de la récupération des données.
      */
     async function init() {
       try {
         const photographerMediaData = await photographerMedias();
+        const selectedPhotographer = await fetchData();
 
-        const selectedPhotographer = await fetchSelectedPhotographerData();
-
-        console.log("La promesse a été résolue avec succès !");
         displayRateAndLikes(selectedPhotographer, photographerMediaData);
-
       } catch (error) {
-        console.error("Une erreur s'est produite lors de l'affichage des données :", error);
+        console.error("Une erreur s'est produite lors de l'affichage de l\'encart qui représente les likes d'un photographe", error);
       }
     }
 
-    init();
-
-
-
+    init().then(() => {
+      console.log("L'initialisation de  l\'encart qui représente les likes d'un photographe a été terminée avec succès.");
+    });
 
 
 
