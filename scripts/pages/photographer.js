@@ -19,57 +19,9 @@
     const photographerId = urlParams.get("id");
 
 
-
-    /**
-     * On recherche l'élément 'select' qu'on stocke dans la constante 'selectElement'.
-     * Ensuite, on appelle la fonction 'createDropdownMenu' en lui passant 'selectElement' en argument.
-     *
-     * @type {HTMLSelectElement} selectElement - L'élément 'select' dans le DOM.
-     */
-    const selectElement = document.querySelector('select');
-    createDropdownMenu(selectElement);
-
-
-
-    /**
-     * Cette fonction est un écouteur d'événement pour un menu déroulant.
-     * Lorsque la valeur sélectionnée dans le menu change,la fonction sortAndDisplay est appelée
-     * La fonction updateUI est appelée pour mettre à jour l'interface utilisateur.
-     * La fonction showLightBox est appelée pour afficher la lightbox.
-     *
-     * @listens #dropdownMenu:change - L'événement qui déclenche l'exécution de cette fonction.
-     * @param {Event} event - L'objet Event qui représente l'événement qui a déclenché l'écouteur.
-     */
-    document.querySelector("#dropdownMenu").addEventListener("change", async (event) => {
-      try {
-        const mediaList = await photographerMedias();
-        const sortedData = sortAndDisplay(event, mediaList);
-        updateUI(sortedData, mediaFactory, showLightBox);
-      } catch (error) {
-        console.error("Une erreur s'est produite lors du chargement des données :", error);
-      }
-    });
-
-
-
-
-    /**
-     * Cette fonction ajoute un écouteur d'événements à un formulaire pour valider les données soumises.
-     *
-     * @listens form:submit - L'événement qui déclenche l'exécution de la fonction 'validateForm'.
-     */
-    function submitForm() {
-      const form = document.querySelector('form');
-
-      form.addEventListener('submit', validateForm);
-    }
-
-    submitForm();
-    console.log("Le formulaire a été soumis !");
-
-
-
-
+    /***************************************************
+                  Display Photographer Info
+     ***************************************************/
     /**
      * Recherche un photographe par son ID.
      *
@@ -85,11 +37,6 @@
       // Trouve le photographe avec l'ID spécifié
       return dataFrom.photographers.find(photographer => photographer.id === parseInt(photographerId));
     }
-
-    /***************************************************
-                  Display Photographer Info
-     ***************************************************/
-
     /**
      * Affiche les informations du photographe sélectionné
      * @async
@@ -130,7 +77,7 @@
 
 
     /***************************************************
-                  Display Photographe Medias
+                    Display Contact Modal
      ***************************************************/
 
     /**
@@ -157,6 +104,24 @@
         closeModal();
       });
     }
+
+    /***************************************************
+                  Validation du Formulaire
+     ***************************************************/
+
+    /**
+     * Cette fonction ajoute un écouteur d'événements à un formulaire pour valider les données soumises.
+     *
+     * @listens form:submit - L'événement qui déclenche l'exécution de la fonction 'validateForm'.
+     */
+    function submitForm() {
+      const form = document.querySelector('form');
+
+      form.addEventListener('submit', validateForm);
+    }
+
+    submitForm();
+    console.log("Le formulaire a été soumis !");
 
 
     /***************************************************
@@ -234,6 +199,39 @@
       console.log("L'initialisation de  l'encart qui représente les likes d'un photographe a été terminée avec succès.");
     });
 
+
+    /***************************************************
+                          Sorted by
+     ***************************************************/
+
+    /**
+     * On recherche l'élément 'select' qu'on stocke dans la constante 'selectElement'.
+     * Ensuite, on appelle la fonction 'createDropdownMenu' en lui passant 'selectElement' en argument.
+     *
+     * @type {HTMLSelectElement} selectElement - L'élément 'select' dans le DOM.
+     */
+    const selectElement = document.querySelector('select');
+    createDropdownMenu(selectElement);
+
+
+    /**
+     * Cette fonction est un écouteur d'événement pour un menu déroulant.
+     * Lorsque la valeur sélectionnée dans le menu change,la fonction sortAndDisplay est appelée
+     * La fonction updateUI est appelée pour mettre à jour l'interface utilisateur.
+     * La fonction showLightBox est appelée pour afficher la lightbox.
+     *
+     * @listens #dropdownMenu:change - L'événement qui déclenche l'exécution de cette fonction.
+     * @param {Event} event - L'objet Event qui représente l'événement qui a déclenché l'écouteur.
+     */
+    document.querySelector("#dropdownMenu").addEventListener("change", async (event) => {
+      try {
+        const mediaList = await photographerMedias();
+        const sortedData = sortAndDisplay(event, mediaList);
+        updateUI(sortedData, mediaFactory, showLightBox);
+      } catch (error) {
+        console.error("Une erreur s'est produite lors du chargement des données :", error);
+      }
+    });
 
 
     /***************************************************
