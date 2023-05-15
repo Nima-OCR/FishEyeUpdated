@@ -12,14 +12,20 @@
                          base tels que les titres, les paragraphes...
                        ###################################################################
                         */
-* {
-  box-sizing: border-box;
+*,
+*::after,
+*::before {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  box-sizing: inherit; }
 
 body {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   font-family: "DM Sans", sans-serif;
-  width: 85%;
+  max-width: 1400px;
   margin: 0 auto; }
 
 /*
@@ -213,7 +219,6 @@ form {
         color: #911C1C; }
 
 .dropdown {
-  position: relative;
   background-color: #901C1C;
   color: #FFFFFF;
   font-style: normal;
@@ -224,6 +229,12 @@ form {
   border-radius: 5px;
   border: 20px solid #901C1C;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); }
+  @media (max-width: 906px) {
+    .dropdown {
+      position: absolute;
+      top: 92%;
+      left: 50%;
+      transform: translate(-50%, -50%); } }
   .dropdown__options {
     -webkit-appearance: none;
     color: #FFFFFF;
@@ -244,6 +255,12 @@ label {
   font-size: 18px;
   line-height: 23px;
   margin-right: 25px; }
+  @media (max-width: 906px) {
+    label {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      font-size: 23px; } }
 
 /*
                        ############################################################################
@@ -252,11 +269,20 @@ label {
                        ############################################################################
                         */
 header {
+  width: 80%;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  height: 90px; }
+  height: 119px; }
+  @media (max-width: 906px) {
+    header {
+      width: 50%;
+      justify-content: center;
+      margin-top: 30px; } }
+  @media (max-width: 600px) {
+    header {
+      width: 80%; } }
 
 .photograph-header {
   background-color: #FAFAFA;
@@ -276,16 +302,22 @@ h1 {
     ###################################################################
      */
 .photographer_section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 83px;
   margin-top: 100px; }
   .photographer_section article {
-    justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; }
+    flex-direction: column;
+    width: 33.33%; }
+    @media (max-width: 906px) {
+      .photographer_section article {
+        width: 50%; } }
+    @media (max-width: 600px) {
+      .photographer_section article {
+        width: 100%; } }
     .photographer_section article a {
       cursor: pointer;
       text-decoration: none;
@@ -325,6 +357,7 @@ h1 {
      */
 .photographer-header {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -332,6 +365,9 @@ h1 {
   background-color: #FAFAFA;
   border-radius: 5px;
   text-align: center; }
+  @media (max-width: 906px) {
+    .photographer-header {
+      flex-direction: column-reverse; } }
   .photographer-header .photographer-details {
     margin-right: 20px;
     margin-left: 0; }
@@ -343,6 +379,9 @@ h1 {
       line-height: 83px;
       color: #D3573C;
       margin: 0; }
+      @media (max-width: 906px) {
+        .photographer-header .photographer-details .photographer-name {
+          margin-top: 20px; } }
     .photographer-header .photographer-details .photographer-location,
     .photographer-header .photographer-details .photographer-tagline {
       font-family: "DM Sans", sans-serif;
@@ -354,9 +393,17 @@ h1 {
       font-size: 24px;
       line-height: 31px;
       color: #901C1C; }
+      @media (max-width: 906px) {
+        .photographer-header .photographer-details .photographer-location {
+          display: flex;
+          justify-content: center; } }
     .photographer-header .photographer-details .photographer-tagline {
       font-size: 18px;
       line-height: 23px; }
+      @media (max-width: 906px) {
+        .photographer-header .photographer-details .photographer-tagline {
+          display: flex;
+          justify-content: center; } }
   .photographer-header .contact-button {
     background-color: #911C1C;
     color: #ffffff;
@@ -373,6 +420,9 @@ h1 {
     text-align: center;
     height: 69px;
     cursor: pointer; }
+    @media (max-width: 906px) {
+      .photographer-header .contact-button {
+        margin-top: 20px; } }
     .photographer-header .contact-button:hover {
       background-color: #D3573C;
       color: #000000; }
@@ -393,11 +443,22 @@ h1 {
   padding: 30px 0;
   gap: 20px;
   align-items: center; }
+  @media (max-width: 906px) {
+    .media-section {
+      justify-content: space-evenly;
+      margin-top: 80px; } }
   .media-section figcaption {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px; }
+    @media (max-width: 906px) {
+      .media-section figcaption {
+        right: 176px;
+        color: #FFFFFF;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background-color: #911C1C; } }
   .media-section h3 {
     width: 250px;
     margin: 0;
@@ -410,6 +471,10 @@ h1 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
+    @media (max-width: 906px) {
+      .media-section h3 {
+        color: #FFFFFF;
+        padding-left: 10px; } }
   .media-section p {
     font-family: "DM Sans", sans-serif;
     font-style: normal;
@@ -421,6 +486,15 @@ h1 {
     display: inline-block;
     margin: 0;
     vertical-align: middle; }
+    @media (max-width: 906px) {
+      .media-section p {
+        position: relative;
+        top: 50px;
+        right: 15px;
+        color: #000000;
+        background-color: #DB8876;
+        border-radius: 10px;
+        padding: 5px 30px 5px 10px; } }
   .media-section .heart-container {
     font-size: 16px;
     display: inline-block;
@@ -437,12 +511,20 @@ h1 {
   .media-section figure {
     width: 350px;
     height: 351px; }
+    @media (max-width: 906px) {
+      .media-section figure {
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse; } }
   .media-section img, .media-section video {
     width: 350px;
     height: 300px;
     border-radius: 5px;
     object-fit: cover;
     cursor: pointer; }
+    @media (max-width: 906px) {
+      .media-section img, .media-section video {
+        border-radius: 0px 0px 5px 5px; } }
   .media-section .heart-container {
     position: relative;
     display: inline-block; }

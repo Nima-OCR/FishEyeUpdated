@@ -5,17 +5,49 @@
      */
 
     .photographer_section {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 70px;
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 83px;
       margin-top: 100px;
 
+      @include respond(laptop) {
+        // Styles pour l'affichage sur laptop
+      }
+
+      @include respond(tablet) {
+        // Styles pour l'affichage sur tablette
+
+      }
+
+      @include respond(mobile) {
+        // Styles pour l'affichage sur mobile
+      }
+
+
+
       article {
-        justify-self: center;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        width: 33.33%;
+
+        @include respond(laptop) {
+          // Styles pour l'affichage sur laptop
+
+        }
+
+        @include respond(tablet) {
+          // Styles pour l'affichage sur tablette
+          width: 50%;
+
+        }
+
+        @include respond(mobile) {
+          // Styles pour l'affichage sur mobile
+          width: 100%;
+
+        }
 
         a {
           cursor: pointer;

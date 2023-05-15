@@ -5,30 +5,51 @@
                        ############################################################################
                         */
 
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
-}
+        header {
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            height: 119px;
+
+          @include respond(tablet) {
+            // Styles pour l'affichage sur tablette
+            width: 50%;
+            justify-content: center;
+            margin-top: 30px;
+
+          }
+
+          @include respond(mobile) {
+            // Styles pour l'affichage sur mobile
+            width: 80%;
+          }
+        }
 
 
 
-.photograph-header {
-    background-color: $color-background;
-    height: 300px;
-}
+        .photograph-header {
+            background-color: $color-background;
+            height: 300px;
 
-h1 {
-    color: $color-primary;
-    margin-right: 0;
-}
 
-.logo {
-    height: 50px;
-    cursor: pointer;
-}
+        }
+
+        h1 {
+            color: $color-primary;
+            margin-right: 0;
+
+          @include respond(mobile) {
+            // Styles pour l'affichage sur mobile
+            //font-size: 25px;
+          }
+        }
+
+        .logo {
+            height: 50px;
+            cursor: pointer;
+        }
 
 
 

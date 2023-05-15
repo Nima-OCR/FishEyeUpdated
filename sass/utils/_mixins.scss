@@ -1,0 +1,13 @@
+
+
+      @mixin respond($breakpoint) {
+        @if $breakpoint == 'laptop' {
+          @media (max-width: 1200px) { @content; } // pour les laptop
+        }
+        @if $breakpoint == 'tablet' {
+          @media (max-width: 906px) { @content; } // pour les tablettes
+        }
+        @if $breakpoint == 'mobile' {
+          @media (max-width: 600px) { @content; } // pour les téléphones mobiles
+        }
+      }

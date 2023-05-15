@@ -5,15 +5,22 @@
                        ###################################################################
                         */
 
-    * {
-      box-sizing: border-box;
+    *,
+    *::after,
+    *::before {
       margin: 0;
       padding: 0;
+      box-sizing: inherit;
     }
 
     body {
+      //width: 95%;
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       font-family: "DM Sans", sans-serif;
-      width: 85%;
+      max-width: $max-width;
       margin: 0 auto;
     }
 
