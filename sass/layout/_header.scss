@@ -5,27 +5,32 @@
                        ############################################################################
                         */
 
-        header {
-            width: 80%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            height: 119px;
 
-          @include respond(tablet) {
-            // Styles pour l'affichage sur tablette
-            width: 50%;
-            justify-content: center;
-            margin-top: 30px;
+    .header {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      height: 119px;
 
-          }
+      @include respond(tablet) {
 
-          @include respond(mobile) {
-            // Styles pour l'affichage sur mobile
-            width: 80%;
-          }
-        }
+        //margin-top: 30px;
+
+      }
+
+      @include respond(mobile) {
+        justify-content: center;
+        width: 80%;
+      }
+
+      &--width {
+        width: 100%;
+      }
+    }
+
+
 
 
 
@@ -39,16 +44,16 @@
         h1 {
             color: $color-primary;
             margin-right: 0;
-
-          @include respond(mobile) {
-            // Styles pour l'affichage sur mobile
-            //font-size: 25px;
-          }
         }
 
         .logo {
             height: 50px;
             cursor: pointer;
+
+          @include respond(tablet) {
+            height: 45px;
+
+          }
         }
 
 

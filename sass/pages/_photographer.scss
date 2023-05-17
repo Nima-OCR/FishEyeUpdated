@@ -4,6 +4,8 @@
     ########################################################################
      */
 
+
+
     .photographer-header {
       display: flex;
       flex-wrap: wrap;
@@ -14,35 +16,28 @@
       background-color: $color-background;
       border-radius: 5px;
       text-align: center;
-      //margin: 40px 100px 0;
-
-      @include respond(laptop) {
-        // Styles pour l'affichage sur laptop
-      }
 
       @include respond(tablet) {
-        // Styles pour l'affichage sur tablette
+        flex-direction: row-reverse;
+        padding: 47px 40px;
+      }
+
+      @include respond(tablet-mobile) {
+        text-align: left;
+      }
+
+      @include respond(mobile) {
         flex-direction: column-reverse;
 
       }
 
-      @include respond(mobile) {
-        // Styles pour l'affichage sur mobile
-      }
+
 
       .photographer-details {
         margin-right: 20px;
         margin-left: 0;
 
-        @include respond(tablet) {
-          // Styles pour l'affichage sur tablette
 
-
-        }
-
-        @include respond(mobile) {
-          // Styles pour l'affichage sur mobile
-        }
 
         .photographer-name {
           font-family: $font-sans;
@@ -54,8 +49,16 @@
           margin: 0;
 
           @include respond(tablet) {
-            // Styles pour l'affichage sur tablette
-            margin-top: 20px;
+            font-size: 44px;
+            text-align: left;
+          }
+
+          @include respond(tablet-mobile) {
+            font-size: 44px;
+          }
+
+          @include respond(mobile) {
+            font-size: 50px;
           }
         }
 
@@ -73,25 +76,27 @@
           line-height: 31px;
           color: $color-primary;
 
-          @include respond(tablet) {
-            // Styles pour l'affichage sur tablette
+
+
+          @include respond(mobile) {
             display: flex;
             justify-content: center;
           }
 
-          @include respond(mobile) {
-            // Styles pour l'affichage sur mobile
-          }
+
         }
 
         .photographer-tagline {
           font-size: 18px;
           line-height: 23px;
 
-          @include respond(tablet) {
-            // Styles pour l'affichage sur tablette
+          //@include respond(tablet) {
+          //  font-size: 17px;
+          //}
+
+          @include respond(mobile) {
             display: flex;
-            justify-content: center;
+            text-align: center;
           }
         }
       }
@@ -113,14 +118,16 @@
         height: 69px;
         cursor: pointer;
 
+
+
         @include respond(tablet) {
-          // Styles pour l'affichage sur tablette
-          margin-top: 20px;
+          font-size: 16px;
+          padding: 5px 10px;
+
 
         }
 
         @include respond(mobile) {
-          // Styles pour l'affichage sur mobile
         }
 
         &:hover {
@@ -134,6 +141,11 @@
         height: 200px;
         object-fit: cover;
         border-radius: 50%;
+
+        @include respond(tablet) {
+          width: 150px;
+          height: 150px;
+        }
       }
     }
 
@@ -151,150 +163,163 @@
       gap: 20px;
       align-items: center;
 
-      @include respond(tablet) {
-        // Styles pour l'affichage sur tablette
+      @include respond(large-screen) {
         justify-content: space-evenly;
-        margin-top: 80px;
+      }
+
+      @include respond(laptop) {
+
+      }
+
+      @include respond(tablet) {
       }
 
       @include respond(mobile) {
-        // Styles pour l'affichage sur mobile
       }
 
       article {
-      }
-
-
-
-      figcaption {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 10px;
-
-        @include respond(tablet) {
-          // Styles pour l'affichage sur tablette
-          //position: absolute;
-          right: 176px;
-          color: #FFFFFF;
-          border-top-left-radius: 15px;
-          border-top-right-radius: 15px;
-          background-color: $color-deep-red;
-        }
-      }
-
-      h3 {
-        width: 250px;
-        margin: 0;
-        font-family: $font-sans;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 31px;
-        color: $color-deep-red;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-
-        @include respond(tablet) {
-          // Styles pour l'affichage sur tablette
-          color: $color-white;
-          padding-left: 10px;
-        }
-      }
-
-
-
-      p {
-        font-family: $font-sans;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 24px;
-        padding-right: 24px;
-        line-height: 31px;
-        color: $color-deep-red;
-        display: inline-block;
-        margin: 0;
-        vertical-align: middle;
-
-        @include respond(tablet) {
-          // Styles pour l'affichage sur tablette
-          position: relative;
-          top: 50px;
-          right: 15px;
-          color: $color-black;
-          background-color: $color-secondary;
-          border-radius: 10px;
-          padding: 5px 30px 5px 10px;
-        }
-      }
-
-      .heart-container {
-        font-size: 16px;
-        display: inline-block;
-        align-items: center;
-        vertical-align: middle;
-      }
-
-      .fa-heart {
-        font-size: 24px;
-        cursor: pointer;
-      }
-
-      .fas.fa-heart {
-        position: absolute;
-        z-index: 0;
-        animation: fill 500ms;
-        display: none;
-      }
-
-      figure {
-        width: 350px;
+        width: 30%;
         height: 351px;
 
+
         @include respond(tablet) {
-          // Styles pour l'affichage sur tablette
+          width: 45%;
+        }
+
+        figure {
           width: 100%;
+
+          @include respond(mobile) {
+            display: flex;
+            flex-direction: column-reverse;
+          }
+        }
+
+        img, video {
+          width: 100%;
+          height: 300px;
+          border-radius: 5px;
+          object-fit: cover;
+          cursor: pointer;
+
+          @include respond(laptop) {
+            border-radius: 0px 0px 5px 5px;
+          }
+
+          @include respond(tablet) {
+
+          }
+        }
+
+        figcaption {
+          width: 100%;
+          padding-right: 6px;
           display: flex;
-          flex-direction: column-reverse;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 10px;
+
+          @include respond(mobile) {
+            padding-right: 0;
+            right: 176px;
+            color: #FFFFFF;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-color: $color-price;
+          }
         }
-      }
 
-      img, video {
-        width: 350px;
-        height: 300px;
-        border-radius: 5px;
-        object-fit: cover;
-        cursor: pointer;
+        h3 {
+          width: 250px;
+          margin: 0;
+          font-family: $font-sans;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 31px;
+          color: $color-deep-red;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
 
-        @include respond(tablet) {
-          // Styles pour l'affichage sur tablette
-          border-radius: 0px 0px 5px 5px;
-
-          //border-bottom-left-radius: 20px;
-          //border-bottom-right-radius: 20px;
+          @include respond(mobile) {
+            font-size: 20px;
+            color: $color-white;
+            padding-left: 10px;
+          }
         }
+
+
+
+        p {
+          font-family: $font-sans;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 24px;
+          padding-right: 24px;
+          line-height: 31px;
+          color: $color-deep-red;
+          display: inline-block;
+          margin: 0;
+          vertical-align: middle;
+
+          @include respond(mobile) {
+            position: relative;
+            font-size: 20px;
+            width: 80px;
+            top: 0;
+            right: 0;
+            color: $color-black;
+            background-color: $color-secondary;
+            border-radius: 0 10px 0 0;
+            padding: 5px 30px 5px 10px;
+          }
+        }
+
+        .heart-container {
+          font-size: 16px;
+          display: inline-block;
+          align-items: center;
+          vertical-align: middle;
+        }
+
+        .fa-heart {
+          font-size: 24px;
+          cursor: pointer;
+        }
+
+        .fas.fa-heart {
+          position: absolute;
+          z-index: 0;
+          animation: fill 500ms;
+          display: none;
+        }
+
+        .heart-container {
+          position: relative;
+          display: inline-block;
+        }
+
+        .fa-heart {
+          font-size: 24px;
+          cursor: pointer;
+          position: absolute;
+          top: -14px;
+          left: 0;
+        }
+
+        .fas.fa-heart {
+          position: absolute;
+          z-index: 0;
+          animation: fill 500ms;
+          display: none;
+        }
+
       }
 
-      .heart-container {
-        position: relative;
-        display: inline-block;
-      }
 
-      .fa-heart {
-        font-size: 24px;
-        cursor: pointer;
-        position: absolute;
-        top: -14px;
-        left: 0;
-      }
 
-      .fas.fa-heart {
-        position: absolute;
-        z-index: 0;
-        animation: fill 500ms;
-        display: none;
-      }
+
 
       @keyframes fill {
         from {
@@ -320,22 +345,30 @@
 
     main {
       aside {
-        border-radius: 5px;
-        margin-right: 36px;
 
         display: flex;
+        align-items: center;
+        border-radius: 5px;
+        margin-right: 36px;
         position: fixed;
         bottom: 0;
         right: 0;
-        padding: 10px;
+        padding: 20px 40px;
         background-color: $color-secondary;
         flex-direction: row-reverse;
 
-        .rate, .likes {
-          display: flex;
-          align-items: center;
+        @include respond(mobile) {
+          width: 90%;
+          justify-content: center;
+          position: fixed;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
           padding: 10px;
+        }
 
+        .rate, .likes {
+          padding: 0 0 0 5px;
           font-family: $font-sans;
           font-style: normal;
           font-weight: 500;
@@ -344,18 +377,21 @@
           text-align: center;
         }
 
+        .rate {
+          padding: 0 0 0 30px;
+
+        }
+
         .likes {
           margin-right: 10px;
         }
 
         .total-likes {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          width: 50px;
           font-weight: 500;
           font-size: 24px;
           line-height: 31px;
-          padding: 10px;
+          //padding: 0 20px 0 20px;
         }
 
         .fa-heart {

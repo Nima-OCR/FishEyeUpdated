@@ -26,7 +26,8 @@ body {
   justify-content: center;
   font-family: "DM Sans", sans-serif;
   max-width: 1400px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 0 30px 50px 30px; }
 
 /*
                        ###################################################################
@@ -52,35 +53,43 @@ form {
     align-items: self-start; }
     form div input {
       width: 100%;
-      height: 68px;
+      height: 58px;
       border: none;
-      border-radius: 5px; }
+      border-radius: 5px;
+      font-size: 24px; }
+      @media (max-width: 1064px) {
+        form div input {
+          height: 48px; } }
+      @media (max-width: 906px) {
+        form div input {
+          height: 38px; } }
   form textarea {
     width: 100%;
     height: 170px;
     border: none;
     border-radius: 5px;
     resize: none;
-    font-size: 16px;
+    font-size: 24px;
     font-family: sans-serif;
     line-height: 1.5;
     margin-bottom: 26px; }
   form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 34px;
     font-style: normal;
     font-weight: 400;
     line-height: 47px;
     mix-blend-mode: normal;
     margin-bottom: 5px;
     margin-top: 10px; }
+    @media (max-width: 1064px) {
+      form label {
+        font-size: 30px; } }
+    @media (max-width: 906px) {
+      form label {
+        font-size: 24px;
+        justify-content: flex-start; } }
 
-/*
-                       ############################################################################
-                         Ce dossier contient tous les styles pour les composants réutilisables
-                         du site, tels que les boutons, les formulaires, les modales,
-                       ############################################################################
-                        */
 #contact_modal {
   display: none;
   position: fixed;
@@ -103,6 +112,16 @@ form {
   background-color: #901C1C;
   border-radius: 5px;
   cursor: pointer; }
+  @media (max-width: 1064px) {
+    .contact_button {
+      font-size: 18px;
+      padding: 8px;
+      width: 160px;
+      height: 60px; } }
+  @media (max-width: 906px) {
+    .contact_button {
+      width: 150px;
+      height: 50px; } }
 
 .modal {
   border-radius: 5px;
@@ -114,11 +133,34 @@ form {
   justify-content: space-between;
   padding: 35px;
   margin: auto; }
+  @media (max-width: 1064px) {
+    .modal {
+      width: 55%; } }
+  @media (max-width: 906px) {
+    .modal {
+      width: 70%; } }
+  @media (max-width: 648px) {
+    .modal {
+      width: 85%;
+      padding: 20px; } }
   .modal header {
     justify-content: space-between;
     width: 100%; }
+    @media (max-width: 906px) {
+      .modal header {
+        margin-top: 0; } }
     .modal header img {
+      width: 30px;
+      height: 30px;
       cursor: pointer; }
+      @media (max-width: 1064px) {
+        .modal header img {
+          width: 25px;
+          height: 25px; } }
+      @media (max-width: 906px) {
+        .modal header img {
+          width: 20px;
+          height: 20px; } }
     .modal header h2 {
       font-family: "DM Sans", sans-serif;
       font-style: normal;
@@ -126,7 +168,22 @@ form {
       font-size: 64px;
       line-height: 83px;
       color: #000000; }
+      @media (max-width: 1064px) {
+        .modal header h2 {
+          font-size: 54px; } }
+      @media (max-width: 906px) {
+        .modal header h2 {
+          font-size: 40px; } }
+      @media (max-width: 648px) {
+        .modal header h2 {
+          font-size: 30px; } }
 
+/*
+                       ############################################################################
+                         Ce dossier contient tous les styles pour les composants réutilisables
+                         du site, tels que les boutons, les formulaires, les modales,
+                       ############################################################################
+                        */
 .show-lightbox {
   display: none;
   position: fixed;
@@ -229,10 +286,11 @@ form {
   border-radius: 5px;
   border: 20px solid #901C1C;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); }
-  @media (max-width: 906px) {
+  @media (max-width: 648px) {
     .dropdown {
+      width: unset;
       position: absolute;
-      top: 92%;
+      top: 89%;
       left: 50%;
       transform: translate(-50%, -50%); } }
   .dropdown__options {
@@ -248,6 +306,10 @@ form {
       font-size: 18px;
       line-height: 23px; }
 
+.select {
+  display: flex;
+  justify-content: space-between; }
+
 label {
   color: #000000;
   font-style: normal;
@@ -255,7 +317,7 @@ label {
   font-size: 18px;
   line-height: 23px;
   margin-right: 25px; }
-  @media (max-width: 906px) {
+  @media (max-width: 648px) {
     label {
       display: flex;
       justify-content: center;
@@ -268,21 +330,19 @@ label {
                          du site, tels que les boutons, les formulaires, les modales,
                        ############################################################################
                         */
-header {
-  width: 80%;
+.header {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   height: 119px; }
-  @media (max-width: 906px) {
-    header {
-      width: 50%;
+  @media (max-width: 648px) {
+    .header {
       justify-content: center;
-      margin-top: 30px; } }
-  @media (max-width: 600px) {
-    header {
       width: 80%; } }
+  .header--width {
+    width: 100%; }
 
 .photograph-header {
   background-color: #FAFAFA;
@@ -295,6 +355,9 @@ h1 {
 .logo {
   height: 50px;
   cursor: pointer; }
+  @media (max-width: 906px) {
+    .logo {
+      height: 45px; } }
 
 /*
     ###################################################################
@@ -304,20 +367,19 @@ h1 {
 .photographer_section {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 1px;
   row-gap: 83px;
-  margin-top: 100px; }
+  margin-top: 100px;
+  background-color: palegreen; }
+  @media (max-width: 906px) {
+    .photographer_section {
+      justify-content: space-evenly; } }
   .photographer_section article {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    width: 33.33%; }
-    @media (max-width: 906px) {
-      .photographer_section article {
-        width: 50%; } }
-    @media (max-width: 600px) {
-      .photographer_section article {
-        width: 100%; } }
+    flex-direction: column; }
     .photographer_section article a {
       cursor: pointer;
       text-decoration: none;
@@ -329,6 +391,9 @@ h1 {
       line-height: 47px;
       margin-top: 20px;
       margin-bottom: 0; }
+      @media (max-width: 1064px) {
+        .photographer_section article h2 {
+          font-size: 28px; } }
     .photographer_section article img {
       height: 200px;
       width: 200px;
@@ -350,6 +415,20 @@ h1 {
         font-weight: 400;
         font-size: 14px; }
 
+.photographer-card {
+  width: 30%;
+  background-color: darkorange; }
+  @media (max-width: 1064px) {
+    .photographer-card {
+      background-color: #901C1C;
+      width: 33%; } }
+  @media (max-width: 906px) {
+    .photographer-card {
+      width: 40%; } }
+  @media (max-width: 648px) {
+    .photographer-card {
+      width: 100%; } }
+
 /*
     ########################################################################
     |  Ce dossier contient les styles spécifiques à la page du photographe |
@@ -367,6 +446,13 @@ h1 {
   text-align: center; }
   @media (max-width: 906px) {
     .photographer-header {
+      flex-direction: row-reverse;
+      padding: 47px 40px; } }
+  @media (max-width: 796px) {
+    .photographer-header {
+      text-align: left; } }
+  @media (max-width: 648px) {
+    .photographer-header {
       flex-direction: column-reverse; } }
   .photographer-header .photographer-details {
     margin-right: 20px;
@@ -381,7 +467,14 @@ h1 {
       margin: 0; }
       @media (max-width: 906px) {
         .photographer-header .photographer-details .photographer-name {
-          margin-top: 20px; } }
+          font-size: 44px;
+          text-align: left; } }
+      @media (max-width: 796px) {
+        .photographer-header .photographer-details .photographer-name {
+          font-size: 44px; } }
+      @media (max-width: 648px) {
+        .photographer-header .photographer-details .photographer-name {
+          font-size: 50px; } }
     .photographer-header .photographer-details .photographer-location,
     .photographer-header .photographer-details .photographer-tagline {
       font-family: "DM Sans", sans-serif;
@@ -393,17 +486,17 @@ h1 {
       font-size: 24px;
       line-height: 31px;
       color: #901C1C; }
-      @media (max-width: 906px) {
+      @media (max-width: 648px) {
         .photographer-header .photographer-details .photographer-location {
           display: flex;
           justify-content: center; } }
     .photographer-header .photographer-details .photographer-tagline {
       font-size: 18px;
       line-height: 23px; }
-      @media (max-width: 906px) {
+      @media (max-width: 648px) {
         .photographer-header .photographer-details .photographer-tagline {
           display: flex;
-          justify-content: center; } }
+          text-align: center; } }
   .photographer-header .contact-button {
     background-color: #911C1C;
     color: #ffffff;
@@ -422,7 +515,8 @@ h1 {
     cursor: pointer; }
     @media (max-width: 906px) {
       .photographer-header .contact-button {
-        margin-top: 20px; } }
+        font-size: 16px;
+        padding: 5px 10px; } }
     .photographer-header .contact-button:hover {
       background-color: #D3573C;
       color: #000000; }
@@ -431,6 +525,10 @@ h1 {
     height: 200px;
     object-fit: cover;
     border-radius: 50%; }
+    @media (max-width: 906px) {
+      .photographer-header .photographer-image {
+        width: 150px;
+        height: 150px; } }
 
 /***********************
       Photographer section
@@ -443,102 +541,111 @@ h1 {
   padding: 30px 0;
   gap: 20px;
   align-items: center; }
-  @media (max-width: 906px) {
+  @media (max-width: 1151px) {
     .media-section {
-      justify-content: space-evenly;
-      margin-top: 80px; } }
-  .media-section figcaption {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px; }
-    @media (max-width: 906px) {
-      .media-section figcaption {
-        right: 176px;
-        color: #FFFFFF;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-        background-color: #911C1C; } }
-  .media-section h3 {
-    width: 250px;
-    margin: 0;
-    font-family: "DM Sans", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 31px;
-    color: #911C1C;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; }
-    @media (max-width: 906px) {
-      .media-section h3 {
-        color: #FFFFFF;
-        padding-left: 10px; } }
-  .media-section p {
-    font-family: "DM Sans", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    padding-right: 24px;
-    line-height: 31px;
-    color: #911C1C;
-    display: inline-block;
-    margin: 0;
-    vertical-align: middle; }
-    @media (max-width: 906px) {
-      .media-section p {
-        position: relative;
-        top: 50px;
-        right: 15px;
-        color: #000000;
-        background-color: #DB8876;
-        border-radius: 10px;
-        padding: 5px 30px 5px 10px; } }
-  .media-section .heart-container {
-    font-size: 16px;
-    display: inline-block;
-    align-items: center;
-    vertical-align: middle; }
-  .media-section .fa-heart {
-    font-size: 24px;
-    cursor: pointer; }
-  .media-section .fas.fa-heart {
-    position: absolute;
-    z-index: 0;
-    animation: fill 500ms;
-    display: none; }
-  .media-section figure {
-    width: 350px;
+      justify-content: space-evenly; } }
+  .media-section article {
+    width: 30%;
     height: 351px; }
     @media (max-width: 906px) {
-      .media-section figure {
-        width: 100%;
-        display: flex;
-        flex-direction: column-reverse; } }
-  .media-section img, .media-section video {
-    width: 350px;
-    height: 300px;
-    border-radius: 5px;
-    object-fit: cover;
-    cursor: pointer; }
-    @media (max-width: 906px) {
-      .media-section img, .media-section video {
-        border-radius: 0px 0px 5px 5px; } }
-  .media-section .heart-container {
-    position: relative;
-    display: inline-block; }
-  .media-section .fa-heart {
-    font-size: 24px;
-    cursor: pointer;
-    position: absolute;
-    top: -14px;
-    left: 0; }
-  .media-section .fas.fa-heart {
-    position: absolute;
-    z-index: 0;
-    animation: fill 500ms;
-    display: none; }
+      .media-section article {
+        width: 45%; } }
+    .media-section article figure {
+      width: 100%; }
+      @media (max-width: 648px) {
+        .media-section article figure {
+          display: flex;
+          flex-direction: column-reverse; } }
+    .media-section article img, .media-section article video {
+      width: 100%;
+      height: 300px;
+      border-radius: 5px;
+      object-fit: cover;
+      cursor: pointer; }
+      @media (max-width: 1064px) {
+        .media-section article img, .media-section article video {
+          border-radius: 0px 0px 5px 5px; } }
+    .media-section article figcaption {
+      width: 100%;
+      padding-right: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px; }
+      @media (max-width: 648px) {
+        .media-section article figcaption {
+          padding-right: 0;
+          right: 176px;
+          color: #FFFFFF;
+          border-top-left-radius: 15px;
+          border-top-right-radius: 15px;
+          background-color: #757575; } }
+    .media-section article h3 {
+      width: 250px;
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 31px;
+      color: #911C1C;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+      @media (max-width: 648px) {
+        .media-section article h3 {
+          font-size: 20px;
+          color: #FFFFFF;
+          padding-left: 10px; } }
+    .media-section article p {
+      font-family: "DM Sans", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      padding-right: 24px;
+      line-height: 31px;
+      color: #911C1C;
+      display: inline-block;
+      margin: 0;
+      vertical-align: middle; }
+      @media (max-width: 648px) {
+        .media-section article p {
+          position: relative;
+          font-size: 20px;
+          width: 80px;
+          top: 0;
+          right: 0;
+          color: #000000;
+          background-color: #DB8876;
+          border-radius: 0 10px 0 0;
+          padding: 5px 30px 5px 10px; } }
+    .media-section article .heart-container {
+      font-size: 16px;
+      display: inline-block;
+      align-items: center;
+      vertical-align: middle; }
+    .media-section article .fa-heart {
+      font-size: 24px;
+      cursor: pointer; }
+    .media-section article .fas.fa-heart {
+      position: absolute;
+      z-index: 0;
+      animation: fill 500ms;
+      display: none; }
+    .media-section article .heart-container {
+      position: relative;
+      display: inline-block; }
+    .media-section article .fa-heart {
+      font-size: 24px;
+      cursor: pointer;
+      position: absolute;
+      top: -14px;
+      left: 0; }
+    .media-section article .fas.fa-heart {
+      position: absolute;
+      z-index: 0;
+      animation: fill 500ms;
+      display: none; }
 
 @keyframes fill {
   from {
@@ -547,34 +654,41 @@ h1 {
     transform: scale(1); } }
 
 main aside {
+  display: flex;
+  align-items: center;
   border-radius: 5px;
   margin-right: 36px;
-  display: flex;
   position: fixed;
   bottom: 0;
   right: 0;
-  padding: 10px;
+  padding: 20px 40px;
   background-color: #DB8876;
   flex-direction: row-reverse; }
+  @media (max-width: 648px) {
+    main aside {
+      width: 90%;
+      justify-content: center;
+      position: fixed;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      padding: 10px; } }
   main aside .rate, main aside .likes {
-    display: flex;
-    align-items: center;
-    padding: 10px;
+    padding: 0 0 0 5px;
     font-family: "DM Sans", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
     line-height: 31px;
     text-align: center; }
+  main aside .rate {
+    padding: 0 0 0 30px; }
   main aside .likes {
     margin-right: 10px; }
   main aside .total-likes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 50px;
     font-weight: 500;
     font-size: 24px;
-    line-height: 31px;
-    padding: 10px; }
+    line-height: 31px; }
   main aside .fa-heart {
     color: #000000; }

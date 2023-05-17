@@ -19,7 +19,6 @@ export function mediaFactory(data) {
 
   function getMediCardDOM() {
     const article = document.createElement('article');
-    article.setAttribute('class', 'portfolio');
 
     const figure = document.createElement('figure');
     article.appendChild(figure);

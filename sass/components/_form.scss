@@ -19,9 +19,18 @@
 
         input {
           width: 100%;
-          height: 68px;
+          height: 58px;
           border: none;
           border-radius: 5px;
+          font-size: 24px;
+
+          @include respond(laptop) {
+            height: 48px;
+          }
+
+          @include respond(tablet) {
+            height: 38px;
+          }
         }
       }
 
@@ -31,7 +40,7 @@
         border: none;
         border-radius: 5px;
         resize: none;
-        font-size: 16px;
+        font-size: 24px;
         font-family: sans-serif;
         line-height: 1.5;
         margin-bottom: 26px;
@@ -39,13 +48,142 @@
 
       label {
         color: $color-label;
-        font-size: 36px;
+        font-size: 34px;
         font-style: normal;
         font-weight: 400;
         line-height: 47px;
         mix-blend-mode: normal;
         margin-bottom: 5px;
         margin-top: 10px;
+
+        @include respond(laptop) {
+          font-size: 30px;
+        }
+
+        @include respond(tablet) {
+          font-size: 24px;
+          justify-content: flex-start;
+
+        }
       }
     }
+
+#contact_modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(196, 196, 196, 0.4);
+}
+
+.contact_button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: $color-primary;
+  border-radius: 5px;
+  cursor: pointer;
+
+  @include respond(laptop){
+    font-size: 18px;
+    padding: 8px;
+    width: 160px;
+    height: 60px;
+  }
+
+  @include respond(tablet){
+    width: 150px;
+    height: 50px;
+  }
+
+  @include respond(mobile){
+  }
+}
+
+
+.modal {
+  border-radius: 5px;
+  background-color: $color-secondary;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+
+  @include respond(laptop) {
+    width: 55%;
+  }
+
+  @include respond(tablet) {
+    width: 70%;
+
+  }
+
+  @include respond(mobile) {
+    width: 85%;
+    padding: 20px;
+  }
+
+  header {
+    justify-content: space-between;
+    width: 100%;
+
+    @include respond(tablet) {
+      margin-top: 0;
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      @include respond(laptop) {
+        width: 25px;
+        height: 25px;
+      }
+
+      @include respond(tablet) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    h2 {
+      font-family: $font-sans;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 83px;
+      color: #000000;
+
+      @include respond(laptop) {
+        font-size: 54px;
+      }
+
+      @include respond(tablet) {
+        font-size: 40px;
+      }
+
+      @include respond(mobile) {
+        font-size: 30px;
+      }
+    }
+  }
+
+  input {
+    //font-size: 20px;
+  }
+}
+
+
 
