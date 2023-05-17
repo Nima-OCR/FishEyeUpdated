@@ -62,12 +62,12 @@ form div input {
   border-radius: 5px;
   font-size: 24px;
 }
-@media (max-width: 1064px) {
+@media (max-width: 1200px) {
   form div input {
     height: 48px;
   }
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   form div input {
     height: 38px;
   }
@@ -93,12 +93,12 @@ form label {
   margin-bottom: 5px;
   margin-top: 10px;
 }
-@media (max-width: 1064px) {
+@media (max-width: 1200px) {
   form label {
     font-size: 30px;
   }
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   form label {
     font-size: 24px;
     justify-content: flex-start;
@@ -129,7 +129,7 @@ form label {
   border-radius: 5px;
   cursor: pointer;
 }
-@media (max-width: 1064px) {
+@media (max-width: 1200px) {
   .contact_button {
     font-size: 18px;
     padding: 8px;
@@ -137,7 +137,7 @@ form label {
     height: 60px;
   }
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .contact_button {
     width: 150px;
     height: 50px;
@@ -154,17 +154,17 @@ form label {
   padding: 35px;
   margin: auto;
 }
-@media (max-width: 1064px) {
+@media (max-width: 1200px) {
   .modal {
     width: 55%;
   }
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .modal {
     width: 70%;
   }
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   .modal {
     width: 85%;
     padding: 20px;
@@ -174,7 +174,7 @@ form label {
   justify-content: space-between;
   width: 100%;
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .modal header {
     margin-top: 0;
   }
@@ -184,13 +184,13 @@ form label {
   height: 30px;
   cursor: pointer;
 }
-@media (max-width: 1064px) {
+@media (max-width: 1200px) {
   .modal header img {
     width: 25px;
     height: 25px;
   }
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .modal header img {
     width: 20px;
     height: 20px;
@@ -204,17 +204,17 @@ form label {
   line-height: 83px;
   color: #000000;
 }
-@media (max-width: 1064px) {
+@media (max-width: 1200px) {
   .modal header h2 {
     font-size: 54px;
   }
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .modal header h2 {
     font-size: 40px;
   }
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   .modal header h2 {
     font-size: 30px;
   }
@@ -346,13 +346,15 @@ form label {
   border: 20px solid #901C1C;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   .dropdown {
+    display: flex;
+    justify-content: center;
     width: unset;
-    position: absolute;
-    top: 89%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    margin: 0 auto;
+    font-weight: 400;
+    font-size: 16px;
   }
 }
 .dropdown__options {
@@ -384,12 +386,13 @@ label {
   line-height: 23px;
   margin-right: 25px;
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   label {
     display: flex;
     justify-content: center;
-    margin: 30px 0;
-    font-size: 23px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-right: 0;
   }
 }
 
@@ -407,7 +410,7 @@ label {
   align-items: center;
   height: 119px;
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   .header {
     justify-content: center;
     width: 80%;
@@ -431,9 +434,9 @@ h1 {
   height: 50px;
   cursor: pointer;
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .logo {
-    height: 45px;
+    margin: 0 auto;
   }
 }
 
@@ -451,7 +454,7 @@ h1 {
   margin-top: 100px;
   background-color: palegreen;
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .photographer_section {
     justify-content: space-evenly;
   }
@@ -475,7 +478,7 @@ h1 {
   margin-top: 20px;
   margin-bottom: 0;
 }
-@media (max-width: 1064px) {
+@media (max-width: 1200px) {
   .photographer_section article h2 {
     font-size: 28px;
   }
@@ -509,18 +512,18 @@ h1 {
   width: 30%;
   background-color: darkorange;
 }
-@media (max-width: 1064px) {
+@media (max-width: 1200px) {
   .photographer-card {
     background-color: #901C1C;
     width: 33%;
   }
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .photographer-card {
     width: 40%;
   }
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   .photographer-card {
     width: 100%;
   }
@@ -542,20 +545,16 @@ h1 {
   border-radius: 5px;
   text-align: center;
 }
-@media (max-width: 906px) {
-  .photographer-header {
-    flex-direction: row-reverse;
-    padding: 47px 40px;
-  }
-}
-@media (max-width: 796px) {
-  .photographer-header {
-    text-align: left;
-  }
-}
-@media (max-width: 648px) {
+@media (max-width: 992px) {
   .photographer-header {
     flex-direction: column-reverse;
+    padding: 47px 50px;
+  }
+}
+@media (max-width: 576px) {
+  .photographer-header {
+    flex-direction: column-reverse;
+    margin-bottom: 20px;
   }
 }
 .photographer-header .photographer-details {
@@ -571,20 +570,17 @@ h1 {
   color: #D3573C;
   margin: 0;
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .photographer-header .photographer-details .photographer-name {
-    font-size: 44px;
-    text-align: left;
+    display: flex;
+    justify-content: center;
   }
 }
-@media (max-width: 796px) {
+@media (max-width: 576px) {
   .photographer-header .photographer-details .photographer-name {
-    font-size: 44px;
-  }
-}
-@media (max-width: 648px) {
-  .photographer-header .photographer-details .photographer-name {
-    font-size: 50px;
+    font-size: 42px;
+    line-height: 42px;
+    margin-bottom: 0;
   }
 }
 .photographer-header .photographer-details .photographer-location,
@@ -600,8 +596,17 @@ h1 {
   line-height: 31px;
   color: #901C1C;
 }
-@media (max-width: 648px) {
+@media (max-width: 992px) {
   .photographer-header .photographer-details .photographer-location {
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 576px) {
+  .photographer-header .photographer-details .photographer-location {
+    font-size: 20px;
+    margin-bottom: 0;
     display: flex;
     justify-content: center;
   }
@@ -610,8 +615,17 @@ h1 {
   font-size: 18px;
   line-height: 23px;
 }
-@media (max-width: 648px) {
+@media (max-width: 992px) {
   .photographer-header .photographer-details .photographer-tagline {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 576px) {
+  .photographer-header .photographer-details .photographer-tagline {
+    margin-bottom: 0;
+    font-size: 16px;
     display: flex;
     text-align: center;
   }
@@ -633,10 +647,17 @@ h1 {
   height: 69px;
   cursor: pointer;
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .photographer-header .contact-button {
-    font-size: 16px;
-    padding: 5px 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 576px) {
+  .photographer-header .contact-button {
+    font-weight: 400;
+    font-size: 20px;
+    height: 50px;
   }
 }
 .photographer-header .contact-button:hover {
@@ -649,13 +670,6 @@ h1 {
   object-fit: cover;
   border-radius: 50%;
 }
-@media (max-width: 906px) {
-  .photographer-header .photographer-image {
-    width: 150px;
-    height: 150px;
-  }
-}
-
 /***********************
   Photographer section
  ***********************/
@@ -668,7 +682,7 @@ h1 {
   gap: 20px;
   align-items: center;
 }
-@media (max-width: 1151px) {
+@media (max-width: 1400px) {
   .media-section {
     justify-content: space-evenly;
   }
@@ -677,15 +691,20 @@ h1 {
   width: 30%;
   height: 351px;
 }
-@media (max-width: 906px) {
+@media (max-width: 992px) {
   .media-section article {
     width: 45%;
+  }
+}
+@media (max-width: 576px) {
+  .media-section article {
+    width: 100%;
   }
 }
 .media-section article figure {
   width: 100%;
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   .media-section article figure {
     display: flex;
     flex-direction: column-reverse;
@@ -698,7 +717,7 @@ h1 {
   object-fit: cover;
   cursor: pointer;
 }
-@media (max-width: 1064px) {
+@media (max-width: 1200px) {
   .media-section article img, .media-section article video {
     border-radius: 0px 0px 5px 5px;
   }
@@ -711,7 +730,7 @@ h1 {
   align-items: center;
   margin-top: 10px;
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   .media-section article figcaption {
     padding-right: 0;
     right: 176px;
@@ -734,7 +753,7 @@ h1 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   .media-section article h3 {
     font-size: 20px;
     color: #FFFFFF;
@@ -753,7 +772,7 @@ h1 {
   margin: 0;
   vertical-align: middle;
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   .media-section article p {
     position: relative;
     font-size: 20px;
@@ -820,7 +839,7 @@ main aside {
   background-color: #DB8876;
   flex-direction: row-reverse;
 }
-@media (max-width: 648px) {
+@media (max-width: 576px) {
   main aside {
     width: 90%;
     justify-content: center;

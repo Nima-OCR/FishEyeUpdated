@@ -12,12 +12,17 @@
 
 
       @include respond(mobile) {
-        // Styles pour l'affichage sur tablette
+        display: flex;
+        justify-content: center;
         width: unset;
-        position: absolute;
-        top: 89%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        position: relative;
+        margin: 0 auto;
+        font-weight: 400;
+        font-size: 16px;
+
+        //top: 79%;
+        //left: 50%;
+        //transform: translate(-50%, -50%);
       }
 
 
@@ -58,11 +63,11 @@
       margin-right: 25px;
 
       @include respond(mobile) {
-        // Styles pour l'affichage sur tablette
         display: flex;
         justify-content: center;
-        margin: 30px 0;
-        font-size: 23px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-right: 0;
       }
     }
 

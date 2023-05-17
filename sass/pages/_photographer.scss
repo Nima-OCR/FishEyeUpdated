@@ -18,16 +18,21 @@
       text-align: center;
 
       @include respond(tablet) {
-        flex-direction: row-reverse;
-        padding: 47px 40px;
+        //flex-direction: row-reverse;
+        //padding: 47px 50px;
+        flex-direction: column-reverse;
+        padding: 47px 50px;
       }
 
       @include respond(tablet-mobile) {
-        text-align: left;
+
+        //padding: 27px 50px;
+        //text-align: left;
       }
 
       @include respond(mobile) {
         flex-direction: column-reverse;
+        margin-bottom: 20px;
 
       }
 
@@ -49,16 +54,18 @@
           margin: 0;
 
           @include respond(tablet) {
-            font-size: 44px;
-            text-align: left;
+            display: flex;
+            justify-content: center;
           }
 
           @include respond(tablet-mobile) {
-            font-size: 44px;
+            //font-size: 44px;
           }
 
           @include respond(mobile) {
-            font-size: 50px;
+            font-size: 42px;
+            line-height: 42px;
+            margin-bottom: 0;
           }
         }
 
@@ -76,9 +83,19 @@
           line-height: 31px;
           color: $color-primary;
 
+          @include respond(tablet) {
+            font-size: 28px;
+            display: flex;
+            justify-content: center;
+          }
 
+          @include respond(tablet-mobile) {
+            //font-size: 26px;
+          }
 
           @include respond(mobile) {
+            font-size: 20px;
+            margin-bottom: 0;
             display: flex;
             justify-content: center;
           }
@@ -90,11 +107,19 @@
           font-size: 18px;
           line-height: 23px;
 
-          //@include respond(tablet) {
-          //  font-size: 17px;
-          //}
+          @include respond(tablet) {
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+          }
+
+          @include respond(tablet-mobile) {
+            //font-size: 20px;
+          }
 
           @include respond(mobile) {
+            margin-bottom: 0;
+            font-size: 16px;
             display: flex;
             text-align: center;
           }
@@ -121,13 +146,15 @@
 
 
         @include respond(tablet) {
-          font-size: 16px;
-          padding: 5px 10px;
-
-
+          margin-top: 40px;
+          margin-bottom: 20px;
         }
 
         @include respond(mobile) {
+          font-weight: 400;
+          font-size: 20px;
+          height: 50px;
+
         }
 
         &:hover {
@@ -143,8 +170,8 @@
         border-radius: 50%;
 
         @include respond(tablet) {
-          width: 150px;
-          height: 150px;
+          //width: 150px;
+          //height: 150px;
         }
       }
     }
@@ -175,6 +202,7 @@
       }
 
       @include respond(mobile) {
+
       }
 
       article {
@@ -184,6 +212,13 @@
 
         @include respond(tablet) {
           width: 45%;
+        }
+
+        @include respond(tablet) {
+        }
+
+        @include respond(mobile) {
+          width: 100%;
         }
 
         figure {

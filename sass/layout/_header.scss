@@ -51,8 +51,7 @@
             cursor: pointer;
 
           @include respond(tablet) {
-            height: 45px;
-
+            margin: 0 auto;
           }
         }
 
