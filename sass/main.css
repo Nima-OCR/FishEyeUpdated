@@ -419,7 +419,6 @@ label {
 .header--width {
   width: 100%;
 }
-
 .photograph-header {
   background-color: #FAFAFA;
   height: 300px;
@@ -439,6 +438,18 @@ h1 {
     margin: 0 auto;
   }
 }
+@media (max-width: 992px) and (max-width: 992px) {
+  .logo--index {
+    margin-left: 0;
+  }
+}
+@media (max-width: 992px) and (max-width: 576px) {
+  .logo--index {
+    height: 60px;
+    margin-top: 20px;
+    margin-right: 0;
+  }
+}
 
 /*
 ###################################################################
@@ -452,18 +463,29 @@ h1 {
   column-gap: 1px;
   row-gap: 83px;
   margin-top: 100px;
-  background-color: palegreen;
 }
-@media (max-width: 992px) {
+@media (max-width: 576px) {
   .photographer_section {
-    justify-content: space-evenly;
+    margin-top: 50px;
+    justify-content: center;
   }
 }
 .photographer_section article {
+  width: 33%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+@media (max-width: 992px) {
+  .photographer_section article {
+    width: 45%;
+  }
+}
+@media (max-width: 576px) {
+  .photographer_section article {
+    width: 95%;
+  }
 }
 .photographer_section article a {
   cursor: pointer;
@@ -478,7 +500,7 @@ h1 {
   margin-top: 20px;
   margin-bottom: 0;
 }
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   .photographer_section article h2 {
     font-size: 28px;
   }
@@ -508,25 +530,8 @@ h1 {
   font-size: 14px;
 }
 
-.photographer-card {
-  width: 30%;
-  background-color: darkorange;
-}
-@media (max-width: 1200px) {
-  .photographer-card {
-    background-color: #901C1C;
-    width: 33%;
-  }
-}
-@media (max-width: 992px) {
-  .photographer-card {
-    width: 40%;
-  }
-}
-@media (max-width: 576px) {
-  .photographer-card {
-    width: 100%;
-  }
+h1 {
+  font-size: 21px;
 }
 
 /*
@@ -701,6 +706,9 @@ h1 {
     width: 100%;
   }
 }
+.media-section article--index {
+  width: 45%;
+}
 .media-section article figure {
   width: 100%;
 }
@@ -827,6 +835,11 @@ h1 {
   }
 }
 
+@media (max-width: 576px) {
+  main {
+    margin-top: 0;
+  }
+}
 main aside {
   display: flex;
   align-items: center;

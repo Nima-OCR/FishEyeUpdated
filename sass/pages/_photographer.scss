@@ -208,8 +208,6 @@
       article {
         width: 30%;
         height: 351px;
-
-
         @include respond(tablet) {
           width: 45%;
         }
@@ -220,6 +218,15 @@
         @include respond(mobile) {
           width: 100%;
         }
+
+        &--index {
+
+          width: 45%;
+
+        }
+
+
+
 
         figure {
           width: 100%;
@@ -379,6 +386,11 @@
     }
 
     main {
+
+      @include respond(mobile) {
+        margin-top: 0;
+      }
+
       aside {
 
         display: flex;

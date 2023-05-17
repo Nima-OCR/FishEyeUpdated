@@ -11,23 +11,26 @@
       column-gap: 1px;
       row-gap: 83px;
       margin-top: 100px;
-      background-color: palegreen;
 
 
       @include respond(laptop) {
       }
 
       @include respond(tablet) {
-        justify-content: space-evenly;
 
       }
 
       @include respond(mobile) {
+        margin-top: 50px;
+        justify-content: center;
+
+
       }
 
 
 
       article {
+        width: 33%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -38,10 +41,11 @@
         }
 
         @include respond(tablet) {
-
+          width: 45%;
         }
 
         @include respond(mobile) {
+          width: 95%;
         }
 
 
@@ -62,11 +66,12 @@
           margin-bottom: 0;
 
           @include respond(laptop) {
-            font-size: 28px;
+            //font-size: 28px;
 
           }
 
-          @include respond(tablet) {
+          @include respond(tablet-mobile) {
+            font-size: 28px;
 
           }
 
@@ -106,25 +111,25 @@
 
 
     .photographer-card {
-      width: 30%;
-      background-color: darkorange;
 
       @include respond(laptop) {
-        background-color: #901C1C;
-        width: 33%;
 
       }
 
       @include respond(tablet) {
-        // Styles pour l'affichage sur tablette
-        width: 40%;
+      }
+
+      @include respond(tablet-mobile) {
       }
 
       @include respond(mobile) {
-        // Styles pour l'affichage sur mobile
-        width: 100%;
 
       }
 
     }
+
+    h1 {
+      font-size: 21px;
+    }
+
 

@@ -28,6 +28,10 @@
       &--width {
         width: 100%;
       }
+
+      &--index {
+
+      }
     }
 
 
@@ -52,6 +56,18 @@
 
           @include respond(tablet) {
             margin: 0 auto;
+
+            &--index {
+              @include respond(tablet) {
+                margin-left: 0;
+              }
+
+              @include respond(mobile) {
+                height: 60px;
+                margin-top: 20px;
+                margin-right: 0;
+              }
+            }
           }
         }
 
