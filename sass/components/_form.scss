@@ -113,28 +113,32 @@
   border-radius: 5px;
   background-color: $color-secondary;
   width: 50%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 35px;
-  margin: auto;
+  margin: 50px auto;
 
-  @include respond(laptop) {
-    width: 55%;
-  }
 
   @include respond(tablet) {
-    width: 70%;
+    width: 60%;
+
+  }
+
+  @include respond(tablet-mobile) {
+    width: 80%;
 
   }
 
   @include respond(mobile) {
-    width: 85%;
+    width: 95%;
     padding: 20px;
   }
 
   header {
+    display: flex;
     justify-content: space-between;
     width: 100%;
 
@@ -162,12 +166,12 @@
       font-family: $font-sans;
       font-style: normal;
       font-weight: 400;
-      font-size: 64px;
+      font-size: 54px;
       line-height: 83px;
       color: #000000;
 
       @include respond(laptop) {
-        font-size: 54px;
+        font-size: 45px;
       }
 
       @include respond(tablet) {

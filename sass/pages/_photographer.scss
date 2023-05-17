@@ -4,8 +4,6 @@
     ########################################################################
      */
 
-
-
     .photographer-header {
       display: flex;
       flex-wrap: wrap;
@@ -18,31 +16,22 @@
       text-align: center;
 
       @include respond(tablet) {
-        //flex-direction: row-reverse;
-        //padding: 47px 50px;
         flex-direction: column-reverse;
         padding: 47px 50px;
-      }
-
-      @include respond(tablet-mobile) {
-
-        //padding: 27px 50px;
-        //text-align: left;
       }
 
       @include respond(mobile) {
         flex-direction: column-reverse;
         margin-bottom: 20px;
-
       }
-
-
 
       .photographer-details {
         margin-right: 20px;
         margin-left: 0;
 
-
+        @include respond(tablet-mobile) {
+          margin-right: 0;
+        }
 
         .photographer-name {
           font-family: $font-sans;
@@ -53,9 +42,16 @@
           color: $color-tertiary;
           margin: 0;
 
-          @include respond(tablet) {
+          @include respond(laptop) {
             display: flex;
             justify-content: center;
+            font-size: 50px;
+          }
+
+            @include respond(tablet) {
+            display: flex;
+            justify-content: center;
+            font-size: 44px;
           }
 
           @include respond(tablet-mobile) {
@@ -63,7 +59,7 @@
           }
 
           @include respond(mobile) {
-            font-size: 42px;
+            font-size: 32px;
             line-height: 42px;
             margin-bottom: 0;
           }
@@ -90,7 +86,8 @@
           }
 
           @include respond(tablet-mobile) {
-            //font-size: 26px;
+            font-size: 26px;
+            text-align: center;
           }
 
           @include respond(mobile) {
@@ -99,8 +96,6 @@
             display: flex;
             justify-content: center;
           }
-
-
         }
 
         .photographer-tagline {
@@ -114,14 +109,14 @@
           }
 
           @include respond(tablet-mobile) {
-            //font-size: 20px;
+            font-size: 20px;
+            display: flex;
+            text-align: center;
           }
 
           @include respond(mobile) {
             margin-bottom: 0;
             font-size: 16px;
-            display: flex;
-            text-align: center;
           }
         }
       }
@@ -143,8 +138,6 @@
         height: 69px;
         cursor: pointer;
 
-
-
         @include respond(tablet) {
           margin-top: 40px;
           margin-bottom: 20px;
@@ -154,7 +147,6 @@
           font-weight: 400;
           font-size: 20px;
           height: 50px;
-
         }
 
         &:hover {
@@ -176,8 +168,6 @@
       }
     }
 
-
-
     /***********************
       Photographer section
      ***********************/
@@ -194,17 +184,6 @@
         justify-content: space-evenly;
       }
 
-      @include respond(laptop) {
-
-      }
-
-      @include respond(tablet) {
-      }
-
-      @include respond(mobile) {
-
-      }
-
       article {
         width: 30%;
         height: 351px;
@@ -212,21 +191,13 @@
           width: 45%;
         }
 
-        @include respond(tablet) {
-        }
-
         @include respond(mobile) {
           width: 100%;
         }
 
         &--index {
-
           width: 45%;
-
         }
-
-
-
 
         figure {
           width: 100%;
@@ -255,11 +226,10 @@
 
         figcaption {
           width: 100%;
-          padding-right: 6px;
           display: flex;
-          justify-content: space-between;
           align-items: center;
-          margin-top: 10px;
+          flex-wrap: nowrap;
+          //margin-top: 5px;
 
           @include respond(mobile) {
             padding-right: 0;
@@ -272,7 +242,7 @@
         }
 
         h3 {
-          width: 250px;
+          width: 100%;
           margin: 0;
           font-family: $font-sans;
           font-style: normal;
@@ -291,19 +261,17 @@
           }
         }
 
-
-
         p {
+          display: flex;
+          align-items: center;
+          width: 48px;
+          margin-right: 20px;
           font-family: $font-sans;
           font-style: normal;
           font-weight: 500;
           font-size: 24px;
-          padding-right: 24px;
           line-height: 31px;
           color: $color-deep-red;
-          display: inline-block;
-          margin: 0;
-          vertical-align: middle;
 
           @include respond(mobile) {
             position: relative;
@@ -315,14 +283,17 @@
             background-color: $color-secondary;
             border-radius: 0 10px 0 0;
             padding: 5px 30px 5px 10px;
+            margin-right: 0px;
+
           }
         }
 
         .heart-container {
+
+          //padding-left: 5px;
+          margin: 0 auto;
           font-size: 16px;
-          display: inline-block;
-          align-items: center;
-          vertical-align: middle;
+
         }
 
         .fa-heart {
@@ -356,12 +327,7 @@
           animation: fill 500ms;
           display: none;
         }
-
       }
-
-
-
-
 
       @keyframes fill {
         from {
@@ -371,18 +337,6 @@
           transform: scale(1);
         }
       }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     main {
@@ -426,7 +380,6 @@
 
         .rate {
           padding: 0 0 0 30px;
-
         }
 
         .likes {
@@ -438,7 +391,6 @@
           font-weight: 500;
           font-size: 24px;
           line-height: 31px;
-          //padding: 0 20px 0 20px;
         }
 
         .fa-heart {

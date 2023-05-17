@@ -127,23 +127,25 @@ form {
   border-radius: 5px;
   background-color: #DB8876;
   width: 50%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 35px;
-  margin: auto; }
-  @media (max-width: 1200px) {
-    .modal {
-      width: 55%; } }
+  margin: 50px auto; }
   @media (max-width: 992px) {
     .modal {
-      width: 70%; } }
+      width: 60%; } }
+  @media (max-width: 768px) {
+    .modal {
+      width: 80%; } }
   @media (max-width: 576px) {
     .modal {
-      width: 85%;
+      width: 95%;
       padding: 20px; } }
   .modal header {
+    display: flex;
     justify-content: space-between;
     width: 100%; }
     @media (max-width: 992px) {
@@ -165,12 +167,12 @@ form {
       font-family: "DM Sans", sans-serif;
       font-style: normal;
       font-weight: 400;
-      font-size: 64px;
+      font-size: 54px;
       line-height: 83px;
       color: #000000; }
       @media (max-width: 1200px) {
         .modal header h2 {
-          font-size: 54px; } }
+          font-size: 45px; } }
       @media (max-width: 992px) {
         .modal header h2 {
           font-size: 40px; } }
@@ -205,6 +207,9 @@ form {
     justify-content: space-between;
     padding: 62px 99px;
     margin: auto; }
+    @media (max-width: 992px) {
+      .show-lightbox__modal {
+        padding: 62px 29px; } }
   .show-lightbox__header {
     display: flex;
     justify-content: flex-end;
@@ -238,14 +243,14 @@ form {
       justify-content: center; }
       .show-lightbox__nav-chevron-wrapper .show-lightbox__close-btn-wrapper {
         cursor: pointer;
-        position: absolute;
-        top: 0;
+        position: relative;
+        bottom: 400px;
         left: 50%;
         transform: translateX(-50%); }
     .show-lightbox__nav-inner {
       display: flex; }
     .show-lightbox__nav .show-lightbox__nav-chevron {
-      width: 96px;
+      width: 100%;
       font-size: 40px;
       color: #901C1C;
       display: flex;
@@ -462,6 +467,9 @@ h1 {
   .photographer-header .photographer-details {
     margin-right: 20px;
     margin-left: 0; }
+    @media (max-width: 768px) {
+      .photographer-header .photographer-details {
+        margin-right: 0; } }
     .photographer-header .photographer-details .photographer-name {
       font-family: "DM Sans", sans-serif;
       font-style: normal;
@@ -470,13 +478,19 @@ h1 {
       line-height: 83px;
       color: #D3573C;
       margin: 0; }
+      @media (max-width: 1200px) {
+        .photographer-header .photographer-details .photographer-name {
+          display: flex;
+          justify-content: center;
+          font-size: 50px; } }
       @media (max-width: 992px) {
         .photographer-header .photographer-details .photographer-name {
           display: flex;
-          justify-content: center; } }
+          justify-content: center;
+          font-size: 44px; } }
       @media (max-width: 576px) {
         .photographer-header .photographer-details .photographer-name {
-          font-size: 42px;
+          font-size: 32px;
           line-height: 42px;
           margin-bottom: 0; } }
     .photographer-header .photographer-details .photographer-location,
@@ -495,6 +509,10 @@ h1 {
           font-size: 28px;
           display: flex;
           justify-content: center; } }
+      @media (max-width: 768px) {
+        .photographer-header .photographer-details .photographer-location {
+          font-size: 26px;
+          text-align: center; } }
       @media (max-width: 576px) {
         .photographer-header .photographer-details .photographer-location {
           font-size: 20px;
@@ -509,12 +527,15 @@ h1 {
           font-size: 24px;
           display: flex;
           justify-content: center; } }
+      @media (max-width: 768px) {
+        .photographer-header .photographer-details .photographer-tagline {
+          font-size: 20px;
+          display: flex;
+          text-align: center; } }
       @media (max-width: 576px) {
         .photographer-header .photographer-details .photographer-tagline {
           margin-bottom: 0;
-          font-size: 16px;
-          display: flex;
-          text-align: center; } }
+          font-size: 16px; } }
   .photographer-header .contact-button {
     background-color: #911C1C;
     color: #ffffff;
@@ -591,11 +612,9 @@ h1 {
           border-radius: 0px 0px 5px 5px; } }
     .media-section article figcaption {
       width: 100%;
-      padding-right: 6px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-top: 10px; }
+      flex-wrap: nowrap; }
       @media (max-width: 576px) {
         .media-section article figcaption {
           padding-right: 0;
@@ -605,7 +624,7 @@ h1 {
           border-top-right-radius: 15px;
           background-color: #757575; } }
     .media-section article h3 {
-      width: 250px;
+      width: 100%;
       margin: 0;
       font-family: "DM Sans", sans-serif;
       font-style: normal;
@@ -622,16 +641,16 @@ h1 {
           color: #FFFFFF;
           padding-left: 10px; } }
     .media-section article p {
+      display: flex;
+      align-items: center;
+      width: 48px;
+      margin-right: 20px;
       font-family: "DM Sans", sans-serif;
       font-style: normal;
       font-weight: 500;
       font-size: 24px;
-      padding-right: 24px;
       line-height: 31px;
-      color: #911C1C;
-      display: inline-block;
-      margin: 0;
-      vertical-align: middle; }
+      color: #911C1C; }
       @media (max-width: 576px) {
         .media-section article p {
           position: relative;
@@ -642,12 +661,11 @@ h1 {
           color: #000000;
           background-color: #DB8876;
           border-radius: 0 10px 0 0;
-          padding: 5px 30px 5px 10px; } }
+          padding: 5px 30px 5px 10px;
+          margin-right: 0px; } }
     .media-section article .heart-container {
-      font-size: 16px;
-      display: inline-block;
-      align-items: center;
-      vertical-align: middle; }
+      margin: 0 auto;
+      font-size: 16px; }
     .media-section article .fa-heart {
       font-size: 24px;
       cursor: pointer; }

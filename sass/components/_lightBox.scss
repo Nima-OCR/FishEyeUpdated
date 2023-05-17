@@ -22,6 +22,10 @@
     justify-content: space-between;
     padding: 62px 99px;
     margin: auto;
+
+    @include respond(tablet) {
+      padding: 62px 29px;
+    }
   }
 
   &__header {
@@ -43,7 +47,8 @@
     align-items: center;
 
     .show-lightbox__img,
-    video {
+      video {
+
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
@@ -69,8 +74,9 @@
 
       .show-lightbox__close-btn-wrapper {
         cursor: pointer;
-        position: absolute;
-        top: 0;
+        position: relative;
+        bottom: 400px;
+        //top: 0;
         left: 50%;
         transform: translateX(-50%);
       }
@@ -81,7 +87,7 @@
     }
 
         .show-lightbox__nav-chevron {
-          width: 96px;
+          width: 100%;
           font-size: 40px;
           color: $color-primary;
           //width: 100%;
