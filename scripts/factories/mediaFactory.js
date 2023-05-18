@@ -7,8 +7,8 @@
 export function mediaFactory(data) {
 
   const { id, photographerId, title, image, video, likes, date } = data;
-  const imagePath = `assets/images/${photographerId}/${image}`;
-  const videoPath = `assets/images/${photographerId}/${video}`;
+  const imagePath = `./assets/images/${photographerId}/${image}`;
+  const videoPath = `./assets/images/${photographerId}/${video}`;
 
 
   /**
