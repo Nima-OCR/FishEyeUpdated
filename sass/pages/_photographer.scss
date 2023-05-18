@@ -3,6 +3,13 @@
     |  Ce dossier contient les styles spécifiques à la page du photographe |
     ########################################################################
      */
+    %font-styles {
+      font-family: $font-sans;
+      font-style: normal;
+      font-weight: 400;
+      margin: 0 0 19px 0;
+      text-align: left;
+    }
 
     .photographer-header {
       display: flex;
@@ -25,7 +32,7 @@
         margin-bottom: 20px;
       }
 
-      .photographer-details {
+      &__details {
         margin-right: 20px;
         margin-left: 0;
 
@@ -33,10 +40,8 @@
           margin-right: 0;
         }
 
-        .photographer-name {
-          font-family: $font-sans;
-          font-style: normal;
-          font-weight: 400;
+        &__name {
+          @extend %font-styles;
           font-size: 64px;
           line-height: 83px;
           color: $color-tertiary;
@@ -48,14 +53,10 @@
             font-size: 50px;
           }
 
-            @include respond(tablet) {
+          @include respond(tablet) {
             display: flex;
             justify-content: center;
             font-size: 44px;
-          }
-
-          @include respond(tablet-mobile) {
-            //font-size: 44px;
           }
 
           @include respond(mobile) {
@@ -65,16 +66,12 @@
           }
         }
 
-        .photographer-location,
-        .photographer-tagline {
-          font-family: $font-sans;
-          font-style: normal;
-          font-weight: 400;
-          margin: 0 0 19px 0;
-          text-align: left;
+        &__location,
+        &__tagline {
+          @extend %font-styles;
         }
 
-        .photographer-location {
+        &__location {
           font-size: 24px;
           line-height: 31px;
           color: $color-primary;
@@ -85,11 +82,6 @@
             justify-content: center;
           }
 
-          @include respond(tablet-mobile) {
-            font-size: 26px;
-            text-align: center;
-          }
-
           @include respond(mobile) {
             font-size: 20px;
             margin-bottom: 0;
@@ -98,7 +90,7 @@
           }
         }
 
-        .photographer-tagline {
+        &__tagline {
           font-size: 18px;
           line-height: 23px;
 
@@ -108,12 +100,6 @@
             justify-content: center;
           }
 
-          @include respond(tablet-mobile) {
-            font-size: 20px;
-            display: flex;
-            text-align: center;
-          }
-
           @include respond(mobile) {
             margin-bottom: 0;
             font-size: 16px;
@@ -121,7 +107,7 @@
         }
       }
 
-      .contact-button {
+      &__button {
         background-color: $background-color;
         color: #ffffff;
         border: none;
@@ -155,249 +141,10 @@
         }
       }
 
-      .photographer-image {
+      &__image {
         width: 200px;
         height: 200px;
         object-fit: cover;
         border-radius: 50%;
-
-        @include respond(tablet) {
-          //width: 150px;
-          //height: 150px;
-        }
       }
     }
-
-    /***********************
-      Photographer section
-     ***********************/
-    .media-section {
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding: 30px 0;
-      gap: 20px;
-      align-items: center;
-
-      @include respond(large-screen) {
-        justify-content: space-evenly;
-      }
-
-      article {
-        width: 30%;
-        height: 351px;
-        @include respond(tablet) {
-          width: 45%;
-        }
-
-        @include respond(mobile) {
-          width: 100%;
-        }
-
-        &--index {
-          width: 45%;
-        }
-
-        figure {
-          width: 100%;
-
-          @include respond(mobile) {
-            display: flex;
-            flex-direction: column-reverse;
-          }
-        }
-
-        img, video {
-          width: 100%;
-          height: 300px;
-          border-radius: 5px;
-          object-fit: cover;
-          cursor: pointer;
-
-          @include respond(laptop) {
-            border-radius: 0px 0px 5px 5px;
-          }
-
-          @include respond(tablet) {
-
-          }
-        }
-
-        figcaption {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          flex-wrap: nowrap;
-          //margin-top: 5px;
-
-          @include respond(mobile) {
-            padding-right: 0;
-            right: 176px;
-            color: #FFFFFF;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            background-color: $color-price;
-          }
-        }
-
-        h3 {
-          width: 100%;
-          margin: 0;
-          font-family: $font-sans;
-          font-style: normal;
-          font-weight: 400;
-          font-size: 24px;
-          line-height: 31px;
-          color: $color-deep-red;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-
-          @include respond(mobile) {
-            font-size: 20px;
-            color: $color-white;
-            padding-left: 10px;
-          }
-        }
-
-        p {
-          display: flex;
-          align-items: center;
-          width: 48px;
-          margin-right: 20px;
-          font-family: $font-sans;
-          font-style: normal;
-          font-weight: 500;
-          font-size: 24px;
-          line-height: 31px;
-          color: $color-deep-red;
-
-          @include respond(mobile) {
-            position: relative;
-            font-size: 20px;
-            width: 80px;
-            top: 0;
-            right: 0;
-            color: $color-black;
-            background-color: $color-secondary;
-            border-radius: 0 10px 0 0;
-            padding: 5px 30px 5px 10px;
-            margin-right: 0px;
-
-          }
-        }
-
-        .heart-container {
-
-          //padding-left: 5px;
-          margin: 0 auto;
-          font-size: 16px;
-
-        }
-
-        .fa-heart {
-          font-size: 24px;
-          cursor: pointer;
-        }
-
-        .fas.fa-heart {
-          position: absolute;
-          z-index: 0;
-          animation: fill 500ms;
-          display: none;
-        }
-
-        .heart-container {
-          position: relative;
-          display: inline-block;
-        }
-
-        .fa-heart {
-          font-size: 24px;
-          cursor: pointer;
-          position: absolute;
-          top: -14px;
-          left: 0;
-        }
-
-        .fas.fa-heart {
-          position: absolute;
-          z-index: 0;
-          animation: fill 500ms;
-          display: none;
-        }
-      }
-
-      @keyframes fill {
-        from {
-          transform: scale(0);
-        }
-        to {
-          transform: scale(1);
-        }
-      }
-    }
-
-    main {
-
-      @include respond(mobile) {
-        margin-top: 0;
-      }
-
-      aside {
-
-        display: flex;
-        align-items: center;
-        border-radius: 5px;
-        margin-right: 36px;
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        padding: 20px 40px;
-        background-color: $color-secondary;
-        flex-direction: row-reverse;
-
-        @include respond(mobile) {
-          width: 90%;
-          justify-content: center;
-          position: fixed;
-          left: 0;
-          right: 0;
-          margin: 0 auto;
-          padding: 10px;
-        }
-
-        .rate, .likes {
-          padding: 0 0 0 5px;
-          font-family: $font-sans;
-          font-style: normal;
-          font-weight: 500;
-          font-size: 24px;
-          line-height: 31px;
-          text-align: center;
-        }
-
-        .rate {
-          padding: 0 0 0 30px;
-        }
-
-        .likes {
-          margin-right: 10px;
-        }
-
-        .total-likes {
-          width: 50px;
-          font-weight: 500;
-          font-size: 24px;
-          line-height: 31px;
-        }
-
-        .fa-heart {
-          color: $color-black;
-        }
-      }
-    }
-
-
-

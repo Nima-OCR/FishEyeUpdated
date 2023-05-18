@@ -403,309 +403,6 @@ label {
   }
 }
 
-/*
-                       ############################################################################
-                         Ce dossier contient tous les styles pour les composants réutilisables
-                         du site, tels que les boutons, les formulaires, les modales,
-                       ############################################################################
-                        */
-.header {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  height: 119px;
-}
-@media (max-width: 576px) {
-  .header {
-    justify-content: center;
-    width: 80%;
-  }
-}
-.header--width {
-  width: 100%;
-}
-.photograph-header {
-  background-color: #FAFAFA;
-  height: 300px;
-}
-
-h1 {
-  color: #901C1C;
-  margin-right: 0;
-}
-
-.logo {
-  height: 50px;
-  cursor: pointer;
-}
-@media (max-width: 992px) {
-  .logo {
-    margin: 0 auto;
-  }
-}
-@media (max-width: 992px) and (max-width: 992px) {
-  .logo--index {
-    margin-left: 0;
-  }
-}
-@media (max-width: 992px) and (max-width: 576px) {
-  .logo--index {
-    height: 60px;
-    margin-top: 20px;
-    margin-right: 0;
-  }
-}
-
-/*
-###################################################################
-|  Ce dossier contient les styles spécifiques à la page d'accueil |
-###################################################################
- */
-.photographer_section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  column-gap: 1px;
-  row-gap: 83px;
-  margin-top: 100px;
-}
-@media (max-width: 576px) {
-  .photographer_section {
-    margin-top: 50px;
-    justify-content: center;
-  }
-}
-.photographer_section article {
-  width: 33%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-@media (max-width: 992px) {
-  .photographer_section article {
-    width: 45%;
-  }
-}
-@media (max-width: 576px) {
-  .photographer_section article {
-    width: 95%;
-  }
-}
-.photographer_section article a {
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-}
-.photographer_section article h2 {
-  color: #D3573C;
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 47px;
-  margin-top: 20px;
-  margin-bottom: 0;
-}
-@media (max-width: 768px) {
-  .photographer_section article h2 {
-    font-size: 28px;
-  }
-}
-.photographer_section article img {
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.photographer_section article p {
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 17px;
-  color: #901C1C;
-  text-align: center;
-  margin: 0;
-}
-.photographer_section article p:nth-of-type(2) {
-  color: #000000;
-  font-weight: 400;
-  font-size: 12px;
-}
-.photographer_section article p:nth-of-type(3) {
-  color: #757575;
-  font-weight: 400;
-  font-size: 14px;
-}
-
-h1 {
-  font-size: 21px;
-}
-
-/*
-########################################################################
-|  Ce dossier contient les styles spécifiques à la page du photographe |
-########################################################################
- */
-.photographer-header {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 57px 50px;
-  background-color: #FAFAFA;
-  border-radius: 5px;
-  text-align: center;
-}
-@media (max-width: 992px) {
-  .photographer-header {
-    flex-direction: column-reverse;
-    padding: 47px 50px;
-  }
-}
-@media (max-width: 576px) {
-  .photographer-header {
-    flex-direction: column-reverse;
-    margin-bottom: 20px;
-  }
-}
-.photographer-header .photographer-details {
-  margin-right: 20px;
-  margin-left: 0;
-}
-@media (max-width: 768px) {
-  .photographer-header .photographer-details {
-    margin-right: 0;
-  }
-}
-.photographer-header .photographer-details .photographer-name {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 83px;
-  color: #D3573C;
-  margin: 0;
-}
-@media (max-width: 1200px) {
-  .photographer-header .photographer-details .photographer-name {
-    display: flex;
-    justify-content: center;
-    font-size: 50px;
-  }
-}
-@media (max-width: 992px) {
-  .photographer-header .photographer-details .photographer-name {
-    display: flex;
-    justify-content: center;
-    font-size: 44px;
-  }
-}
-@media (max-width: 576px) {
-  .photographer-header .photographer-details .photographer-name {
-    font-size: 32px;
-    line-height: 42px;
-    margin-bottom: 0;
-  }
-}
-.photographer-header .photographer-details .photographer-location,
-.photographer-header .photographer-details .photographer-tagline {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  margin: 0 0 19px 0;
-  text-align: left;
-}
-.photographer-header .photographer-details .photographer-location {
-  font-size: 24px;
-  line-height: 31px;
-  color: #901C1C;
-}
-@media (max-width: 992px) {
-  .photographer-header .photographer-details .photographer-location {
-    font-size: 28px;
-    display: flex;
-    justify-content: center;
-  }
-}
-@media (max-width: 768px) {
-  .photographer-header .photographer-details .photographer-location {
-    font-size: 26px;
-    text-align: center;
-  }
-}
-@media (max-width: 576px) {
-  .photographer-header .photographer-details .photographer-location {
-    font-size: 20px;
-    margin-bottom: 0;
-    display: flex;
-    justify-content: center;
-  }
-}
-.photographer-header .photographer-details .photographer-tagline {
-  font-size: 18px;
-  line-height: 23px;
-}
-@media (max-width: 992px) {
-  .photographer-header .photographer-details .photographer-tagline {
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-  }
-}
-@media (max-width: 768px) {
-  .photographer-header .photographer-details .photographer-tagline {
-    font-size: 20px;
-    display: flex;
-    text-align: center;
-  }
-}
-@media (max-width: 576px) {
-  .photographer-header .photographer-details .photographer-tagline {
-    margin-bottom: 0;
-    font-size: 16px;
-  }
-}
-.photographer-header .contact-button {
-  background-color: #911C1C;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 26px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  height: 69px;
-  cursor: pointer;
-}
-@media (max-width: 992px) {
-  .photographer-header .contact-button {
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
-}
-@media (max-width: 576px) {
-  .photographer-header .contact-button {
-    font-weight: 400;
-    font-size: 20px;
-    height: 50px;
-  }
-}
-.photographer-header .contact-button:hover {
-  background-color: #D3573C;
-  color: #000000;
-}
-.photographer-header .photographer-image {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 50%;
-}
 /***********************
   Photographer section
  ***********************/
@@ -914,6 +611,294 @@ main aside .total-likes {
 }
 main aside .fa-heart {
   color: #000000;
+}
+
+/*
+                       ############################################################################
+                         Ce dossier contient tous les styles pour les composants réutilisables
+                         du site, tels que les boutons, les formulaires, les modales,
+                       ############################################################################
+                        */
+.header {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 119px;
+}
+@media (max-width: 576px) {
+  .header {
+    justify-content: center;
+    width: 80%;
+  }
+}
+.header--width {
+  width: 100%;
+}
+.photograph-header {
+  background-color: #FAFAFA;
+  height: 300px;
+}
+
+h1 {
+  color: #901C1C;
+  margin-right: 0;
+}
+
+.logo {
+  height: 50px;
+  cursor: pointer;
+}
+@media (max-width: 992px) {
+  .logo {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 992px) and (max-width: 992px) {
+  .logo--index {
+    margin-left: 0;
+  }
+}
+@media (max-width: 992px) and (max-width: 576px) {
+  .logo--index {
+    height: 60px;
+    margin-top: 20px;
+    margin-right: 0;
+  }
+}
+
+/*
+###################################################################
+|  Ce dossier contient les styles spécifiques à la page d'accueil |
+###################################################################
+ */
+.photographer_section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 1px;
+  row-gap: 83px;
+  margin-top: 100px;
+}
+@media (max-width: 576px) {
+  .photographer_section {
+    margin-top: 50px;
+    justify-content: center;
+  }
+}
+.photographer_section article {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+@media (max-width: 992px) {
+  .photographer_section article {
+    width: 45%;
+  }
+}
+@media (max-width: 576px) {
+  .photographer_section article {
+    width: 95%;
+  }
+}
+.photographer_section article a {
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+.photographer_section article h2 {
+  color: #D3573C;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 47px;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+@media (max-width: 768px) {
+  .photographer_section article h2 {
+    font-size: 28px;
+  }
+}
+.photographer_section article img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.photographer_section article p {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  color: #901C1C;
+  text-align: center;
+  margin: 0;
+}
+.photographer_section article p:nth-of-type(2) {
+  color: #000000;
+  font-weight: 400;
+  font-size: 12px;
+}
+.photographer_section article p:nth-of-type(3) {
+  color: #757575;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 21px;
+}
+
+/*
+########################################################################
+|  Ce dossier contient les styles spécifiques à la page du photographe |
+########################################################################
+ */
+.photographer-header__details__location, .photographer-header__details__tagline, .photographer-header__details__name {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0 0 19px 0;
+  text-align: left;
+}
+
+.photographer-header {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 57px 50px;
+  background-color: #FAFAFA;
+  border-radius: 5px;
+  text-align: center;
+}
+@media (max-width: 992px) {
+  .photographer-header {
+    flex-direction: column-reverse;
+    padding: 47px 50px;
+  }
+}
+@media (max-width: 576px) {
+  .photographer-header {
+    flex-direction: column-reverse;
+    margin-bottom: 20px;
+  }
+}
+.photographer-header__details {
+  margin-right: 20px;
+  margin-left: 0;
+}
+@media (max-width: 768px) {
+  .photographer-header__details {
+    margin-right: 0;
+  }
+}
+.photographer-header__details__name {
+  font-size: 64px;
+  line-height: 83px;
+  color: #D3573C;
+  margin: 0;
+}
+@media (max-width: 1200px) {
+  .photographer-header__details__name {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+  }
+}
+@media (max-width: 992px) {
+  .photographer-header__details__name {
+    display: flex;
+    justify-content: center;
+    font-size: 44px;
+  }
+}
+@media (max-width: 576px) {
+  .photographer-header__details__name {
+    font-size: 32px;
+    line-height: 42px;
+    margin-bottom: 0;
+  }
+}
+.photographer-header__details__location {
+  font-size: 24px;
+  line-height: 31px;
+  color: #901C1C;
+}
+@media (max-width: 992px) {
+  .photographer-header__details__location {
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 576px) {
+  .photographer-header__details__location {
+    font-size: 20px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+.photographer-header__details__tagline {
+  font-size: 18px;
+  line-height: 23px;
+}
+@media (max-width: 992px) {
+  .photographer-header__details__tagline {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 576px) {
+  .photographer-header__details__tagline {
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+}
+.photographer-header__button {
+  background-color: #911C1C;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 69px;
+  cursor: pointer;
+}
+@media (max-width: 992px) {
+  .photographer-header__button {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 576px) {
+  .photographer-header__button {
+    font-weight: 400;
+    font-size: 20px;
+    height: 50px;
+  }
+}
+.photographer-header__button:hover {
+  background-color: #D3573C;
+  color: #000000;
+}
+.photographer-header__image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 /*# sourceMappingURL=main.css.map */

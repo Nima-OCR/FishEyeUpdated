@@ -7,8 +7,8 @@
 export function mediaFactory(data) {
 
   const { id, photographerId, title, image, video, likes, date } = data;
-  const imagePath = `/assets/images/${photographerId}/${image}`;
-  const videoPath = `/assets/images/${photographerId}/${video}`;
+  const imagePath = `assets/images/${photographerId}/${image}`;
+  const videoPath = `assets/images/${photographerId}/${video}`;
 
 
   /**
@@ -19,6 +19,7 @@ export function mediaFactory(data) {
 
   function getMediCardDOM() {
     const article = document.createElement('article');
+    article.setAttribute('class', 'portfolio');
 
     const figure = document.createElement('figure');
     article.appendChild(figure);
