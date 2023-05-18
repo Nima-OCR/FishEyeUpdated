@@ -46,5 +46,3 @@
         section.append(cardElement);
       });
     }
-
-

@@ -129,9 +129,6 @@ export function mediaFactory(data) {
 
     toggleHeartFillOnEvent(heartIcons);
 
-
-
-
     return article;
   }
 

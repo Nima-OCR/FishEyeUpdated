@@ -1,75 +1,63 @@
-/*
-                       ############################################################################
-                         Ce dossier contient tous les styles pour les composants réutilisables
-                         du site, tels que les boutons, les formulaires, les modales,
-                       ############################################################################
-                        */
+    /*
+                           ############################################################################
+                             Ce dossier contient tous les styles pour les composants réutilisables
+                             du site, tels que les boutons, les formulaires, les modales,
+                           ############################################################################
+                            */
 
 
-    .header {
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      height: 119px;
+        .header {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+          height: 119px;
 
-      @include respond(tablet) {
+          @include respond(mobile) {
+            justify-content: center;
+            width: 80%;
+          }
 
-        //margin-top: 30px;
+          &--width {
+            width: 100%;
+          }
 
-      }
+          &--index {
 
-      @include respond(mobile) {
-        justify-content: center;
-        width: 80%;
-      }
-
-      &--width {
-        width: 100%;
-      }
-
-      &--index {
-
-      }
-    }
-
-
-
-
-
-        .photograph-header {
-            background-color: $color-background;
-            height: 300px;
-
-
-        }
-
-        h1 {
-            color: $color-primary;
-            margin-right: 0;
-        }
-
-        .logo {
-            height: 50px;
-            cursor: pointer;
-
-          @include respond(tablet) {
-            margin: 0 auto;
-
-            &--index {
-              @include respond(tablet) {
-                margin-left: 0;
-              }
-
-              @include respond(mobile) {
-                height: 60px;
-                margin-top: 20px;
-                margin-right: 0;
-              }
-            }
           }
         }
+
+    .photograph-header {
+      background-color: $color-background;
+      height: 300px;
+    }
+
+    h1 {
+      color: $color-primary;
+      margin-right: 0;
+    }
+
+    .logo {
+      height: 50px;
+      cursor: pointer;
+
+      @include respond(tablet) {
+        margin: 0 auto;
+
+        &--index {
+          @include respond(tablet) {
+            margin-left: 0;
+          }
+
+          @include respond(mobile) {
+            height: 60px;
+            margin-top: 20px;
+            margin-right: 0;
+          }
+        }
+      }
+    }
 
 
 

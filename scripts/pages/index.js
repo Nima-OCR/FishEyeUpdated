@@ -2,8 +2,6 @@
     import { getPhotographers } from '../utils/photographerAPI.js';
     import {manageHomeLink} from "../utils/homeLink.js";
 
-
-
   /**
    Affiche les données des photographes sur la page.
    @async
@@ -39,4 +37,3 @@
 
     // Gère le lien vers la page d'accueil
     manageHomeLink();
-

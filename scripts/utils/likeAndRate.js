@@ -31,7 +31,6 @@
   }
 
 
-
   /**
    * Calcule le total des "likes"
    *

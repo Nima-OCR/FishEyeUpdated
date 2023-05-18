@@ -1,36 +1,4 @@
 
-
-      //@mixin respond($breakpoint) {
-        //@if $breakpoint == 'laptop' {
-        //  @media (max-width: 1167px) { @content; } // pour les laptop
-        //}
-        //@if $breakpoint == 'tablet' {
-        //  @media (max-width: 906px) { @content; } // pour les tablettes
-        //}
-        //@if $breakpoint == 'mobile' {
-        //  //@media (max-width: 468px) { @content; } // pour les téléphones mobiles
-        //  @media (max-width: 540px) { @content; } // pour les téléphones mobiles
-        //}
-      //}
-
-      //@mixin respond($breakpoint) {
-      //  @if $breakpoint == 'large-screen' {
-      //    @media (max-width: 1151px) { @content; }
-      //  }
-      //  @if $breakpoint == 'laptop' {
-      //    @media (max-width: 1064px) { @content; }
-      //  }
-      //  @if $breakpoint == 'tablet' {
-      //    @media (max-width: 906px) { @content; }
-      //  }
-      //  @if $breakpoint == 'tablet-mobile' {
-      //    @media (max-width: 796px) { @content; }
-      //  }
-      //  @if $breakpoint == 'mobile' {
-      //    @media (max-width: 648px) { @content; }
-      //  }
-      //}
-
       @mixin respond($breakpoint) {
         @if $breakpoint == 'large-screen' {
           @media (max-width: 1400px) { @content; }
@@ -48,6 +16,3 @@
           @media (max-width: 576px) { @content; }
         }
       }
-
-
-

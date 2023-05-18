@@ -35,6 +35,9 @@ body {
                          base tels que les titres, les paragraphes...
                        ###################################################################
                         */
+h1 {
+  font-size: 21px; }
+
 /*
                        ############################################################################
                          Ce dossier contient tous les styles pour les composants réutilisables
@@ -502,11 +505,11 @@ main aside {
     color: #000000; }
 
 /*
-                       ############################################################################
-                         Ce dossier contient tous les styles pour les composants réutilisables
-                         du site, tels que les boutons, les formulaires, les modales,
-                       ############################################################################
-                        */
+                           ############################################################################
+                             Ce dossier contient tous les styles pour les composants réutilisables
+                             du site, tels que les boutons, les formulaires, les modales,
+                           ############################################################################
+                            */
 .header {
   width: 100%;
   display: flex;
@@ -606,9 +609,6 @@ h1 {
         color: #757575;
         font-weight: 400;
         font-size: 14px; }
-
-h1 {
-  font-size: 21px; }
 
 /*
     ########################################################################

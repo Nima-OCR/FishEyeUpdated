@@ -1,4 +1,4 @@
-                        /*
+   /*
                        ######################################################
                          Ce dossier contient les fichiers Sass utilitaires,
                          tels que les mixins, les fonctions, les variables
@@ -17,25 +17,14 @@
                         $color-black: #000000;
                         $color-white: #FFFFFF;
 
-
-
                         /* Définit la couleur d'arrière-plan  */
                         $background-color: #911C1C;
-
 
                         // Variable $font-sans avec la police DM Sans et la police générique sans-serif
                         $font-sans: 'DM Sans', sans-serif;
 
+                        //Définit max-width
                         $max-width: 1400px;
-
-
-
-
-                        $mobile-breakpoint: 768px;
-                        $tablet-breakpoint: 1024px;
-                        $desktop-breakpoint: 1280px;
-
-                        $mobile-first: false; // Switch to false for "dektop-first"
 
 
 

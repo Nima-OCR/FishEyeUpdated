@@ -12,22 +12,10 @@
       row-gap: 83px;
       margin-top: 100px;
 
-
-      @include respond(laptop) {
-      }
-
-      @include respond(tablet) {
-
-      }
-
       @include respond(mobile) {
         margin-top: 50px;
         justify-content: center;
-
-
       }
-
-
 
       article {
         width: 33%;
@@ -36,10 +24,6 @@
         align-items: center;
         flex-direction: column;
 
-        @include respond(laptop) {
-
-        }
-
         @include respond(tablet) {
           width: 45%;
         }
@@ -47,9 +31,6 @@
         @include respond(mobile) {
           width: 95%;
         }
-
-
-
 
         a {
           cursor: pointer;
@@ -65,17 +46,8 @@
           margin-top: 20px;
           margin-bottom: 0;
 
-          @include respond(laptop) {
-            //font-size: 28px;
-
-          }
-
           @include respond(tablet-mobile) {
             font-size: 28px;
-
-          }
-
-          @include respond(mobile) {
           }
         }
 
@@ -107,29 +79,6 @@
           }
         }
       }
-    }
-
-
-    .photographer-card {
-
-      @include respond(laptop) {
-
-      }
-
-      @include respond(tablet) {
-      }
-
-      @include respond(tablet-mobile) {
-      }
-
-      @include respond(mobile) {
-
-      }
-
-    }
-
-    h1 {
-      font-size: 21px;
     }
 
 

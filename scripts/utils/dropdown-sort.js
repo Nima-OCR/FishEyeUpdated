@@ -32,4 +32,3 @@ export function createDropdownMenu(selectElement) {
     selectElement.appendChild(option);
   });
 }
-

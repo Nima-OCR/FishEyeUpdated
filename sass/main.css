@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /*
-######################################################
-  Ce dossier contient les fichiers Sass utilitaires,
-  tels que les mixins, les fonctions, les variables
-######################################################
- */
+                    ######################################################
+                      Ce dossier contient les fichiers Sass utilitaires,
+                      tels que les mixins, les fonctions, les variables
+                    ######################################################
+                     */
 /* Définit la couleur d'arrière-plan  */
 /*
                        ###################################################################
@@ -32,11 +32,15 @@ body {
 }
 
 /*
-###################################################################
-  Ce dossier contient les styles de base pour les éléments HTML de
-  base tels que les titres, les paragraphes...
-###################################################################
- */
+                    ###################################################################
+                      Ce dossier contient les styles de base pour les éléments HTML de
+                      base tels que les titres, les paragraphes...
+                    ###################################################################
+                     */
+h1 {
+  font-size: 21px;
+}
+
 /*
                        ############################################################################
                          Ce dossier contient tous les styles pour les composants réutilisables
@@ -221,6 +225,7 @@ form label {
     font-size: 30px;
   }
 }
+
 /*
                        ############################################################################
                          Ce dossier contient tous les styles pour les composants réutilisables
@@ -745,10 +750,6 @@ h1 {
   color: #757575;
   font-weight: 400;
   font-size: 14px;
-}
-
-h1 {
-  font-size: 21px;
 }
 
 /*
