@@ -1,4 +1,4 @@
-import { displayPhotographerInfo, photographerName } from "./photographerInfos.js";
+import { photographerName } from "./photographerInfos.js";
 
 const contactButton = document.getElementById("contactButton");
 

@@ -1,5 +1,6 @@
 import {mediaFactory} from "../factories/mediaFactory.js";
 import {photographerMedias} from "./photographerMedias.js";
+import {updateElementAttributes} from "./accessibility.js";
 
 let lastActiveElement;
 const modal = document.getElementById("showLightBox");
@@ -9,32 +10,22 @@ async function getPhotographerMedias() {
   return await photographerMedias();
 }
 
-function toggleModal(display, ariaHidden, tabIndex, ariaModal, role) {
-  modal.style.display = display;
-  modal.setAttribute("aria-hidden", ariaHidden);
-  modal.setAttribute("tabindex", tabIndex);
-  if (ariaModal) {
-    modal.setAttribute("aria-modal", ariaModal);
-  } else {
-    modal.removeAttribute("aria-modal");
-  }
-  if (role) {
-    modal.setAttribute("role", role);
-  } else {
-    modal.removeAttribute("role");
-  }
-}
+
+
 
 export function openLightbox() {
   console.log('Ouverture de la lightbox');
   lastActiveElement = document.activeElement;
-  toggleModal("block", "false", "-1", "true", "dialog");
+  updateElementAttributes(modal, "block", "false", "1", "true", "dialog", "Image closeup view", "Description de l'image", "Étiquette de l'image");
+
+
   modal.focus();
 }
 
 export function closeLightbox() {
   console.log('Fermeture de la lightbox');
-  toggleModal("none", "true", null, null, null);
+  updateElementAttributes(modal, "none", "false", "1", "true", "dialog", "Image closeup view", "", "");
+
   if (lastActiveElement) {
     lastActiveElement.focus();
   }
