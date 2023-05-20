@@ -103,6 +103,22 @@ form {
   height: 100%;
   overflow: auto;
   background: rgba(196, 196, 196, 0.4); }
+  #contact_modal .contact-name {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 83px; }
+    @media (max-width: 1200px) {
+      #contact_modal .contact-name {
+        font-size: 45px; } }
+    @media (max-width: 992px) {
+      #contact_modal .contact-name {
+        font-size: 40px; } }
+    @media (max-width: 576px) {
+      #contact_modal .contact-name {
+        font-size: 30px; } }
 
 .contact_button {
   font-size: 20px;
@@ -149,14 +165,15 @@ form {
       padding: 20px; } }
   .modal header {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%; }
     @media (max-width: 992px) {
       .modal header {
         margin-top: 0; } }
     .modal header img {
-      width: 30px;
-      height: 30px;
+      right: 330px;
       cursor: pointer; }
       @media (max-width: 1200px) {
         .modal header img {
@@ -182,6 +199,8 @@ form {
       @media (max-width: 576px) {
         .modal header h2 {
           font-size: 30px; } }
+  .modal .contact-name {
+    text-align: left; }
 
 /*
                        ############################################################################
@@ -291,9 +310,12 @@ form {
   font-size: 18px;
   line-height: 23px;
   margin-top: 9px;
+  padding: 0 20px 0 0px;
   border-radius: 5px;
   border: 20px solid #901C1C;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); }
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  -webkit-appearance: none;
+  appearance: none; }
   @media (max-width: 576px) {
     .dropdown {
       display: flex;
@@ -306,7 +328,8 @@ form {
   .dropdown__options {
     -webkit-appearance: none;
     color: #FFFFFF;
-    padding: 10px; }
+    padding: 10px;
+    border-bottom: 1px solid white; }
     .dropdown__options:last-child {
       border-bottom: none; }
     .dropdown__options--selected {
@@ -334,6 +357,28 @@ label {
       font-size: 16px;
       margin-bottom: 10px;
       margin-right: 0; } }
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  position: relative; }
+
+.fa-chevron-down {
+  color: #FFFFFF;
+  position: relative;
+  right: 30px;
+  top: 3px;
+  transition: transform 0.1s ease-out; }
+
+.fa-chevron-down.rotate {
+  transform: rotate(180deg); }
+
+.dropdown__options--selected {
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px; }
 
 /***********************
   Photographer section

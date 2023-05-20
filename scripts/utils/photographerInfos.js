@@ -10,10 +10,17 @@
      * @param {string} selectedPhotographer.tagline - La description du photographe.
      * @param {string} selectedPhotographer.portrait - Le nom du fichier image du photographe.
      */
+
+    export let photographerName = "";
+
     export function displayPhotographerInfo(selectedPhotographer) {
       // Affiche le nom du photographe
       const nameElement = document.querySelector('#photographerName');
       nameElement.innerHTML = selectedPhotographer.name;
+
+      const contactNameElement = document.querySelector('.contact-name');
+      contactNameElement.innerHTML = selectedPhotographer.name;
+
 
       // Affiche la localisation du photographe
       const locationElement = document.querySelector('#photographerLocation');
@@ -27,4 +34,8 @@
       const imageElement = document.querySelector('#photographerImage');
       imageElement.src = `./assets/photographers/${selectedPhotographer.portrait}`;
       imageElement.alt = selectedPhotographer.name;
+
+      // Stocke le nom du photographe dans la variable globale
+      photographerName = selectedPhotographer.name;
     }
+

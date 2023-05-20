@@ -31,4 +31,14 @@ export function createDropdownMenu(selectElement) {
     option.textContent = optionData.text;
     selectElement.appendChild(option);
   });
+
+  selectElement.addEventListener('click', function() {
+    const arrow = this.parentNode.querySelector('.fa-chevron-down');
+    if (arrow) {
+      arrow.classList.toggle('rotate');
+    }
+  });
 }
+
+
+

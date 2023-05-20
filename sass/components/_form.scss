@@ -66,6 +66,7 @@
 
         }
       }
+
     }
 
 #contact_modal {
@@ -78,6 +79,28 @@
   height: 100%;
   overflow: auto;
   background: rgba(196, 196, 196, 0.4);
+
+  .contact-name {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 83px;
+
+    @include respond(laptop) {
+      font-size: 45px;
+    }
+
+    @include respond(tablet) {
+      font-size: 40px;
+    }
+
+    @include respond(mobile) {
+      font-size: 30px;
+
+    }
+  }
 }
 
 .contact_button {
@@ -139,6 +162,8 @@
 
   header {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
 
@@ -147,8 +172,7 @@
     }
 
     img {
-      width: 30px;
-      height: 30px;
+      right: 330px;
       cursor: pointer;
 
       @include respond(laptop) {
@@ -182,5 +206,9 @@
         font-size: 30px;
       }
     }
+  }
+
+  .contact-name {
+    text-align: left;
   }
 }
