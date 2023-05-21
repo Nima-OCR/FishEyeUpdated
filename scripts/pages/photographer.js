@@ -169,7 +169,7 @@
     function displayRateAndLikes(selectedPhotographer, photographerMediaItems) {
       const asideElement = createElementWithClass("aside", "");
       const rateElement = createRateAndLikesElement("div", "rate", `${selectedPhotographer.price}€ / jour`);
-      const likeElement = createRateAndLikesElement("div", "likes", `<span class="fa fa-heart"></span> `);
+      const likeElement = createRateAndLikesElement("div", "likes", `<em class="fa fa-heart"></em> `);
       const totalLikesElement = createRateAndLikesElement("p", "total-likes", `${calculateTotalLikes(photographerMediaItems)}`);
 
       asideElement.append(rateElement, likeElement, totalLikesElement);

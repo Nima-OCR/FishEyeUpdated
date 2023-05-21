@@ -55,7 +55,7 @@ export function mediaFactory(data) {
     figcaption.appendChild(likesElement);
 
     function createHeartIcon(className) {
-      const heartIcon = document.createElement('i');
+      const heartIcon = document.createElement('em');
       heartIcon.className = className;
       return heartIcon;
     }
