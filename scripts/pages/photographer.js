@@ -168,6 +168,8 @@
 
     function displayRateAndLikes(selectedPhotographer, photographerMediaItems) {
       const asideElement = createElementWithClass("aside", "");
+      asideElement.setAttribute("aria-label", "Informations sur le nombre de likes et le tarif journalier");
+
       const rateElement = createRateAndLikesElement("div", "rate", `${selectedPhotographer.price}€ / jour`);
       const likeElement = createRateAndLikesElement("div", "likes", `<em class="fa fa-heart"></em> `);
       const totalLikesElement = createRateAndLikesElement("p", "total-likes", `${calculateTotalLikes(photographerMediaItems)}`);
@@ -175,6 +177,7 @@
       asideElement.append(rateElement, likeElement, totalLikesElement);
       document.querySelector("main").append(asideElement);
     }
+
 
     /**
      * Initialise l'application en récupérant les données des médias du photographe et du photographe sélectionné,

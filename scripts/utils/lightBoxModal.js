@@ -16,7 +16,7 @@ async function getPhotographerMedias() {
 export function openLightbox() {
   console.log('Ouverture de la lightbox');
   lastActiveElement = document.activeElement;
-  updateElementAttributes(modal, "block", "false", "1", "true", "dialog", "Image closeup view", "Description de l'image", "Étiquette de l'image");
+  updateElementAttributes(modal, "block", "false", "1", "true", "dialog", "Image closeup view", "");
 
 
   modal.focus();
@@ -24,7 +24,7 @@ export function openLightbox() {
 
 export function closeLightbox() {
   console.log('Fermeture de la lightbox');
-  updateElementAttributes(modal, "none", "false", "1", "true", "dialog", "Image closeup view", "", "");
+  updateElementAttributes(modal, "none", "false", "1", "true", "dialog", "", "");
 
   if (lastActiveElement) {
     lastActiveElement.focus();

@@ -1,6 +1,6 @@
 
 
-    export function updateElementAttributes(element, display, ariaHidden, tabIndex, ariaModal, role, ariaLabel, altText, labelText) {
+    export function updateElementAttributes(element, display, ariaHidden, tabIndex, ariaModal, role, ariaLabel, altText) {
       element.style.display = display;
       element.setAttribute("aria-hidden", ariaHidden);
       element.setAttribute("tabindex", tabIndex);
@@ -11,12 +11,10 @@
         element.removeAttribute("alt");
       }
 
-      if (labelText) {
-        element.setAttribute("aria-label", labelText);
-        element.setAttribute("label", labelText);
+      if (ariaLabel) {
+        element.setAttribute("aria-label", ariaLabel);
       } else {
         element.removeAttribute("aria-label");
-        element.removeAttribute("label");
       }
 
       if (ariaModal) {

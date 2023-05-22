@@ -21,7 +21,7 @@
         }
       });
 
-      logo.setAttribute('aria-label', 'Lien vers la page d\'accueil');
+      logo.setAttribute('aria-label', 'Fisheye Home page');
 
       logo.setAttribute('tabindex', '0');
     }

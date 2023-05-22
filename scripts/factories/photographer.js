@@ -5,7 +5,7 @@
  */
   export function photographerFactory(data) {
 
-    const { name, id, city, country, tagline, price, portrait } = data;
+    const { name, title, id, city, country, tagline, price, portrait } = data;
     const picture = `assets/photographers/${portrait}`;
 
     /**
@@ -25,8 +25,11 @@
       // Création d'un élément 'img'
       const portrait = document.createElement('img');
       portrait.setAttribute('src', picture);
-      portrait.setAttribute('alt', ''); //todo s'occuper de value
+      portrait.setAttribute('alt', "");
+      portrait.setAttribute('aria-hidden', 'true');
       link.appendChild(portrait);
+
+
 
       // Création d'un élément 'h2' pour le nom du photographe
       const fullName = document.createElement('h2');

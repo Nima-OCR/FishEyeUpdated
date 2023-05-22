@@ -95,8 +95,11 @@ export function mediaFactory(data) {
       // Incrémente ou décrémente le total des likes
       if (solidHeartIcon.style.display === 'inline') {
         currentTotalLikes += 1;
+        solidHeartIcon.setAttribute('aria-label', 'likes');
       } else {
         currentTotalLikes -= 1;
+        solidHeartIcon.removeAttribute('aria-label');
+        solidHeartIcon.setAttribute('alt', 'likes');
       }
 
       totalLikesElement.textContent = currentTotalLikes.toString();
