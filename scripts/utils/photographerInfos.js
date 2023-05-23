@@ -1,3 +1,4 @@
+import {photographerFactory} from "../factories/photographer.js";
 
 
     /**
@@ -14,6 +15,10 @@
     export let photographerName = "";
 
     export function displayPhotographerInfo(selectedPhotographer) {
+      const namePhotographer = photographerFactory(selectedPhotographer);
+
+
+
       // Affiche le nom du photographe
       const nameElement = document.querySelector('#photographerName');
       nameElement.innerHTML = selectedPhotographer.name;
@@ -33,8 +38,9 @@
       // Affiche l'image du photographe
       const imageElement = document.querySelector('#photographerImage');
       imageElement.src = `./assets/photographers/${selectedPhotographer.portrait}`;
-      // imageElement.alt = selectedPhotographer.name;
-      imageElement.alt = "";
+      imageElement.alt = selectedPhotographer.name;
+      imageElement.alt = `${namePhotographer.name}`;
+
 
       // Stocke le nom du photographe dans la variable globale
       photographerName = selectedPhotographer.name;

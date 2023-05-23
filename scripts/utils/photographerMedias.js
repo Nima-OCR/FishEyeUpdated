@@ -34,7 +34,7 @@
 
       const section = document.createElement("div");
       section.className = "media-section";
-      section.setAttribute("role", "region");
+      // section.setAttribute("role", "region");
 
       const mainElement = document.querySelector("main");
       mainElement.append(section);

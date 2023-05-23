@@ -22,6 +22,7 @@ export function mediaFactory(data) {
     article.setAttribute('class', 'portfolio');
 
     const figure = document.createElement('figure');
+    figure.classList.add('show-lightbox__nav-image');
     article.appendChild(figure);
 
     // Pour l'image
@@ -29,7 +30,7 @@ export function mediaFactory(data) {
       const img = document.createElement('img');
       img.classList.add('showLightBox');
       img.setAttribute('src', imagePath);
-      img.setAttribute('alt', `Portrait de ${title}`);
+      img.setAttribute('alt', `Image ${title}`);
       img.setAttribute('data-id', id);
       figure.appendChild(img);
     } else if (video) {
@@ -46,7 +47,7 @@ export function mediaFactory(data) {
     const figcaption = document.createElement('figcaption');
     figure.appendChild(figcaption);
 
-    const titleElement = document.createElement('h3');
+    const titleElement = document.createElement('h2');
     titleElement.innerHTML = title;
     figcaption.appendChild(titleElement);
 
@@ -136,5 +137,4 @@ export function mediaFactory(data) {
   }
 
   return { id, photographerId, title, image, video, likes, date, getMediCardDOM };
-
 }

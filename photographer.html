@@ -10,7 +10,7 @@
     <title>Fisheye - photographe </title>
 </head>
 <body>
-<header class="header header--width">
+<header class="header header--width" role="banner" aria-label="Lien pour accédez à la page d'accueil">
     <img src="assets/images/logo.png" class="logo" alt="Logo de Fisheye"/>
 </header>
 <main id="main">
@@ -32,19 +32,18 @@
 
     <dialog class="show-lightbox" id="showLightBox">
         <div class="show-lightbox__modal">
-            <img class="show-lightbox__image">
             <div class="show-lightbox__nav">
                 <div class="show-lightbox__nav-inner">
                     <div class="show-lightbox__nav-chevron-wrapper">
                         <em class="show-lightbox__nav-chevron fa-solid fa-chevron-left show-lightbox__nav-chevron-left"></em>
                     </div>
                     <figure class="show-lightbox__nav-image">
-                        <img  src="" alt="">
+                        <img class="show-lightbox__image" src="" alt="">
                         <figcaption></figcaption>
                     </figure>
                     <div class="show-lightbox__nav-chevron-wrapper">
                         <div class="show-lightbox__close-btn-wrapper">
-                            <img id="closeLightboxButton" class="show-lightbox__close-btn" src="assets/icons/close_color_primary.svg"/>
+                            <img id="closeLightboxButton" class="show-lightbox__close-btn" src="assets/icons/close_color_primary.svg" alt="Close dialog"/>
                         </div>
                         <em class="show-lightbox__nav-chevron fa-solid fa-chevron-right show-lightbox__nav-chevron-right"></em>
                     </div>
@@ -58,7 +57,7 @@
     <div class="modal">
         <header>
             <h2>Contactez-moi</h2>
-            <img id="closeModalButton" src="assets/icons/close.svg" />
+            <img id="closeModalButton" src="assets/icons/close.svg" alt="" />
         </header>
 
         <p class="contact-name"></p>

@@ -433,7 +433,7 @@ label {
           border-top-left-radius: 15px;
           border-top-right-radius: 15px;
           background-color: #757575; } }
-    .media-section article h3 {
+    .media-section article h2 {
       width: 100%;
       margin: 0;
       font-family: "DM Sans", sans-serif;
@@ -446,7 +446,7 @@ label {
       overflow: hidden;
       text-overflow: ellipsis; }
       @media (max-width: 576px) {
-        .media-section article h3 {
+        .media-section article h2 {
           font-size: 20px;
           color: #FFFFFF;
           padding-left: 10px; } }

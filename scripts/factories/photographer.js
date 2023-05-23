@@ -25,8 +25,8 @@
       // Création d'un élément 'img'
       const portrait = document.createElement('img');
       portrait.setAttribute('src', picture);
-      portrait.setAttribute('alt', "");
-      portrait.setAttribute('aria-hidden', 'true');
+      portrait.setAttribute('alt', `photo de ${name}`);
+      // portrait.setAttribute('aria-hidden', 'true');
       link.appendChild(portrait);
 
 

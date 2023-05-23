@@ -16,7 +16,7 @@ async function getPhotographerMedias() {
 export function openLightbox() {
   console.log('Ouverture de la lightbox');
   lastActiveElement = document.activeElement;
-  updateElementAttributes(modal, "block", "false", "1", "true", "dialog", "Image closeup view", "");
+  updateElementAttributes(modal, "block", "false", "1", "true", "", "Image closeup view", "");
 
 
   modal.focus();
@@ -24,7 +24,7 @@ export function openLightbox() {
 
 export function closeLightbox() {
   console.log('Fermeture de la lightbox');
-  updateElementAttributes(modal, "none", "false", "1", "true", "dialog", "", "");
+  updateElementAttributes(modal, "none", "false", "1", "true", "", "", "");
 
   if (lastActiveElement) {
     lastActiveElement.focus();
@@ -86,6 +86,7 @@ export function setMediaAttributes(mediaItem, mediaCard, container) {
 export async function displayPhotographerMedias(clickedImageId) {
   const media = await getPhotographerMedias();
   const imagesContainer = document.querySelector('.show-lightbox__nav-image img');
+
   const videoContainer = createVideoContainer();
 
   let currentIndex = media.findIndex(mediaItem => mediaItem.id === parseInt(clickedImageId));
