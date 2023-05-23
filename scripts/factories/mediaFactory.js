@@ -22,7 +22,6 @@ export function mediaFactory(data) {
     article.setAttribute('class', 'portfolio');
 
     const figure = document.createElement('figure');
-    figure.classList.add('show-lightbox__nav-image');
     article.appendChild(figure);
 
     // Pour l'image

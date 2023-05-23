@@ -29,6 +29,7 @@ export function closeLightbox() {
   if (lastActiveElement) {
     lastActiveElement.focus();
   }
+  // location.reload();
 }
 
 function closeLightBoxEvent(event) {
