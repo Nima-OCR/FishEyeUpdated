@@ -31,17 +31,22 @@ export function mediaFactory(data) {
       img.classList.add('showLightBox');
       img.setAttribute('src', imagePath);
       img.setAttribute('alt', `Image ${title}`);
+      img.setAttribute('aria-label', "Ouverture de la lightbox")
       img.setAttribute('data-id', id);
+      img.setAttribute('tabindex', '0');
       figure.appendChild(img);
     } else if (video) {
       const videoElement = document.createElement('video');
       videoElement.classList.add('showLightBox');
       videoElement.setAttribute('src', videoPath);
       videoElement.setAttribute('alt', `Vidéo de ${title}`);
+      videoElement.setAttribute('aria-label', "Ouverture de la lightbox")
       videoElement.setAttribute('controls', true);
       videoElement.setAttribute('data-id', id);
+      videoElement.setAttribute('tabindex', '0');
       figure.appendChild(videoElement);
     }
+
 
 
     const figcaption = document.createElement('figcaption');
@@ -58,6 +63,7 @@ export function mediaFactory(data) {
     function createHeartIcon(className) {
       const heartIcon = document.createElement('em');
       heartIcon.className = className;
+      heartIcon.setAttribute('tabindex', '0');
       return heartIcon;
     }
 
@@ -108,15 +114,30 @@ export function mediaFactory(data) {
 
     function attachHeartIconEvent(heartIcon) {
       heartIcon.addEventListener('click', handleHeartClick);
+      heartIcon.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          handleHeartClick(event);
+          heartIcon.focus();
+        }
+      });
     }
+
+
 
     function toggleHeartFillOnEvent(heartIcons) {
       heartIcons.forEach((heart) => {
         heart.addEventListener('click', () => {
           heart.classList.toggle('filled');
         });
+        heart.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            heart.classList.toggle('filled');
+          }
+        });
       });
     }
+
+
 
 // Code principal
     const heartIcon = createHeartIcon('fa-regular fa-heart');

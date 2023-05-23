@@ -13,6 +13,7 @@
     const element = document.createElement(tag);
     element.className = className;
     element.innerHTML = innerHTML;
+    element.setAttribute('tabindex', '0');
     return element;
   }
 

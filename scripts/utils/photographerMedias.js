@@ -42,7 +42,7 @@
       photographies.forEach((photographie) => {
         const cardModel = mediaFactory(photographie);
         const cardElement = cardModel.getMediCardDOM();
-        cardElement.setAttribute("tabindex", "0");
+        // cardElement.setAttribute("tabindex", "0");
         section.append(cardElement);
       });
     }

@@ -29,6 +29,6 @@ export function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
-  modal.setAttribute("tabindex", null);
+  modal.setAttribute("tabindex", '0');
   contactButton.focus();
 }

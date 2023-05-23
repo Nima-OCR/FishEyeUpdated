@@ -100,9 +100,16 @@
       const closeModalButton = document.getElementById("closeModalButton");
 
       // Ajout de l'événement clic pour fermer le modal
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeModal();
+        }
+      });
+
       closeModalButton.addEventListener("click", () => {
         closeModal();
       });
+
     }
 
     /***************************************************
@@ -253,6 +260,7 @@
       const cardImgElements = document.querySelectorAll(".showLightBox");
 
       cardImgElements.forEach((card) => {
+        // Gestionnaire d'événements pour le clic
         card.addEventListener("click", () => {
           const imageId = card.getAttribute('data-id');
           displayPhotographerMedias(imageId)
@@ -260,5 +268,17 @@
               openLightbox("showLightBox");
             });
         });
+
+        // Gestionnaire d'événements pour la touche "Enter"
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            const imageId = card.getAttribute('data-id');
+            displayPhotographerMedias(imageId)
+              .then(() => {
+                openLightbox("showLightBox");
+              });
+          }
+        });
       });
     }
+
