@@ -1,89 +1,89 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/07b055a495.js" crossorigin="anonymous"></script>
-    <title>Fisheye - photographe </title>
-</head>
-<body>
-<header class="header header--width" aria-label="Lien pour accédez à la page d'accueil">
-    <img src="assets/images/logo.png" class="logo" alt="Logo de Fisheye" tabindex="0"/>
-</header>
-<main id="main">
-    <div id="photographer"></div>
-    <section class="photographer-header">
-        <div class="photographer-header__details">
-            <h1 class="photographer-header__details__name" id="photographerName"></h1>
-            <p class="photographer-header__details__location" id="photographerLocation"></p>
-            <p class="photographer-header__details__tagline" id="photographerTagline"></p>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="assets/favicon.png">
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/07b055a495.js" crossorigin="anonymous"></script>
+        <title>Fisheye - photographe </title>
+    </head>
+    <body>
+    <header class="header header--width" aria-label="Lien pour accédez à la page d'accueil">
+        <img src="assets/images/logo.png" class="logo" alt="Logo de Fisheye" tabindex="0"/>
+    </header>
+    <main id="main">
+        <div id="photographer"></div>
+        <section class="photographer-header">
+            <div class="photographer-header__details">
+                <h1 class="photographer-header__details__name" id="photographerName"></h1>
+                <p class="photographer-header__details__location" id="photographerLocation"></p>
+                <p class="photographer-header__details__tagline" id="photographerTagline"></p>
+            </div>
+            <button class="photographer-header__button" id="contactButton" aria-label="Bouton d'ouverture de la modal de contact"></button>
+            <img class="photographer-header__image" id="photographerImage" src="" alt="">
+        </section>
+
+        <div class="dropdown-container">
+            <select class="dropdown" id="dropdown" aria-label="Menu de tri"></select>
+            <em class="fa-solid fa-chevron-down"></em>
         </div>
-        <button class="photographer-header__button" id="contactButton" aria-label="Bouton d'ouverture de la modal de contact"></button>
-        <img class="photographer-header__image" id="photographerImage" src="" alt="">
-    </section>
 
-    <div class="dropdown-container">
-        <select class="dropdown" id="dropdown" aria-label="Menu de tri"></select>
-        <em class="fa-solid fa-chevron-down"></em>
-    </div>
-
-    <dialog class="show-lightbox" id="showLightBox" aria-hidden="true" aria-describedby="lightboxDescription" role="alertdialog">
-        <div class="show-lightbox__modal">
-            <div class="show-lightbox__nav">
-                <div class="show-lightbox__nav-inner">
-                    <div class="show-lightbox__nav-chevron-wrapper">
-                        <em class="show-lightbox__nav-chevron fa-solid fa-chevron-left show-lightbox__nav-chevron-left" tabindex="0"></em>
-                    </div>
-                    <figure class="show-lightbox__nav-image">
-                        <img class="show-lightbox__image" src="_" alt="">
-                        <figcaption id="lightboxDescription"></figcaption>
-                    </figure>
-                    <div class="show-lightbox__nav-chevron-wrapper">
-                        <div class="show-lightbox__close-btn-wrapper">
-                            <img id="closeLightboxButton" class="show-lightbox__close-btn" src="assets/icons/close_color_primary.svg" aria-label="Close dialog" alt="Close dialog" tabindex="0"/>
+        <dialog class="show-lightbox" id="showLightBox" aria-hidden="true" aria-describedby="lightboxDescription" role="alertdialog">
+            <div class="show-lightbox__modal">
+                <div class="show-lightbox__nav">
+                    <div class="show-lightbox__nav-inner">
+                        <div class="show-lightbox__nav-chevron-wrapper">
+                            <em class="show-lightbox__nav-chevron fa-solid fa-chevron-left show-lightbox__nav-chevron-left" tabindex="0"></em>
                         </div>
-                        <em class="show-lightbox__nav-chevron fa-solid fa-chevron-right show-lightbox__nav-chevron-right" tabindex="0"></em>
+                        <figure class="show-lightbox__nav-image">
+                            <img class="show-lightbox__image" src="" alt="">
+                            <figcaption id="lightboxDescription"></figcaption>
+                        </figure>
+                        <div class="show-lightbox__nav-chevron-wrapper">
+                            <div class="show-lightbox__close-btn-wrapper">
+                                <img id="closeLightboxButton" class="show-lightbox__close-btn" src="assets/icons/close_color_primary.svg" aria-label="Fermeture de la modale" alt="Close dialog" tabindex="0"/>
+                            </div>
+                            <em class="show-lightbox__nav-chevron fa-solid fa-chevron-right show-lightbox__nav-chevron-right" tabindex="0"></em>
+                        </div>
                     </div>
                 </div>
             </div>
+        </dialog>
+
+
+    </main>
+    <dialog id="contact_modal" role="alertdialog">
+        <div class="modal">
+            <header>
+                <h2>Contactez-moi</h2>
+                <img id="closeModalButton" src="assets/icons/close.svg" alt="" />
+            </header>
+            <p class="contact-name"></p>
+            <form>
+                <div>
+                    <div>
+                        <label for="first-name">Prénom</label>
+                        <input type="text" id="first-name" name="first-name" minlength="2">
+                    </div>
+                    <div>
+                        <label for="last-name">Nom</label>
+                        <input type="text" id="last-name" name="last-name" minlength="2">
+                    </div>
+                    <div>
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label for="message">Votre message</label>
+                        <textarea id="message" name="message" minlength="20" maxlength="99"></textarea>
+                    </div>
+                </div>
+                <button  class="contact_button">Envoyer</button>
+            </form>
         </div>
     </dialog>
-
-
-</main>
-<dialog id="contact_modal" role="alertdialog">
-    <div class="modal">
-        <header>
-            <h2>Contactez-moi</h2>
-            <img id="closeModalButton" src="assets/icons/close.svg" alt="" />
-        </header>
-        <p class="contact-name"></p>
-        <form>
-            <div>
-                <div>
-                    <label for="first-name">Prénom</label>
-                    <input type="text" id="first-name" name="first-name" minlength="2">
-                </div>
-                <div>
-                    <label for="last-name">Nom</label>
-                    <input type="text" id="last-name" name="last-name" minlength="2">
-                </div>
-                <div>
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div>
-                    <label for="message">Votre message</label>
-                    <textarea id="message" name="message" minlength="20" maxlength="99"></textarea>
-                </div>
-            </div>
-            <button  class="contact_button">Envoyer</button>
-        </form>
-    </div>
-</dialog>
-<script type="module" src="scripts/pages/photographer.js"></script>
-</body>
-</html>
+    <script type="module" src="scripts/pages/photographer.js"></script>
+    </body>
+    </html>

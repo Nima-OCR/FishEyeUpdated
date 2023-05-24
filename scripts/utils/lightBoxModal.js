@@ -20,7 +20,7 @@ export function openLightbox() {
   const interactiveElementsOutsideLightbox = document.querySelectorAll('header a, main a, aside a, header button, main button, aside button');
   setTabIndexForElements(interactiveElementsOutsideLightbox, '-1');
 
-  updateElementAttributes(modal, "block", "false", "0", "true", "", "Image closeup view", "");
+  updateElementAttributes(modal, "block", "false", "0", "true", "", "La Modale des photos est ouverte", "");
 
 
   modal.focus();
@@ -60,8 +60,13 @@ export function getNavChevrons() {
   navChevronLeft.setAttribute("tabindex", "0");
   navChevronRight.setAttribute("tabindex", "0");
 
+  // Ajouter un aria-label à chaque élément
+  navChevronLeft.setAttribute("aria-label", "précédent");
+  navChevronRight.setAttribute("aria-label", "suivant");
+
   return { navChevronLeft, navChevronRight };
 }
+
 
 export function createVideoContainer() {
   const videoContainers = document.querySelectorAll('.show-lightbox__nav-image video');

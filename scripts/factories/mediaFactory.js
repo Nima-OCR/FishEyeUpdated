@@ -30,7 +30,7 @@ export function mediaFactory(data) {
       img.classList.add('showLightBox');
       img.setAttribute('src', imagePath);
       img.setAttribute('alt', `Image ${title}`);
-      img.setAttribute('aria-label', "Ouverture de la lightbox")
+      img.setAttribute('aria-label', "Ouverture de la lightbox pour voir les photos")
       img.setAttribute('data-id', id);
       img.setAttribute('tabindex', '0');
       figure.appendChild(img);
