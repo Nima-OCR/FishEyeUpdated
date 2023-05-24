@@ -5,7 +5,7 @@
  */
   export function photographerFactory(data) {
 
-    const { name, title, id, city, country, tagline, price, portrait } = data;
+    const { name, id, city, country, tagline, price, portrait } = data;
     const picture = `assets/photographers/${portrait}`;
 
     /**
