@@ -259,6 +259,12 @@ form label {
                          du site, tels que les boutons, les formulaires, les modales,
                        ############################################################################
                         */
+#lightboxDescription {
+  font-size: 24px;
+  line-height: 31px;
+  margin-top: 12px;
+}
+
 .show-lightbox {
   display: none;
   position: fixed;
@@ -328,8 +334,8 @@ form label {
 .show-lightbox__nav-chevron-wrapper .show-lightbox__close-btn-wrapper {
   cursor: pointer;
   position: relative;
-  bottom: 400px;
-  left: 50%;
+  bottom: 310px;
+  left: 85%;
   transform: translateX(-50%);
 }
 .show-lightbox__nav-inner {
@@ -354,8 +360,13 @@ form label {
 }
 .show-lightbox__nav .show-lightbox__nav-image img {
   width: 100%;
-  height: 900px;
-  object-fit: contain;
+  height: 650px;
+  object-fit: cover;
+}
+@media (max-width: 576px) {
+  .show-lightbox__nav .show-lightbox__nav-image img {
+    object-fit: cover;
+  }
 }
 .show-lightbox__nav .show-lightbox__nav-image video {
   width: 100%;

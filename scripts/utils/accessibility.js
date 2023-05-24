@@ -29,3 +29,9 @@
         element.removeAttribute("role");
       }
     }
+
+
+
+      export function setTabIndexForElements(elements, tabIndex) {
+        elements.forEach(element => element.setAttribute('tabindex', tabIndex));
+      }

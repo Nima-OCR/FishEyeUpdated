@@ -98,6 +98,8 @@
 
       // Récupération du bouton de fermeture du modal
       const closeModalButton = document.getElementById("closeModalButton");
+      closeModalButton.setAttribute('tabindex', '0');
+      closeModalButton.setAttribute('aria-label', 'fermeture du formulaire');
 
       // Ajout de l'événement clic pour fermer le modal
       document.addEventListener("keydown", (event) => {

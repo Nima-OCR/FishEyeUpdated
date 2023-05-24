@@ -1,6 +1,6 @@
 import {mediaFactory} from "../factories/mediaFactory.js";
 import {photographerMedias} from "./photographerMedias.js";
-import {updateElementAttributes} from "./accessibility.js";
+import {setTabIndexForElements, updateElementAttributes} from "./accessibility.js";
 
 let lastActiveElement;
 const modal = document.getElementById("showLightBox");
@@ -16,7 +16,11 @@ async function getPhotographerMedias() {
 export function openLightbox() {
   console.log('Ouverture de la lightbox');
   lastActiveElement = document.activeElement;
-  updateElementAttributes(modal, "block", "false", "1", "true", "", "Image closeup view", "");
+
+  const interactiveElementsOutsideLightbox = document.querySelectorAll('header a, main a, aside a, header button, main button, aside button');
+  setTabIndexForElements(interactiveElementsOutsideLightbox, '-1');
+
+  updateElementAttributes(modal, "block", "false", "0", "true", "", "Image closeup view", "");
 
 
   modal.focus();
@@ -24,12 +28,15 @@ export function openLightbox() {
 
 export function closeLightbox() {
   console.log('Fermeture de la lightbox');
-  updateElementAttributes(modal, "none", "false", "1", "true", "", "", "");
+
+  const interactiveElementsOutsideLightbox = document.querySelectorAll('header a, main a, aside a, header button, main button, aside button');
+  setTabIndexForElements(interactiveElementsOutsideLightbox, '0');
+
+  updateElementAttributes(modal, "none", "true", "0", "true", "", "", "");
 
   if (lastActiveElement) {
     lastActiveElement.focus();
   }
-  // location.reload();
 }
 
 function closeLightBoxEvent(event) {
@@ -98,6 +105,17 @@ export async function displayPhotographerMedias(clickedImageId) {
     const mediaCard = getMediCardDOM();
     setMediaAttributes(mediaItem, mediaCard, mediaItem.image ? imagesContainer : videoContainer);
 
+    const figcaption = document.querySelector('#lightboxDescription');
+    if (figcaption) {
+      figcaption.remove(); // remove the existing figcaption if there is one
+    }
+
+    const newFigcaption = document.createElement('figcaption');
+    newFigcaption.id = "lightboxDescription";
+    newFigcaption.textContent = mediaItem.title; // assuming mediaItem has a title property
+    const figure = document.querySelector('.show-lightbox__nav-image');
+    figure.appendChild(newFigcaption);
+
     if (mediaItem.image) {
       videoContainer.style.display = 'none';
       imagesContainer.style.display = 'block';
@@ -106,6 +124,8 @@ export async function displayPhotographerMedias(clickedImageId) {
       videoContainer.style.display = 'block';
     }
   };
+
+
 
   function handleNavChevron(event) {
     const { navChevronLeft, navChevronRight } = getNavChevrons();
@@ -128,3 +148,5 @@ export async function displayPhotographerMedias(clickedImageId) {
 
   updateLightboxMedia(currentIndex);
 }
+
+

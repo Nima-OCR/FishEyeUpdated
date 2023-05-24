@@ -30,29 +30,28 @@
         <em class="fa-solid fa-chevron-down"></em>
     </div>
 
-    <dialog class="show-lightbox" id="showLightBox" aria-hidden="true">
+    <dialog class="show-lightbox" id="showLightBox" aria-hidden="true" aria-describedby="lightboxDescription">
         <div class="show-lightbox__modal">
             <div class="show-lightbox__nav">
                 <div class="show-lightbox__nav-inner">
                     <div class="show-lightbox__nav-chevron-wrapper">
-                        <em class="show-lightbox__nav-chevron fa-solid fa-chevron-left show-lightbox__nav-chevron-left"></em>
+                        <em class="show-lightbox__nav-chevron fa-solid fa-chevron-left show-lightbox__nav-chevron-left" tabindex="0"></em>
                     </div>
                     <figure class="show-lightbox__nav-image">
                         <img class="show-lightbox__image" src="" alt="">
-                        <figcaption></figcaption>
+                        <figcaption id="lightboxDescription"></figcaption>
                     </figure>
                     <div class="show-lightbox__nav-chevron-wrapper">
                         <div class="show-lightbox__close-btn-wrapper">
-
-                            <img id="closeLightboxButton" class="show-lightbox__close-btn" src="assets/icons/close_color_primary.svg" alt="Close dialog" tabindex="0"/>
-
+                            <img id="closeLightboxButton" class="show-lightbox__close-btn" src="assets/icons/close_color_primary.svg" aria-label="Close dialog" alt="Close dialog" tabindex="0"/>
                         </div>
-                        <em class="show-lightbox__nav-chevron fa-solid fa-chevron-right show-lightbox__nav-chevron-right"></em>
+                        <em class="show-lightbox__nav-chevron fa-solid fa-chevron-right show-lightbox__nav-chevron-right" tabindex="0"></em>
                     </div>
                 </div>
             </div>
         </div>
     </dialog>
+
 
 </main>
 <dialog id="contact_modal">
@@ -61,11 +60,8 @@
             <h2>Contactez-moi</h2>
             <img id="closeModalButton" src="assets/icons/close.svg" alt="" />
         </header>
-
         <p class="contact-name"></p>
-
-
-        <form aria-hidden="true">
+        <form>
             <div>
                 <div>
                     <label for="first-name">Prénom</label>
