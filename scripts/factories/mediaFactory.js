@@ -30,7 +30,7 @@ export function mediaFactory(data) {
       img.classList.add('showLightBox');
       img.setAttribute('src', imagePath);
       img.setAttribute('alt', `Image ${title}`);
-      img.setAttribute('aria-label', "Ouverture de la lightbox pour voir les photos")
+      img.setAttribute('aria-label', `Ouverture de la lightbox pour afficher le média ${title}`)
       img.setAttribute('data-id', id);
       img.setAttribute('tabindex', '0');
       figure.appendChild(img);
@@ -63,8 +63,10 @@ export function mediaFactory(data) {
       const heartIcon = document.createElement('em');
       heartIcon.className = className;
       heartIcon.setAttribute('tabindex', '0');
+      heartIcon.setAttribute('aria-label', 'Bouton Like');
       return heartIcon;
     }
+
 
     function createHeartContainer(heartIcon, solidHeartIcon) {
       const heartContainer = document.createElement('span');

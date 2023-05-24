@@ -112,12 +112,12 @@ export async function displayPhotographerMedias(clickedImageId) {
 
     const figcaption = document.querySelector('#lightboxDescription');
     if (figcaption) {
-      figcaption.remove(); // remove the existing figcaption if there is one
+      figcaption.remove();
     }
 
     const newFigcaption = document.createElement('figcaption');
     newFigcaption.id = "lightboxDescription";
-    newFigcaption.textContent = mediaItem.title; // assuming mediaItem has a title property
+    newFigcaption.textContent = mediaItem.title;
     const figure = document.querySelector('.show-lightbox__nav-image');
     figure.appendChild(newFigcaption);
 

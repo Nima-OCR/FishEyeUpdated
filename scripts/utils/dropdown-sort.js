@@ -33,11 +33,22 @@ export function createDropdownMenu(selectElement) {
   });
 
   selectElement.addEventListener('click', function() {
-    const arrow = this.parentNode.querySelector('.fa-chevron-down');
+    toggleArrowRotation();
+  });
+
+  selectElement.addEventListener('keydown', function(event) {
+    if (event.key === "Enter") {
+      toggleArrowRotation();
+    }
+  });
+
+  function toggleArrowRotation() {
+    const arrow = selectElement.parentNode.querySelector('.dropdown');
     if (arrow) {
       arrow.classList.toggle('rotate');
     }
-  });
+  }
+
 }
 
 
