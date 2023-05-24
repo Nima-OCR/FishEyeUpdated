@@ -20,8 +20,4 @@
           redirectToHome();
         }
       });
-
-      // logo.setAttribute('aria-label', 'Fisheye Home page');
-
-      // logo.setAttribute('tabindex', '0');
     }
