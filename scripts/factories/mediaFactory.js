@@ -38,9 +38,9 @@ export function mediaFactory(data) {
       const videoElement = document.createElement('video');
       videoElement.classList.add('showLightBox');
       videoElement.setAttribute('src', videoPath);
-      videoElement.setAttribute('alt', `Vidéo de ${title}`);
+      // videoElement.setAttribute('alt', `Vidéo de ${title}`);
       videoElement.setAttribute('aria-label', "Ouverture de la lightbox")
-      videoElement.setAttribute('controls', true);
+      videoElement.setAttribute('controls', "");
       videoElement.setAttribute('data-id', id);
       videoElement.setAttribute('tabindex', '0');
       figure.appendChild(videoElement);

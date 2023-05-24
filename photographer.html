@@ -10,7 +10,7 @@
     <title>Fisheye - photographe </title>
 </head>
 <body>
-<header class="header header--width" role="banner" aria-label="Lien pour accédez à la page d'accueil">
+<header class="header header--width" aria-label="Lien pour accédez à la page d'accueil">
     <img src="assets/images/logo.png" class="logo" alt="Logo de Fisheye" tabindex="0"/>
 </header>
 <main id="main">
@@ -30,7 +30,7 @@
         <em class="fa-solid fa-chevron-down"></em>
     </div>
 
-    <dialog class="show-lightbox" id="showLightBox" aria-hidden="true" aria-describedby="lightboxDescription">
+    <dialog class="show-lightbox" id="showLightBox" aria-hidden="true" aria-describedby="lightboxDescription" role="alertdialog">
         <div class="show-lightbox__modal">
             <div class="show-lightbox__nav">
                 <div class="show-lightbox__nav-inner">
@@ -38,7 +38,7 @@
                         <em class="show-lightbox__nav-chevron fa-solid fa-chevron-left show-lightbox__nav-chevron-left" tabindex="0"></em>
                     </div>
                     <figure class="show-lightbox__nav-image">
-                        <img class="show-lightbox__image" src="" alt="">
+                        <img class="show-lightbox__image" src="_" alt="">
                         <figcaption id="lightboxDescription"></figcaption>
                     </figure>
                     <div class="show-lightbox__nav-chevron-wrapper">
@@ -54,7 +54,7 @@
 
 
 </main>
-<dialog id="contact_modal">
+<dialog id="contact_modal" role="alertdialog">
     <div class="modal">
         <header>
             <h2>Contactez-moi</h2>
