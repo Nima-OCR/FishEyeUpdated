@@ -196,8 +196,11 @@
      * Gère l'événement des chevrons.
      * @param {Event} event - L'événement de clic ou de touche.
      */
+
+    const { navChevronLeft, navChevronRight } = getNavChevrons();
+
     function handleNavChevron(event) {
-      const { navChevronLeft, navChevronRight } = getNavChevrons();
+      // const { navChevronLeft, navChevronRight } = getNavChevrons();
 
       if (event.type === "click" || (event.key === "Enter" && (document.activeElement === navChevronLeft || document.activeElement === navChevronRight))) {
         if (document.activeElement === navChevronLeft) {
@@ -210,8 +213,6 @@
         event.preventDefault();
       }
     }
-
-    const { navChevronLeft, navChevronRight } = getNavChevrons();
 
     [navChevronLeft, navChevronRight].forEach(navChevron => addEventListeners(navChevron, handleNavChevron));
 
