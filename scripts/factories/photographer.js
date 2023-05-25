@@ -57,9 +57,6 @@
       return article;
     }
 
-    // Afficher l'objet de test dans la console
-    // console.log(data);
-
     // Renvoyer les objets et la fonction `getUserCardDOM`
     return { name, id, city, country, tagline, price, portrait, getUserCardDOM };
 }

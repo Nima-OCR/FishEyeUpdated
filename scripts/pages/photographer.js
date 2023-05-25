@@ -12,11 +12,6 @@
     import { manageHomeLink } from "../utils/homeLink.js";
     import { displayPhotographerInfo } from "../utils/photographerInfos.js";
 
-    // Récupération des paramètres de l'URL
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // Récupération du paramètre "id" depuis l'URL
-    const photographerId = urlParams.get("id");
 
 
     /***************************************************
@@ -30,6 +25,13 @@
      * @returns {Promise<Object>} - Une promesse résolue avec un objet représentant le photographe trouvé.
      * @throws {Error} - Si aucun photographe n'a été trouvé avec l'ID spécifié.
      */
+    // Récupération des paramètres de l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Récupération du paramètre "id" depuis l'URL
+    const photographerId = urlParams.get("id");
+    console.log("L'identifiant du photographe est : " + photographerId);
+
 
     export async function fetchData() {
       const dataFrom = await getPhotographers();
@@ -130,7 +132,7 @@
     }
 
     submitForm();
-    console.log("Le formulaire a été soumis !");
+    // console.log("Le formulaire a été soumis !");
 
 
     /***************************************************
@@ -208,7 +210,7 @@
     }
 
     init().then(() => {
-      console.log("L'initialisation de  l'encart qui représente les likes d'un photographe a été terminée avec succès.");
+      // console.log("L'initialisation de  l'encart qui représente les likes d'un photographe a été terminée avec succès.");
     });
 
 
@@ -241,7 +243,7 @@
         const sortedData = sortAndDisplay(event, mediaList);
         updateUI(sortedData, mediaFactory, showLightBox);
       } catch (error) {
-        console.error("Une erreur s'est produite lors du chargement des données :", error);
+        console.error("Une erreur s'est produite lors de la récupération ou du tri des médias :", error);
       }
     });
 

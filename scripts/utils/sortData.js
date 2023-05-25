@@ -3,7 +3,7 @@
     /**
      * Trie les données des médias en fonction du critère de tri sélectionné.
      *
-     * @param {Object[]} data - Liste d'objets médias à trier.
+     * @param {Object} data - Liste d'objets médias à trier.
      * @param {string} sortBy - Critère de tri par "Popularité", "Date" ou "Titre"
      * @returns {Object[]} Liste d'objets médias triée en fonction du critère sélectionné.
      */

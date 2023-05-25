@@ -30,7 +30,7 @@
         displayData(photographers);
     }
     init().then(() => {
-      console.log("Initialisation terminée avec succès !");
+      // console.log("Initialisation terminée avec succès !");
     }).catch((error) => {
       console.error("Une erreur s'est produite lors de l'initialisation : ", error);
     });

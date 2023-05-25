@@ -55,6 +55,11 @@ export function mediaFactory(data) {
     titleElement.innerHTML = title;
     figcaption.appendChild(titleElement);
 
+
+    /***********************************************************************
+                        Gestions des Likes des médias
+     **********************************************************************/
+
     const likesElement = document.createElement('p');
     likesElement.innerHTML = `${likes} `;
     figcaption.appendChild(likesElement);
@@ -68,6 +73,7 @@ export function mediaFactory(data) {
     }
 
 
+    //Crée un conteneur HTML "span" et lui ajoute deux éléments enfants, représentant deux icônes de coeur.
     function createHeartContainer(heartIcon, solidHeartIcon) {
       const heartContainer = document.createElement('span');
       heartContainer.className = 'heart-container';
@@ -76,6 +82,28 @@ export function mediaFactory(data) {
       return heartContainer;
     }
 
+    // Création des classes pour likes des medias
+    const heartIcon = createHeartIcon('fa-regular fa-heart');
+    const solidHeartIcon = createHeartIcon('fas fa-heart');
+    solidHeartIcon.style.display = 'none';
+
+    const heartContainer = createHeartContainer(heartIcon, solidHeartIcon);
+    likesElement.appendChild(heartContainer);
+
+    attachHeartIconEvent(heartIcon);
+
+    const heartIcons = document.querySelectorAll('.heart-icon');
+
+    toggleHeartFillOnEvent(heartIcons);
+
+
+    /**
+     * Gère le clic sur une icône de coeur en mettant à jour l'affichage de l'icône
+     * et en incrémentant ou décrémentant le compteur de "likes".
+     *
+     * @param {Event} event - L'objet Event représentant le clic sur l'icône du coeur.
+     *
+     */
     function handleHeartClick(event) {
       const heartContainer = event.target.parentNode;
       // const heartIcon = heartContainer.querySelector('.fa-regular.fa-heart');
@@ -83,7 +111,7 @@ export function mediaFactory(data) {
       const likesElement = heartContainer.parentNode;
       const likeCount = parseInt(likesElement.textContent);
 
-      let updatedLikeCount;
+      let updatedLikeCount;//utilisée pour stocker le nouveau nombre de "likes".
 
       if (solidHeartIcon.style.display === 'none') {
         updatedLikeCount = likeCount + 1;
@@ -124,7 +152,14 @@ export function mediaFactory(data) {
     }
 
 
-
+    /**
+     * Ajoute des gestionnaires d'événements aux icônes de coeur
+     *
+     * @param {Element[]} heartIcons - l'éléments DOM représentant les icônes de coeur.
+     *
+     * Cette fonction parcourt chaque icône de coeur et ajoute deux gestionnaires d'événements à chacune
+     * Un gestionnaire pour l'événement 'click' ou 'enter' qui alterne la classe 'filled' sur l'icône de coeur.
+     */
     function toggleHeartFillOnEvent(heartIcons) {
       heartIcons.forEach((heart) => {
         heart.addEventListener('click', () => {
@@ -137,23 +172,6 @@ export function mediaFactory(data) {
         });
       });
     }
-
-
-
-// Code principal
-    const heartIcon = createHeartIcon('fa-regular fa-heart');
-    const solidHeartIcon = createHeartIcon('fas fa-heart');
-    solidHeartIcon.style.display = 'none';
-
-    const heartContainer = createHeartContainer(heartIcon, solidHeartIcon);
-
-    likesElement.appendChild(heartContainer);
-
-    attachHeartIconEvent(heartIcon);
-
-    const heartIcons = document.querySelectorAll('.heart-icon');
-
-    toggleHeartFillOnEvent(heartIcons);
 
     return article;
   }
