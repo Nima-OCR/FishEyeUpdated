@@ -32,7 +32,7 @@
     init().then(() => {
       // console.log("Initialisation terminée avec succès !");
     }).catch((error) => {
-      console.error("Une erreur s'est produite lors de l'initialisation : ", error);
+      console.error("Une erreur s'est produite lors de l'Affiche des données des photographes sur la page.", error);
     });
 
     // Gère le lien vers la page d'accueil

@@ -54,7 +54,7 @@
 
     // Fonction interne pour basculer la rotation de la flèche
     function toggleArrowRotation() {
-      const arrow = selectElement.parentNode.querySelector('.dropdown');
+      const arrow = selectElement.parentNode.querySelector('.fa-chevron-down');
       if (arrow) {
         arrow.classList.toggle('rotate');
       }
